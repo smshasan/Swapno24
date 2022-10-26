@@ -12,10 +12,11 @@ const Search = ({history}) => {
         } else {
             history.push('/')
         }
+        
     }
 
     return (
-        <form onSubmit={searchHandler}>
+        <form onSubmit={searchHandler} style={{ color: 'white' }}>
             <div className="input-group">
                 <input
                     type="text"

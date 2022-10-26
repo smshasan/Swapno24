@@ -1,8 +1,43 @@
-import React from 'react'
+
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+
+import { fetchProducts } from '../../features/products/getProductSlice'
+
+import MetaData from './MetaData'
+
 
 const Home = () => {
+
+    const {error, loading, products} = useSelector((state) => state.products)
+    console.log('data,', products)
+   
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+       dispatch(fetchProducts())
+    }, [dispatch])
+
   return (
-    <div>Home</div>
+    <>
+      <MetaData title = "Homepage" />
+        <h2>List of Products</h2>
+        <>
+          {loading && <div>Loading...</div>}
+          {!loading && error ? <div>Error: {error}</div> : null }
+          
+              <ul>  
+                     {products.map((product) => (
+                          <li key={product._id}>{product.name}</li>
+                          )
+                          
+                      ) }
+              </ul>
+          
+        </>
+    </>
   )
 }
 

@@ -42,9 +42,11 @@ const Header = () => {
                 </div>
 
                 <div className="col-12 col-md-6 mt-2 mt-md-0">
-                    <Routes>
+                    ok
+                     <Search />
+                    {/* <Routes>
                         <Route render={({ history }) => <Search history={history} />} />
-                    </Routes>
+                    </Routes> */}
                 </div>
 
                 <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
@@ -57,6 +59,7 @@ const Header = () => {
                     </Link> */}
 
                     {user ? (
+                       
                         <div className="ml-4 dropdown d-inline">
                             <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -111,7 +114,7 @@ const Header = () => {
 
                         </div>
 
-                    ) : !loading &&  <Link to="#" className="btn ml-4" id="login_btn">Login</Link>}
+                    ) : !loading &&  <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
 
 
                 </div>

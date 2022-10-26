@@ -30,7 +30,7 @@ router.route('/admin/products').get(getAdminProducts);
 
 router.route('/product/:id').get(getSingleProduct);
 
-router.route('/admin/product/new').post(isAuthenticatedUser, authorizeRoles( 'admin', 'vendor'), newProduct);
+router.route('/product/new').post(isAuthenticatedUser, newProduct);
 
 router.route('/admin/product/:id')
     .put( isAuthenticatedUser, authorizeRoles('admin', 'vendor'), updateProduct)

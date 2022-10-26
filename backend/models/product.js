@@ -19,6 +19,16 @@ const productSchema = new mongoose.Schema({
         default: 'used',
     },
 
+    description: {
+        type: String,
+        required: [true, 'Please enter description']
+    },
+
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+    
     images: [
         {
             public_id: {

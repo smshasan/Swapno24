@@ -1,8 +1,6 @@
 const express = require('express');
 const { addCategory, getCategories, updateCategories, deleteCategories } = require('../controllers/categoryController');
 const router = express.Router();
-const shortid = require('shortid');
-const path = require('path');
 
 
 const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth');

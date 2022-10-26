@@ -34,6 +34,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     req.body.user = req.user.id;
 
     const product = await Product.create(req.body);
+    console.log('product created', product)
     res.status(201).json({
         success: true,
         product
@@ -106,7 +107,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
     let filteredProductsCount = products.length;
     apiFeatures.pagination(resPerPage)
     
-     products = await apiFeatures.query;
+    //  products = await apiFeatures.query;
 
 
     res.status(200).json({

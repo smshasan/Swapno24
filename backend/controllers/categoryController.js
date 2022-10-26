@@ -48,7 +48,7 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
 
      let imagesLinks = [];
 
-     console.log('images', images)
+    //  console.log('images', images)
 
     for (let i = 0; i < images.length; i++) {
         const result = await cloudinary.v2.uploader.upload(images[i], {
@@ -80,7 +80,7 @@ exports.getCategories = async(req, res, next) => {
 
    if(error) res.status(400).json({error});
 
-   if(categoris) {
+   if(categories) {
      const categoryList = createCategories(categories);
      res.status(200).json({categoryList});
    }

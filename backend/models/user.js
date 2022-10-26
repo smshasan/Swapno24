@@ -46,19 +46,19 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter password'],
-        minlength: [6, 'Your password must be longer than  6 characters'],
+        minlength: [5, 'Your password must be longer than  6 characters'],
         select: false
     },
-//     avatar: {
-//         public_id: {
-//             type: String,
-//             required: true        // true
-//         },
-//         url: {
-//             type: String,
-//             required: true      // true
-//         }
-//     },
+    avatar: {
+        public_id: {
+            type: String,
+            required: true        // true
+        },
+        url: {
+            type: String,
+            required: true      // true
+        }
+    },
     role: {
             type: String,
             default: 'user'
@@ -85,6 +85,12 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
+
+// userSchema.methods.comparePassword = async function (enteredPassword) {
+//     return await bcrypt.compare(enteredPassword, this.password)
+// }
+
+
 
 
 //Return JWT Token

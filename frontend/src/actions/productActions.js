@@ -59,11 +59,8 @@ export const getProductsBySlug = (slug) => {
                 payload: error.response.data.message
         });
         }
-       
-            
+    
         }
-
-       
      }
  
 
@@ -110,6 +107,7 @@ export const getProducts = (keyword = '', currentPage = 1, price, category, rati
         })
     }
 }
+
 
 export const newProduct = (productData) => async (dispatch) => {
     try {

@@ -30,13 +30,17 @@ body {
     max-height: fit-content;
 }
 nav {
-  background-color: #232f3e;
+  background-color: #407fbe;
   padding: 1rem 1rem;
 }
 
 #search_btn {
   background-color: #febd69;
+  border-radius: 15px;
+  margin-left: 10px;
+  width: 75px;
 }
+
 
 .input-group {
   width: 90%;
@@ -45,7 +49,8 @@ nav {
 
 #search_field {
   height: 2.4rem;
-  padding: 1rem;
+  padding: 30px;
+  border-radius: 30px;
 }
 
 #login_btn,
@@ -53,6 +58,7 @@ nav {
   background-color: #febd69;
   padding: 0.4rem 1.8rem;
   font-family: calibri;
+  border-radius: 15px;
 }
 
 #cart {

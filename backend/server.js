@@ -12,11 +12,14 @@ process.on('uncaughtException', err => {
     } )
     
 
-// // Setting up config file
-// dotenv.config({ path: 'backend/config/config.env' })
+//setting up config file
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
+//dotenv.config({ path: 'backend/config/config.env' });
+
+
 
 // connect database;
-// connectDatabase();
+connectDatabase();
 
 
 //Setting up cloudinary config
@@ -26,8 +29,7 @@ cloudinary.config({
         api_secret: process.env.CLOUDINARY_API_SECRET
     })
     
-// connect database;
-connectDatabase();
+
 
 
 
@@ -38,7 +40,7 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
         console.log(`Server started at http://localhost:${PORT}`)
 })
 

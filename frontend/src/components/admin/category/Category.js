@@ -145,11 +145,6 @@ const Category = (props) => {
 
 
 
-
-     
-
-     
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

@@ -84,7 +84,6 @@ const Login = ({ history, location }) => {
                                     />
                                 </div>
 
-
                                 <button
                                     id="login_button"
                                     type="submit"

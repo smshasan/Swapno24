@@ -11,11 +11,15 @@ const initialState = {
 }
 
 
-export const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
-        return axios
-            .get(`/api/v1/products`)
-            .then((response) => response.data)
-            .catch ((error) => error.response.data.message )
+export const fetchProducts = createAsyncThunk('product/fetchProducts', async () => {
+       try {
+         const {data} = await axios.get(`/api/v1/products`)
+         return data
+       } catch (error) {
+         return error.response.data.message    
+       }
+            
+            
 
 })
 
@@ -34,7 +38,7 @@ const productSlice = createSlice({
             builder.addCase(fetchProducts.fulfilled, (state, action) => {
                 state.loading = false
                 state.products = action.payload.products
-                state.productsCount = action.payload.products
+                state.productsCount = action.payload.productsCount
                 state.resPerPage = action.payload.resPerPage
                 state.filteredProductsCount = action.payload.filteredProductsCount
                 state.error = ''

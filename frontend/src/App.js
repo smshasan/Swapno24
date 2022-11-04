@@ -13,6 +13,9 @@ import Dashboard from './components/admin/Dashboard';
 import Category from './components/admin/category/Category';
 
 import NewProduct from './components/admin/NewProduct';
+import Footer from './components/layout/Footer';
+
+import CategoryHome from './components/layout/CategoryHome';
 
 
 function App() {
@@ -22,9 +25,10 @@ function App() {
     <BrowserRouter>
 
       <div className="app">
-       
+        <Header />
+        
         <Routes>
-            <Route path = "/header" element={<Header />} exact />
+            {/* <Route path = "/header" element={<Header />} exact /> */}
             <Route path = "/" element = {<Home />} exact />
             
             //Auth
@@ -38,8 +42,11 @@ function App() {
             
             //Products
             <Route path = "/products/create" element = {<NewProduct />} exact />
-        
+
+
+            <Route path = "/categories" element = {<CategoryHome />} exact />
         </Routes>
+        <Footer />
 
       </div>
 

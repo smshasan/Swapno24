@@ -6,6 +6,8 @@ import userReducer from '../features/users/userSlice'
 import categoryReducer from '../features/category/categorySlice'
 import newProductReducer from '../features/products/newProductSlice'
 
+// import { logoutReducer } from '../features/users/authSlice'
+
  export const store = configureStore({
     reducer: {
 
@@ -13,7 +15,8 @@ import newProductReducer from '../features/products/newProductSlice'
         users: userReducer,
         auth: authReducer,
         category: categoryReducer,
-        newProducts: newProductReducer
+        newProducts: newProductReducer,
+        // logout: logoutReducer
         
     }
 })

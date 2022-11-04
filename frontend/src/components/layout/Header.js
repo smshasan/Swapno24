@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import {BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 //import { useAlert } from 'react-alert'
-import { logout } from '../../actions/userActions'
+import { loadUser, fetchLogout } from '../../features/users/authSlice'
 //import Loader from '../layout/Loader'
 
 import Search from './Search'
@@ -14,15 +14,19 @@ const Header = () => {
     // const alert = useAlert();
     const dispatch = useDispatch();
 
-    const { user, loading } = useSelector(state => state.auth)
-    console.log('user', user)
+    const { user, loading, isAuthenticated } = useSelector(state => state.auth)
+    console.log('LoadUser', user)
     // const { cartItems } = useSelector(state => state.cart)
 
-    const logoutHandler = () => {
-        dispatch(logout());
-        alert('Logged out successfully.')
-    }
+    useEffect(() => {
+        dispatch(loadUser())
+    }, [dispatch])
 
+    const logoutHandler = () => {
+        dispatch(fetchLogout());
+        // alert('Logged out successfully.')
+        // console.log('logged out successfully')
+    }
 
     return (
         <Fragment>
@@ -42,7 +46,7 @@ const Header = () => {
                 </div>
 
                 <div className="col-12 col-md-6 mt-2 mt-md-0">
-                    ok
+                   
                      <Search />
                     {/* <Routes>
                         <Route render={({ history }) => <Search history={history} />} />
@@ -76,7 +80,7 @@ const Header = () => {
                             <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
 
                                 {user && user.role === 'admin'  && (
-                                    <Link className="dropdown-item" to="#">Dashboard</Link>
+                                    <Link className="dropdown-item" to="dashboard">Dashboard</Link>
                                 )}
 
 
@@ -85,23 +89,21 @@ const Header = () => {
                                 )}
 
 
-
                                 {/* {user && (user.role === 'admin' || user.role === 'vendor') && (
                                     <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 )} */}
-
-
-
-
-
-
-
 
                                 {/* if(user){
                                     if(user.role === 'admin' || user.role === 'vendor'){
                                         <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                     }
                                 } */}
+
+                                {/* <Link className="dropdown-item" to="#">Orders</Link>
+                                <Link className="dropdown-item" to="#">Profile</Link>
+                                <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
+                                    Logout
+                                </Link> */}
 
                                 <Link className="dropdown-item" to="#">Orders</Link>
                                 <Link className="dropdown-item" to="#">Profile</Link>
@@ -111,11 +113,9 @@ const Header = () => {
 
                             </div>
 
-
                         </div>
 
-                    ) : !loading &&  <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
-
+                    ) : !loading && <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
 
                 </div>
             </nav>

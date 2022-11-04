@@ -3,7 +3,7 @@ import axios from "axios"
 
 const initialState = {
     loading: false,
-    user: [],
+    user: null,
     isAuthenticated: false,
     error: ''
 }
@@ -36,24 +36,28 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async(userData) =>
 })
 
 
-export const fetchLogout = createAsyncThunk('auth/logout', async() => {
-    try {
-        await axios.post('/api/v1/logout')
-    } catch (error) {
-        return error.response.data.message
-    }
-})
+
 
 
 export const loadUser = createAsyncThunk('auth/loadUser', async() => {
     try {
         const {data} = await axios.get('/api/v1/me')
         console.log('loadUser', data)
-        return data
+        return data.user
     } catch (error) {
         return error.response.data.message
     }
 })
+
+
+export const fetchLogout = createAsyncThunk('auth/logout', async() => {
+    try {
+        await axios.get('/api/v1/logout')
+    } catch (error) {
+        return error.response.data.message
+    }
+})
+
 
  const authSlice = createSlice({
     name: 'auth',
@@ -74,14 +78,14 @@ export const loadUser = createAsyncThunk('auth/loadUser', async() => {
         builder.addCase(fetchLogin.rejected, (state, action) => {
             state.loading = false
             state.isAuthenticated = false
-            state.user = []
+            state.user = null
             state.error = action.payload
         })
 
-        builder.addCase(fetchLogout.fulfilled, (state) => {
-            state.isAuthenticated = false
-            state.user = []
-        })
+        // builder.addCase(fetchLogout.fulfilled, (state) => {
+        //     state.isAuthenticated = false
+        //     state.user = []
+        // })
 
         builder.addCase(fetchRegistration.pending, (state) => {
             state.loading = true
@@ -97,22 +101,72 @@ export const loadUser = createAsyncThunk('auth/loadUser', async() => {
         builder.addCase(fetchRegistration.rejected, (state, action) => {
             state.loading = false
             state.isAuthenticated = false
-            state.user = []
+            state.user = null
             state.error = action.payload
         })
 
         builder.addCase(loadUser.pending, (state, action) => {
-            state.loading = false
+            state.loading = true
         })
 
         builder.addCase(loadUser.fulfilled, (state, action) => {
-            state.user = action.payload.user
+            state.loading = false
+            state.user = action.payload
         })
 
         builder.addCase(loadUser.rejected, (state, action) => {
+            state.loading = false
             state.error = action.payload
+            state.user = null
         })
+
+
+        builder.addCase(fetchLogout.pending, (state, action) => {
+            state.loading = true
+        })
+
+        builder.addCase(fetchLogout.fulfilled, (state, action) => {
+            state.loading = false
+            state.isAuthenticated =  false
+            state.user = null
+        })
+
+        builder.addCase(fetchLogout.rejected, (state, action) => {
+            state.loading = false
+            state.user = null
+            state.error  = action.payload
+        })
+
+        
     }
  })
 
+//  const initState = {
+//     loading: false,
+//     user: [],
+//     error: '',
+//     success: false
+//  }
+//   export const logoutReducer =  createSlice({
+//     name : 'logout',
+//     initState,
+//     extraReducers: (builder) => {
+//         builder.addCase(fetchLogout.pending, (state, action) => {
+//             state.loading = true
+//         })
+
+//         builder.addCase(fetchLogout.fulfilled, (state, action) => {
+//             state.loading = false
+//             state.success = action.payload.success
+//             state.isAuthenticated =  false
+//             state.user = []
+//         })
+
+//         builder.addCase(fetchLogout.rejected, (state, action) => {
+//             state.loading = false
+//             state.user = []
+//             state.error  = action.payload
+//         })
+//     }
+//  })
  export default authSlice.reducer

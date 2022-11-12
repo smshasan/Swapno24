@@ -30,8 +30,13 @@ const categorySchema = new mongoose.Schema(
     ],
 
     parentId: {
-      type: String,
+      type: String
     },
+    
+    fid: {
+      type: String
+    },
+
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

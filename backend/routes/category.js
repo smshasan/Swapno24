@@ -1,5 +1,6 @@
 const express = require('express');
 const { addCategory, getCategories, updateCategories, deleteCategories } = require('../controllers/categoryController');
+const {getProductsByCategory} = require('../controllers/productController')
 const router = express.Router();
 
 
@@ -11,5 +12,7 @@ router.route('/category/getCategory').get(getCategories)
 // router.route('/category/getCategory').get(isAuthenticatedUser, authorizeRoles('admin', 'vendor'), getCategories)
 router.route('/category/update').put(isAuthenticatedUser, authorizeRoles('admin'), /*upload.array("categoryImage"),*/ updateCategories)
 router.route('/category/delete').delete(isAuthenticatedUser, authorizeRoles('admin'), deleteCategories)
+
+router.route('/category/:name').get(getProductsByCategory)
 
 module.exports = router;

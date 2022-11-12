@@ -8,7 +8,7 @@ import { fetchProducts } from '../../features/products/getProductSlice'
 import MetaData from './MetaData'
 
 
-const Home = () => {
+const Home = (props) => {
 
     const {error, loading, products} = useSelector((state) => state.products)
     console.log('data,', products)
@@ -19,6 +19,8 @@ const Home = () => {
     useEffect(() => {
        dispatch(fetchProducts())
     }, [dispatch])
+    
+    console.log('props', props)
 
   return (
     <>

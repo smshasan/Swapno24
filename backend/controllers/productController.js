@@ -56,12 +56,25 @@ exports.getProductsBySlug = (req, res) => {
                     })
             }
                 
-
             // res.status(200).json({ category });
     })
 }
 
-//discount by category
+// exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
+//         const {familyId} = req.params
+//         const id = await Category.find({fid: familyId}).select('_id')
+//         const products = await Product.find({category: id})
+//         res.status(200).json({products})
+// })
+
+exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
+        // const {id} = req.params
+        const id = await Category.find({parentId: req.params.id}).select('_id')
+        const products = await Product.find({category: id})
+        res.status(200).json({products})
+})
+
+
 exports.getDiscountBySlug = (req, res) => {
     const { slug } = req.params;
     Category.findOne({ slug: slug })
@@ -85,9 +98,6 @@ exports.getDiscountBySlug = (req, res) => {
                         });
                     })
             }
-                
-
-            // res.status(200).json({ category });
     })
 }
 

@@ -64,6 +64,16 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
   req.body.images = imagesLinks
   req.body.slug = `${slugify(req.body.name)}-${shortid.generate()}`
 
+  if (req.body.parentId === '') {
+    req.body.fid = {fid: shortid.generate()}.toString()
+
+  } else {
+      const familyId =  await Category.find({_id: req.body.parentId}).select({ _id: 0, fid : 1})
+      req.body.fid = familyId.toString()
+  }
+
+  
+
   req.body.createdBy = req.user.id;
 
     const category = await Category.create(req.body);
@@ -76,11 +86,11 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
 
 exports.getCategories = async(req, res, next) => {
 
- await Category.find({}).exec((error, categories) => {
+  Category.find({}).exec((error, categories) => {
 
-   if(error) res.status(400).json({error});
+    if(error) res.status(400).json({error});
 
-   if(categories) {
+    if(categories) {
      const categoryList = createCategories(categories);
      res.status(200).json({categoryList});
    }

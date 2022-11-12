@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Row, Col, Modal, Button } from "react-bootstrap";
@@ -16,7 +17,9 @@ import Input from "./Input";
 
 // import './style.css';
 import { Fragment } from "react";
-// import { set } from "mongoose";
+import shortid from "shortid";
+import { setAutoFreeze } from "immer";
+
 
 /**
  * @author
@@ -24,12 +27,13 @@ import { Fragment } from "react";
  **/
 
 const Category = (props) => {
-  const {categories, } = useSelector((state) => state.category);
+  const {categories} = useSelector((state) => state.category);
 
   console.log('category', categories);
 
   const [categoryName, setCategoryName] = useState("");
   const [parentCategoryId, setParentCategoryId] = useState("");
+  // const [fid, setFid] = useState("");
   // const [categoryImage, setCategoryImage] = useState("");
   const [images, setImages] = useState([]);
   const [show, setShow] = useState(false);
@@ -47,20 +51,15 @@ const Category = (props) => {
 
     form.append('name', categoryName);
     form.append('parentId', parentCategoryId);
-    // form.append('categoryImage', categoryImage);
-
+    // form.append('fid', fid)
+    
      images.forEach(image => {
             form.append('images', image)
      })
     
     dispatch(createCategory(form));
 
-    // const cat = {
-    //   categoryName,
-    //   parentCategoryId,
-    //   categoryImage,
-    // };
-    // console.log("cat", cat);
+   
 
     setShow(false);
   };
@@ -119,13 +118,29 @@ const Category = (props) => {
         createCategoryList(category.children, options);
       }
     }
-
     return options;
   };
+  console.log('createCategoryList', createCategoryList);
 
-  // const handleCategoryImage = (e) => {
-  //   setCategoryImage(e.target.files[0]);
-  // };
+
+  // const createFid = async (categories, options= []) => {
+  //   for (let category of categories) {
+
+  //     if(category.parentId.length === 0) {
+       
+  //       const id =  await shortid.generate()
+  //       console.log('shortid:', id)
+  //         setFid(id)
+  //     }
+  //       // else {
+          
+
+  //       // } 
+
+  //     }
+  //   }
+  
+
 
   return (
     <Fragment>
@@ -159,8 +174,9 @@ const Category = (props) => {
           <select
             className="form-control"
             value={parentCategoryId}
-            onChange={(e) => setParentCategoryId(e.target.value)}
-          >
+            onChange={(e) => setParentCategoryId(e.target.value)
+            }
+                      >
             <option>select category</option>
             {createCategoryList(categories).map((option) => (
               <option key={option.value} value={option.value}>

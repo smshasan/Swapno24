@@ -16,9 +16,6 @@ const cookieParser = require('cookie-parser');
 //   Setting up config file
 dotenv.config({ path: 'backend/config/config.env' })
 
-
-
-
 //setting up config file
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 
@@ -28,17 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 app.use(fileUpload());
-
-
-
-
-
-
-
-
-
-
-
 
 
 if (process.env.NODE_ENV === 'PRODUCTION') {

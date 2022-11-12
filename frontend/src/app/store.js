@@ -5,6 +5,7 @@ import authReducer  from '../features/users/authSlice'
 import userReducer from '../features/users/userSlice'
 import categoryReducer from '../features/category/categorySlice'
 import newProductReducer from '../features/products/newProductSlice'
+import  productsByCategoryReducer  from '../features/products/productsByCategorySlice'
 
 // import { logoutReducer } from '../features/users/authSlice'
 
@@ -16,6 +17,7 @@ import newProductReducer from '../features/products/newProductSlice'
         auth: authReducer,
         category: categoryReducer,
         newProducts: newProductReducer,
+        getProductsByCategory: productsByCategoryReducer
         // logout: logoutReducer
         
     }

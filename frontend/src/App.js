@@ -6,7 +6,7 @@ import Home from './components/layout/Home';
 
 import Login from './components/user/Login';
 // import DataFetch from './components/DataFetch';
-import MetaData from './components/layout/MetaData';
+
 import UsersList from './components/admin/UsersList';
 import Register from './components/user/Register';
 import Dashboard from './components/admin/Dashboard';
@@ -16,6 +16,7 @@ import NewProduct from './components/admin/NewProduct';
 import Footer from './components/layout/Footer';
 
 import CategoryHome from './components/layout/CategoryHome';
+import ProductsByCategory from './components/products/ProductsByCategory';
 
 
 function App() {
@@ -28,23 +29,24 @@ function App() {
         <Header />
         
         <Routes>
-            {/* <Route path = "/header" element={<Header />} exact /> */}
-            <Route path = "/" element = {<Home />} exact />
             
-            //Auth
+            <Route path = "/" element = {<Home />} exact />
+        
             <Route path ="/login" element = {<Login />} exact />
             <Route path ="/dashboard/users" element = {<UsersList />} exact />
             <Route path = "/register" element = {<Register />} exact />
 
-            //Dashboard
+          
             <Route path = "/dashboard" element = {<Dashboard />} exact />
             <Route path = "/dashboard/category" element = {<Category />} exact />
-            
-            //Products
+           
+           
             <Route path = "/products/create" element = {<NewProduct />} exact />
 
 
             <Route path = "/categories" element = {<CategoryHome />} exact />
+
+            <Route path = "/products/:id" element = {<ProductsByCategory />} exact />
         </Routes>
         <Footer />
 

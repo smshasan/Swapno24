@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router();
 
-console.log('express', router);
-
 const {
     getProducts,
     getAdminProducts,
@@ -11,7 +9,8 @@ const {
     updateProduct,
     deleteProduct,
     getProductsBySlug,
-    getDiscountBySlug
+    getDiscountBySlug,
+    getProductsByCategory
     
     
 
@@ -24,6 +23,10 @@ const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth');
 //router.get("/products/:slug", getProductsBySlug);
 router.route('/products/:slug').get(getProductsBySlug);
 router.route('/discount/:slug').post(getDiscountBySlug);
+
+router.route('/products/fid/:id').get(getProductsByCategory)
+
+// router.route('/products/:name').get(getProductsByCategory)
 
 router.route('/products').get(getProducts);
 router.route('/admin/products').get(getAdminProducts);

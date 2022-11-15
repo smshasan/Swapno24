@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Sidebar = () => {
     const { user, loading } = useSelector(state => state.auth)
+    
     return (
         <div className="sidebar-wrapper">
             <nav id="sidebar">
@@ -23,8 +24,9 @@ const Sidebar = () => {
 
                     <li>
                         <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i
-                            className="fa fa-product-hunt"></i> Products</a>
+                            className="fa fa-product-hunt"></i>Products</a>
                         <ul className="collapse list-unstyled" id="productSubmenu">
+
 
                             {user && user.role === 'admin' && (
                                 <li>
@@ -73,7 +75,6 @@ const Sidebar = () => {
                     )}
 
                     
-
                     {user && user.role === 'admin' && (
                         <li>
                             <Link to="/dashboard/users"><i className="fa fa-users"></i> Users</Link>

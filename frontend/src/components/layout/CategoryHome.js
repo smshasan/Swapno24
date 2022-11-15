@@ -1,11 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
 
-
 import {useDispatch, useSelector} from 'react-redux'
 
-
 import {getCategory} from '../../features/category/categorySlice'
-
 
 import {Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -13,8 +10,6 @@ import { Link } from 'react-router-dom'
 
 const CategoryHome = () => {
 
-    
-    
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -23,11 +18,8 @@ const CategoryHome = () => {
     
     console.log('getCategory', getCategory)
 
-
 const {categories} = useSelector(state => state.category)
 console.log('categories:', categories)
-
-
 
   return (
     <Fragment>
@@ -36,7 +28,7 @@ console.log('categories:', categories)
                 {categories.map(category => (
                   
                    <div className="col-4 p-3">
-                      <Link to={`/products/${category._id}`}>
+                      <Link to={`/products/category/${category._id}`}>
                           <Card key={category._id} >
                               <div style={{alignItems:'center' , display: 'flex', padding: '5px'}}>
                                 <div className='col-3'>

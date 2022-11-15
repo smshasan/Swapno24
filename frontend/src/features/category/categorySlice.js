@@ -39,8 +39,6 @@ export const getCategory = createAsyncThunk('category/getCategory', async () => 
 
 })
 
-
-
 /**
  * 
  * Building category list
@@ -90,10 +88,6 @@ const buildNewCategories = (parentId, categories, category) => {
   
     return myCategories;
   }
-  
-
-
-
 
 const categorySlice = createSlice({
     name: 'category',
@@ -112,25 +106,18 @@ const categorySlice = createSlice({
             state.error = action.payload
 
         })
-
         builder.addCase(getCategory.pending, (state, action) => {
           state.loading = true
         })
-
          builder.addCase(getCategory.fulfilled, (state, action) => { 
           state.loading = false
           state.categories = action.payload.categoryList
          })
-
         builder.addCase(getCategory.rejected, (state, action) => {
           state.loading = false
           state.categories = action.payload
         })
 
-
-
-
-        
     }
 })
 

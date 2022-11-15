@@ -10,7 +10,8 @@ const {
     deleteProduct,
     getProductsBySlug,
     getDiscountBySlug,
-    getProductsByCategory
+    getProductsByCategory,
+    getProductsBySubCategory
     
     
 
@@ -25,6 +26,7 @@ router.route('/products/:slug').get(getProductsBySlug);
 router.route('/discount/:slug').post(getDiscountBySlug);
 
 router.route('/products/fid/:id').get(getProductsByCategory)
+router.route('/products/uid/:id').get(getProductsBySubCategory)
 
 // router.route('/products/:name').get(getProductsByCategory)
 

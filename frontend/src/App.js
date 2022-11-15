@@ -17,6 +17,8 @@ import Footer from './components/layout/Footer';
 
 import CategoryHome from './components/layout/CategoryHome';
 import ProductsByCategory from './components/products/ProductsByCategory';
+import ProductsBySubCategory from './components/products/ProductsBySubCategory';
+import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
 
 
 function App() {
@@ -46,7 +48,10 @@ function App() {
 
             <Route path = "/categories" element = {<CategoryHome />} exact />
 
-            <Route path = "/products/:id" element = {<ProductsByCategory />} exact />
+            <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
+            <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
+
+            <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
         </Routes>
         <Footer />
 

@@ -67,6 +67,7 @@ exports.getProductsBySlug = (req, res) => {
 //         res.status(200).json({products})
 // })
 
+//find products by main category item /api/v1/products/fid/:id
 exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
         // const {id} = req.params
         const id = await Category.find({parentId: req.params.id}).select('_id')
@@ -74,6 +75,12 @@ exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
         res.status(200).json({products})
 })
 
+
+//find products by sub category item /api/v1/products/uid/:id
+exports.getProductsBySubCategory = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find({category: req.params.id})
+    res.status(200).json({products})
+})
 
 exports.getDiscountBySlug = (req, res) => {
     const { slug } = req.params;

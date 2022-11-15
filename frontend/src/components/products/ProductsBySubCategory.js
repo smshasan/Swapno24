@@ -3,11 +3,11 @@ import {useDispatch, useSelector} from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
-import { fetchProductsByCategory } from '../../features/products/productsByCategorySlice'
+
+import { fetchProductsBySubCategory } from '../../features/products/productsByCategorySlice'
 
 
-
-const ProductsByCategory = () => {
+const ProductsBySubCategory = () => {
 
 const params = useParams()
   
@@ -15,10 +15,13 @@ const params = useParams()
 
   const dispatch = useDispatch()
   const {products} = useSelector((state) => state.getProductsByCategory)
+ 
 
 
   useEffect(()=> {
-    dispatch(fetchProductsByCategory(params.id))
+
+    dispatch(fetchProductsBySubCategory(params.id))
+
    }, [dispatch])
 
   return (
@@ -43,4 +46,4 @@ const params = useParams()
   )
 }
 
-export default ProductsByCategory
+export default ProductsBySubCategory

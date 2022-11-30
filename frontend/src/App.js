@@ -21,6 +21,9 @@ import ProductsBySubCategory from './components/products/ProductsBySubCategory';
 import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
 
 
+import Location from './components/Location';
+
+
 function App() {
 
   return (
@@ -52,6 +55,8 @@ function App() {
             <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
 
             <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
+
+            <Route path = "/location" element = {<Location />} exact />
         </Routes>
         <Footer />
 

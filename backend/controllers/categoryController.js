@@ -4,7 +4,6 @@ const shortid = require("shortid");
 const cloudinary = require('cloudinary');
 
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
-// const category = require("../models/category");
 
 function createCategories(categories, parentId = "") {
   const categoryList = [];
@@ -12,13 +11,6 @@ function createCategories(categories, parentId = "") {
   if (parentId != null) category = categories.filter(cat => cat.parentId == parentId);
   if (parentId === "") category = categories.filter(cat => cat.parentId === "" )
   
-
-  // if (parentId == null) {
-  //   category = categories.filter(cat => cat.parentId == "");
-  // } else {
-  //   category = categories.filter(cat => cat.parentId == parentId);
-  // }
-
   for (let cate of category) {
     categoryList.push({
       _id: cate._id,
@@ -34,10 +26,7 @@ function createCategories(categories, parentId = "") {
   return categoryList;
 }
 
-//slug: `${slugify(req.body.name)}-${shortid.generate()}`,
-
 exports.addCategory = catchAsyncErrors( async (req, res, next) => {
-
 
   let images = []
     if (typeof req.body.images === 'string') {
@@ -47,8 +36,6 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
     }
 
      let imagesLinks = [];
-
-    //  console.log('images', images)
 
     for (let i = 0; i < images.length; i++) {
         const result = await cloudinary.v2.uploader.upload(images[i], {
@@ -72,8 +59,6 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
       req.body.fid = familyId.toString()
   }
 
-  
-
   req.body.createdBy = req.user.id;
 
     const category = await Category.create(req.body);
@@ -82,7 +67,6 @@ exports.addCategory = catchAsyncErrors( async (req, res, next) => {
         category
     })
 })
-
 
 exports.getCategories = async(req, res, next) => {
 
@@ -152,6 +136,5 @@ exports.deleteCategories = async (req, res) => {
   } else {
     res.status(400).json({ message: "Something went wrong" });
   }
-
 };
 

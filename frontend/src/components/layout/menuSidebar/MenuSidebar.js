@@ -37,7 +37,7 @@ const MenuSidebar = () => {
 
   return (
     <Fragment>
-        <h1>Menu Sidebar</h1>
+        
         <div  className='menuHeader'>
             <ul>
                 {

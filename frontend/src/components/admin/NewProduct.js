@@ -27,7 +27,6 @@ const NewProduct = ({ history }) => {
 
     console.log('catgories: ', categories)
 
-
     useEffect(() => {
 
         dispatch(getCategory())
@@ -97,7 +96,6 @@ const NewProduct = ({ history }) => {
 
         return options
     }
-
 
   return (
     <Fragment>

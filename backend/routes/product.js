@@ -12,9 +12,6 @@ const {
     getDiscountBySlug,
     getProductsByCategory,
     getProductsBySubCategory
-    
-    
-
 } = require('../controllers/productController');
 
 

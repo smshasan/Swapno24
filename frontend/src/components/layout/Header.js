@@ -37,12 +37,6 @@ const Header = () => {
                             <img className="logoSize" src="/images/watch.jpg" alt="logo" />
                         </Link>
                     </div>
-                    <div>
-                        <Link to="#" style={{ textDecoration: 'none' }} >
-                             <span id="cart" className="ml-3">Become a Seller</span>
-                        </Link>
-                    </div>
-
                 </div>
 
                 <div className="col-12 col-md-6 mt-2 mt-md-0">

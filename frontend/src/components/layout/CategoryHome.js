@@ -29,8 +29,8 @@ console.log('categories:', categories)
                   
                    <div className="col-4 p-3">
                       <Link to={`/products/category/${category._id}`}>
-                          <Card key={category._id} >
-                              <div style={{alignItems:'center' , display: 'flex', padding: '5px'}}>
+                          <Card style={{textDecoration: 'none'}} key={category._id} >
+                              <div className='category' style={{alignItems:'center' , display: 'flex', padding: '5px', textDecoration: 'none'}}>
                                 <div className='col-3'>
                                   <img  width = "50px" height = '50px' src={category.images[0].url}/>
                                 </div>

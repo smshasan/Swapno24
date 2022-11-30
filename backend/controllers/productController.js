@@ -164,9 +164,6 @@ exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
 })
 
 
-
-
-
 //update  products => /api/v1/admin/product/:id 
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     let product = await Product.findById(req.params.id);

@@ -67,18 +67,55 @@ exports.getProductsBySlug = (req, res) => {
 //         res.status(200).json({products})
 // })
 
+
+//Find unapproved products => /api/v1/products/unapproved/
+exports.getUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
+
+    const products = await Product.find({approved: false});
+    res.status(200).json({
+        success: true,
+        products
+    })
+})
+
+
+// db.products.updateOne(
+//     { _id: 100 },
+//     { $set:
+//        {
+//          quantity: 500,
+//          details: { model: "2600", make: "Fashionaires" },
+//          tags: [ "coats", "outerwear", "clothing" ]
+//        }
+//     }
+//  )
+
+//Approve unapporved product /api/v1/approve/product/:id
+exports.approveProduct = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.updateOne({_id: req.params.id}, {$set: {approved: true}});
+    res.status(200).json({
+        approved: true,
+        message: 'Product updated successfully',
+        product
+    });
+                                
+                                
+})
+
+
+
 //find products by main category item /api/v1/products/fid/:id
 exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
         // const {id} = req.params
         const id = await Category.find({parentId: req.params.id}).select('_id')
-        const products = await Product.find({category: id})
+        const products = await Product.find({ $and: [{ category: id}, { approved: true}] })
         res.status(200).json({products})
 })
 
 
 //find products by sub category item /api/v1/products/uid/:id
 exports.getProductsBySubCategory = catchAsyncErrors(async (req, res, next) => {
-    const products = await Product.find({category: req.params.id})
+    const products = await Product.find({ $and: [{category: req.params.id}, {approved: true}]})
     res.status(200).json({products})
 })
 
@@ -116,7 +153,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
     const resPerPage = 12;
     const productsCount = await Product.countDocuments();
 
-    const apiFeatures = new APIFeatures(Product.find(), req.query)
+    const apiFeatures = new APIFeatures(Product.find({approved: true}).sort({date: -1}), req.query)
                        .search()
                         .filter()
                         
@@ -206,6 +243,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
+        
         useFindAndModify: false
     });
     res.status(200).json({
@@ -228,7 +266,6 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
         const result = await cloudinary.v2.uploader.destroy(product.images[i].public_id)
     }
 
-
     await product.remove();
     res.status(200).json({
         success: true,
@@ -236,3 +273,4 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     })
 
 })
+

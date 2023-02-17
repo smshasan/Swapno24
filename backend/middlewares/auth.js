@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Stuff = require('../models/stuff');
 
 const jwt = require('jsonwebtoken');
 const ErrorHandler = require('../utils/errorHandler');
@@ -14,10 +15,13 @@ exports.isAuthenticatedUser = catchAsyncErrors( async (req, res, next) => {
     }
      
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    req.user = await User.findById(decoded.id);
+    req.user = await User.findById(decoded.id) 
     next()
 
 })
+
+
+
 
 
 // Handling users roles

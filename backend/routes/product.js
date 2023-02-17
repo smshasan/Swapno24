@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 const {
+    
     getProducts,
     getAdminProducts,
     newProduct,
@@ -11,7 +12,10 @@ const {
     getProductsBySlug,
     getDiscountBySlug,
     getProductsByCategory,
-    getProductsBySubCategory
+    getProductsBySubCategory,
+    getUnapprovedProducts,
+    approveProduct
+
 } = require('../controllers/productController');
 
 
@@ -22,6 +26,9 @@ const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth');
 router.route('/products/:slug').get(getProductsBySlug);
 router.route('/discount/:slug').post(getDiscountBySlug);
 
+
+router.route('/unapproved/products').get(getUnapprovedProducts);
+router.route('/approve/product/:id').put(approveProduct)
 router.route('/products/fid/:id').get(getProductsByCategory)
 router.route('/products/uid/:id').get(getProductsBySubCategory)
 
@@ -36,7 +43,7 @@ router.route('/product/new').post(isAuthenticatedUser, newProduct);
 
 router.route('/admin/product/:id')
     .put( isAuthenticatedUser, authorizeRoles('admin', 'vendor'), updateProduct)
-    .delete(isAuthenticatedUser, authorizeRoles('admin', 'vendor'), deleteProduct);
+    .delete(isAuthenticatedUser, deleteProduct);
 
 
 module.exports = router;

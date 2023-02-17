@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 const Footer = () => {
   return (
     <Fragment>
-        <div style={{textAlign: 'center'}}>
+        <div className='footer' >
             <h1>Footer</h1>
         </div>
     </Fragment>

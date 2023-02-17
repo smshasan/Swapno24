@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
         required: true,
         maxLength: [30, 'Product name cannot exceed 30 characters']
     },
+
     price: {
         type: String,
         required: true,
@@ -28,6 +29,11 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
+
+    approved: {
+        type: Boolean,
+        default: false
+    },
     
     images: [
         {
@@ -41,6 +47,42 @@ const productSchema = new mongoose.Schema({
             },
         }
     ],
+
+    division: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    district: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    thana: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+    
+    municipality: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    ward: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    village: {
+        type: String,
+        required: true,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
 
     user: {
         type: mongoose.Schema.ObjectId,

@@ -10,43 +10,18 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please enter name'],
         maxLength: [30, 'Your name cannot exceed 30 characters']
     },
+
     phone: {
         type: String,
         required: [true, 'Please enter  valid 11 digit number'],
-        // unique: true
-        // validate: [validator.isEmail, 'Please enter valid email']
+       
     },
-    // email: {
-    //     type: String,
-    //     required: [true, 'Please enter email'],
-    //     unique: true,
-    //     validate: [validator.isEmail, 'Please enter valid email']
-    // },
-
-    // phone: {
-    //     type: String,
-    //     unique: true,
-    //     minLength: [5, 'Phone Number must not be less than 11 digit'],
-    //     required: true
-    // },
-
-    // address: {
-    //     type: String,
-    //     maxLength: [100, 'address must not exceed 100 characters'],
-    //     required: true
-    // },
-
-    // shopAddress: {
-    //     type: String,
-    //     maxLength: [100, 'address must not exceed 100 characters'],
-    //     required: true
-
-    // },
+    
 
     password: {
         type: String,
         required: [true, 'Please enter password'],
-        minlength: [5, 'Your password must be longer than  6 characters'],
+        minlength: [5, 'Your password must be equal or longer than 5 characters'],
         select: false
     },
     avatar: {
@@ -85,11 +60,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
-
-// userSchema.methods.comparePassword = async function (enteredPassword) {
-//     return await bcrypt.compare(enteredPassword, this.password)
-// }
-
 
 
 

@@ -34,15 +34,22 @@ const params = useParams()
           </div>
           <div width = '1500px' className='col-lg-9' style={{height: 'min-content'}}>
             {products.map((product) => (
-                <Card key={product._id} className='m-3' st>
+                <Card key={product._id} >
                     <div className='cardCustom' style={{alignItems:'center' , display: 'flex', padding: '5px', boxShadow: '1px 3px 10px #e7e0e3'}}>
                         <div className='col-3'>
                           <img  width = "160px" height = '120px' src={product.images[0].url}/>
                         </div>
                         
-                        <div className='col-9' style={{listStyle: 'none', paddingLeft: '12%'}}>
+                        <div className='col-6' style={{listStyle: 'none', paddingLeft: '12%'}}>
                             <li ><h5 style={{color: '#33383ecc', fontWeight: 'bold'}}>{product.name}</h5></li>
                             <li style={{color: '#212121'}}><strong><p>Tk {product.price}</p></strong></li>
+                            <br></br>
+                            <li style={{textTransform: 'capitalize'}}>Status : {product.condition}</li>
+                        </div>
+                        <div className='col-3' style={{listStyle: 'none' }}>
+                          <li style={{textTransform: 'capitalize'}}>Status : {product.condition} </li>
+                          <br></br>
+                          <li><p>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></li>
                         </div>
                       </div>
                 </Card>     

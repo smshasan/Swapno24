@@ -82,11 +82,6 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
             state.error = action.payload
         })
 
-        // builder.addCase(fetchLogout.fulfilled, (state) => {
-        //     state.isAuthenticated = false
-        //     state.user = []
-        // })
-
         builder.addCase(fetchRegistration.pending, (state) => {
             state.loading = true
             
@@ -141,32 +136,5 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
     }
  })
 
-//  const initState = {
-//     loading: false,
-//     user: [],
-//     error: '',
-//     success: false
-//  }
-//   export const logoutReducer =  createSlice({
-//     name : 'logout',
-//     initState,
-//     extraReducers: (builder) => {
-//         builder.addCase(fetchLogout.pending, (state, action) => {
-//             state.loading = true
-//         })
 
-//         builder.addCase(fetchLogout.fulfilled, (state, action) => {
-//             state.loading = false
-//             state.success = action.payload.success
-//             state.isAuthenticated =  false
-//             state.user = []
-//         })
-
-//         builder.addCase(fetchLogout.rejected, (state, action) => {
-//             state.loading = false
-//             state.user = []
-//             state.error  = action.payload
-//         })
-//     }
-//  })
  export default authSlice.reducer

@@ -10,8 +10,8 @@ const path = require('path');
 const errorMiddleware = require('./middlewares/errors')
 
 const cookieParser = require('cookie-parser');
-  const bodyParser = require('body-parser');
- const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
 //   Setting up config file
 dotenv.config({ path: 'backend/config/config.env' })
@@ -20,10 +20,10 @@ dotenv.config({ path: 'backend/config/config.env' })
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+
 app.use(fileUpload());
 
 
@@ -40,10 +40,17 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 const auth = require('./routes/auth');
 const product = require('./routes/product');
 const category = require('./routes/category');
+const ticket = require('./routes/ticket');
+const stuff = require('./routes/stuff')
+const information = require('./routes/information');
+
 
 app.use('/api/v1', auth);
 app.use('/api/v1', product);
 app.use('/api/v1', category);
+app.use('/api/v1', ticket);
+app.use('/api/v1', stuff)
+app.use('/api/v1', information)
 
 
 //Middleware to handle errors

@@ -22,19 +22,6 @@ const Dashboard = () => {
 
     console.log('user', user);
 
-    // let outOfStock = 0;
-    // products.forEach(product => {
-    //     if (product.stock === 0) {
-    //         outOfStock += 1;
-    //     }
-    // })
-
-   
-
-    // useEffect(() => {
-    //     dispatch(loadUser())
-    //     dispatch(fetchUsers())
-    // }, [dispatch, loadUser, fetchUsers])
 
     useEffect(() => {
         dispatch(loadUser())
@@ -121,7 +108,6 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </Fragment>
-
                 </div>
             </div>
 

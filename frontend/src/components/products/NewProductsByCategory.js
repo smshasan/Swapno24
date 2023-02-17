@@ -7,7 +7,7 @@ import { fetchProductsByCategory } from '../../features/products/productsByCateg
 
 import MenuSidebar from '../layout/menuSidebar/MenuSidebar'
 
-const ProductsByCategory = () => {
+const NewProductsByCategory = () => {
 
 const params = useParams()
   
@@ -17,11 +17,7 @@ const params = useParams()
   const {products} = useSelector((state) => state.getProductsByCategory)
 
 
-  // const filteredProducts = products.filter((product) => product.condition === "new");
-  const filteredProducts = (status) => {
-      return products.filter((product) => product.condition === status)
-  }
-  
+  const filteredProducts = products.filter((product) => product.condition === "new");
   console.log('productsbycategory', products)
   console.log('new', filteredProducts)
 
@@ -35,31 +31,23 @@ const params = useParams()
          <h4>Products By Category</h4>
         <div className='row'>
           <div className='col-lg-3 pl-0'>
-              <MenuSidebar />
+              <MenuSidebar status='new'/>
           </div>
 
           <div className='col-lg-9 ' style={{height: 'min-content'}}>
-            {products.map((product) => (
-                <div key={product._id} className='card'>
-                    <div className='cardCustom' style={{ marginTop: '30px',display: 'flex', padding: '5px' }}>
+            {filteredProducts.map((product) => (
+                <Card key={product._id} className='m-3' >
+                    <div className='cardCustom' style={{alignItems:'center' , display: 'flex', padding: '5px', boxShadow: '1px 3px 10px #e7e0e3'}}>
                         <div className='col-3 cardImage'>
                           <img  width = "160px" height = '120px' src={product.images[0].url}/>
                         </div>
                         
-                        <div className='col-6' style={{listStyle: 'none', paddingLeft: '12%'}}>
+                        <div className='col-9' style={{listStyle: 'none', paddingLeft: '12%'}}>
                             <li ><h5 style={{color: '#33383ecc', fontWeight: 'bold'}}>{product.name}</h5></li>
-                            <br></br>
                             <li style={{color: '#212121'}}><strong><p>Tk {product.price}</p></strong></li>
                         </div>
-
-                        <div className='col-3' style={{listStyle: 'none' }}>
-                          <li style={{textTransform: 'capitalize'}}>Status : {product.condition} </li>
-                          <br></br>
-                          <li><p>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></li>
-                        </div>
-                      </div>
-
-                </div>     
+                    </div>
+                </Card>     
               ))}
           </div>
 
@@ -69,4 +57,4 @@ const params = useParams()
   )
 }
 
-export default ProductsByCategory
+export default NewProductsByCategory

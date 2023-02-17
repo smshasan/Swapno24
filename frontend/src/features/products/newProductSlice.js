@@ -20,10 +20,12 @@ export const newProduct = createAsyncThunk('product/newProduct', async (productD
     
 })
 
+
 const newProductSlice = createSlice({
     name: 'newProduct',
     initialState,
     extraReducers: (builder) => {
+        
         builder.addCase(newProduct.pending, (state) => {
             state.loading = true
 

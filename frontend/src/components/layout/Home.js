@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 import { fetchProducts } from '../../features/products/getProductSlice'
+import CategoryHome from './CategoryHome'
 
 import MetaData from './MetaData'
 
@@ -25,6 +26,10 @@ const Home = (props) => {
   return (
     <>
       <MetaData title = "Homepage" />
+
+
+
+        <CategoryHome />
         <h2>List of Products</h2>
         <>
           {loading && <div>Loading...</div>}

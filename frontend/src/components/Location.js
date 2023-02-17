@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react'
 import Modal from 'react-modal';
 
 const Location = () => {
+  
   const [division, setDivision] = useState('')
   const [district, setDistrict] = useState('')
   const [thana, setThana] = useState('')
@@ -27,7 +28,7 @@ const Location = () => {
 
 
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
@@ -60,16 +61,16 @@ const Location = () => {
           <button onClick={closeModal}>close</button>
 
           <form>
-            <select>
-              <option>Dhaka</option>
-              <option>Rajshahi</option>
-              <option>Rangpur</option>
-              <option>Chittagong</option>
-              <option>Sylhet</option>
-              <option>Barishal</option>
-              <option>Khulna</option>
-              <option>Mymensingh</option>
-            </select>
+            <div className="form-group">
+              <label htmlFor="district_field">Division: </label>
+              <input
+                type="text"
+                id="division_field"
+                className="form-control"
+                value={division}
+                onChange={(e) => setDivision(e.target.value)}
+              />
+            </div>
             <div className="form-group">
               <label htmlFor="district_field">District: </label>
               <input

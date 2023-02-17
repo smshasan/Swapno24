@@ -32,9 +32,9 @@ const Header = () => {
         <Fragment>
             <nav className="navbar row">
                 <div className="col-12 col-md-3">
-                    <div className="navbar-brand">
+                    <div className="navbar-brand" style={{display: 'flex', justifyContent: 'right'}}>
                         <Link to="/">
-                            <img className="logoSize" src="/images/watch.jpg" alt="logo" />
+                            <img className="logoSize" src="/images/swapno24.png" alt="logo" />
                         </Link>
                     </div>
                 </div>

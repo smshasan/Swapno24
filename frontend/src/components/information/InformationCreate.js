@@ -64,19 +64,8 @@ const InformationCreate = () => {
             <div className='row wrapper'>
 
                 <div className='col-10 col-lg-5'>
-                    <h3>Buy Ticket from here </h3>
+                    <h3>Send Your Information</h3>
                     <form className='shadow-lg' onSubmit={submitHandler} encType='multipart/form-data'>
-                        <div className="form-group">
-                            <label htmlFor="resident_field">Resident Type</label>
-                            <input
-                                type="text"
-                                id="resident_field"
-                                className="form-control"
-                                placeholder='Enter City'
-                                value={residentType}
-                                onChange={(e) => setResidentType(e.target.value)}
-                            />
-                        </div>
 
                         <div className="form-group">
                             <label htmlFor="name-field">Name</label>
@@ -103,9 +92,9 @@ const InformationCreate = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="mother_field">mother's Name</label>
+                            <label htmlFor="mother_field">Mother's Name</label>
                             <input
-                                type="date"
+                                type="text"
                                 id="mother_field"
                                 className="form-control"
                                 placeholder="Mother's Name"
@@ -116,7 +105,7 @@ const InformationCreate = () => {
                         <div className="form-group">
                             <label htmlFor="present_field">Present Address</label>
                             <input
-                                type="date"
+                                type="text"
                                 id="present_field"
                                 className="form-control"
                                 placeholder="Present Address"
@@ -133,7 +122,7 @@ const InformationCreate = () => {
                                 placeholder="Permanent Address"
                                 value={permanentAddress}
                                 onChange={(e) => setPermanentAddress(e.target.value)}
-                            />s
+                            />
                         </div>
                         <div className="form-group">
                             <label htmlFor="nationality_field">Nationality</label>

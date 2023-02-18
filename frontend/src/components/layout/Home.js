@@ -27,21 +27,19 @@ const Home = (props) => {
     <>
       <MetaData title = "Homepage" />
 
-
-
         <CategoryHome />
-        <h2>List of Products</h2>
+        {/* <h2>List of Products</h2> */}
         <>
           {loading && <div>Loading...</div>}
           {!loading && error ? <div>Error: {error}</div> : null }
           
-              <ul>  
+              {/* <ul>  
                      {products.map((product) => (
                           <li key={product._id}>{product.name}</li>
                           )
                           
                       ) }
-              </ul>
+              </ul> */}
           
         </>
     </>

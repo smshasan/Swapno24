@@ -12,30 +12,45 @@ import Login from './components/user/Login';
 import UsersList from './components/admin/UsersList';
 import Register from './components/user/Register';
 import Dashboard from './components/admin/Dashboard';
-import Category from './components/admin/category/Category';
 
-import NewProduct from './components/admin/NewProduct';
+//Category
+import Category from './components/admin/category/Category';
+import CategoryHome from './components/layout/CategoryHome';
+
+
 import Footer from './components/layout/Footer';
 
-import CategoryHome from './components/layout/CategoryHome';
+
+
+//Products
+import UnaaprovedProducts from './components/admin/UnaaprovedProducts';
+import NewProduct from './components/admin/NewProduct';
 import ProductsByCategory from './components/products/ProductsByCategory';
 import ProductsBySubCategory from './components/products/ProductsBySubCategory';
+import NewProductsByCategory from './components/products/NewProductsByCategory';
+import ProductsByCondition from './components/products/ProductsByCondition';
+
+
 import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
 
-import NewProductsByCategory from './components/products/NewProductsByCategory';
+
 
 import Location from './components/Location';
-import ProductsByCondition from './components/products/ProductsByCondition';
+
 
 // Ticket
 import Ticket from './components/ticket/Ticket';
+import TicketRequest from './components/ticket/TicketRequest';
 
 //Stuff
 import NewStuff from './components/admin/stuff/NewStuff';
 import StuffList from './components/admin/stuff/StuffList';
-import UnaaprovedProducts from './components/admin/UnaaprovedProducts';
-import TicketRequest from './components/ticket/TicketRequest';
+
+
+
+
 import InformationCreate from './components/information/InformationCreate';
+import GetInformation from './components/information/GetInformation';
 
 
 function App() {
@@ -95,6 +110,7 @@ function App() {
 
             //Information
             <Route path = "/information/create" element = {<InformationCreate />} exact />
+            <Route path = "/information/get" element = {<GetInformation />} exact />
         </Routes>
         <Footer />
 

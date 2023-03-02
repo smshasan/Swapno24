@@ -14,6 +14,7 @@ const NewProduct = ({ history }) => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [condition, setCondition] = useState('used')
+    const [shopCategory, setShopCategory] = useState('Retail')
     const [description, setDescription] = useState('')
     const [categoryId, setCategoryId] = useState('')
     const [images, setImages] = useState([])
@@ -61,6 +62,7 @@ const NewProduct = ({ history }) => {
         formData.set('name', name)
         formData.set('price', price)
         formData.set('condition', condition)
+        formData.set('shopCategory', shopCategory)
         formData.set('description', description)
         formData.set('category', categoryId)
 
@@ -166,13 +168,28 @@ const NewProduct = ({ history }) => {
 
                                         </div>
                                         <div className="form-group">
+                                            <label htmlFor="shop_field">Shop Category</label>
+                                            <select
+                                                className="form-control"
+                                                id="shop_field"
+                                                value={shopCategory}
+                                                onChange={(e) => setShopCategory(e.target.value)}
+                                            >
+                                                
+                                                <option value="retail">Retail</option>
+                                                <option value="wholeSale">Wholesale</option>
+                                                <option value="manufacturer">Manufacturer</option>
+                                            </select>
+
+                                        </div>
+                                        <div className="form-group">
                                             <label htmlFor="category_field">Category</label>
                                             <select
                                                 className="form-control"
                                                 value={categoryId}
                                                 onChange={(e) => setCategoryId(e.target.value)}
                                             >
-                                                <option>select category</option>
+                                                {/* <option>select category</option> */}
                                                 {createCategoryList(categories).map((option) => (
                                                     <option key={option.value} value={option.value}>
                                                         {option.name}

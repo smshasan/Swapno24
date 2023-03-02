@@ -20,6 +20,11 @@ const productSchema = new mongoose.Schema({
         default: 'used',
     },
 
+    shopCategory: {
+        type: String,
+        default: 'retail',
+    },
+
     description: {
         type: String,
         required: [true, 'Please enter description']

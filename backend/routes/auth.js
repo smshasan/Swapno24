@@ -34,6 +34,9 @@ router.route('/logout').get(logout);
 
 // router.route('/admin/users').get(isAuthenticatedUser, authorizeRoles('admin', 'vendor'), allUsers);
 router.route('/admin/users').get(isAuthenticatedUser, allUsers);
+
+router.route('/user/:id').get(isAuthenticatedUser, getUserDetails)
+
 router.route('/admin/user/:id')
     .get(isAuthenticatedUser, authorizeRoles('admin'), getUserDetails)
     .put(isAuthenticatedUser, authorizeRoles('admin'), updateUser)

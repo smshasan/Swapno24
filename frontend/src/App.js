@@ -53,6 +53,10 @@ import InformationCreate from './components/information/InformationCreate';
 import GetInformation from './components/information/GetInformation';
 
 
+//Messenger
+import Messenger from './components/messenger/Messenger'
+
+
 function App() {
 
   return (
@@ -111,6 +115,8 @@ function App() {
             //Information
             <Route path = "/information/create" element = {<InformationCreate />} exact />
             <Route path = "/information/get" element = {<GetInformation />} exact />
+
+            <Route path = "/messenger" element={<Messenger />} exact />
         </Routes>
         <Footer />
 

@@ -43,7 +43,7 @@ export const loadUser = createAsyncThunk('auth/loadUser', async() => {
     try {
         const {data} = await axios.get('/api/v1/me')
         console.log('loadUser', data)
-        return data.user
+        return data
     } catch (error) {
         return error.response.data.message
     }
@@ -106,7 +106,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
 
         builder.addCase(loadUser.fulfilled, (state, action) => {
             state.loading = false
-            state.user = action.payload
+            state.user = action.payload.user
         })
 
         builder.addCase(loadUser.rejected, (state, action) => {

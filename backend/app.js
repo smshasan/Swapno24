@@ -41,8 +41,10 @@ const auth = require('./routes/auth');
 const product = require('./routes/product');
 const category = require('./routes/category');
 const ticket = require('./routes/ticket');
-const stuff = require('./routes/stuff')
+const stuff = require('./routes/stuff');
 const information = require('./routes/information');
+const conversations = require('./routes/conversations');
+const messages = require('./routes/messages');
 
 
 app.use('/api/v1', auth);
@@ -51,6 +53,8 @@ app.use('/api/v1', category);
 app.use('/api/v1', ticket);
 app.use('/api/v1', stuff)
 app.use('/api/v1', information)
+app.use('/api/v1', conversations);
+app.use('/api/v1', messages);
 
 
 //Middleware to handle errors

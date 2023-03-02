@@ -8,7 +8,7 @@ const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 function createCategories(categories, parentId = "") {
   const categoryList = [];
   var category;
-  if (parentId != null) category = categories.filter(cat => cat.parentId == parentId);
+  if (parentId != null) category = categories.filter(cat => cat.parentId == parentId)
   if (parentId === "") category = categories.filter(cat => cat.parentId === "" )
   
   for (let cate of category) {
@@ -19,8 +19,8 @@ function createCategories(categories, parentId = "") {
       images: cate.images,
       parentId: cate.parentId,
       type: cate.type,
-      children: createCategories(categories, cate._id),
-    });
+      children: createCategories(categories, cate._id)
+    })
   }
 
   return categoryList;

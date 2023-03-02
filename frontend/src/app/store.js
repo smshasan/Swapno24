@@ -32,6 +32,10 @@ import infoReducer from '../features/information/informationSlice'
 
 // import { logoutReducer } from '../features/users/authSlice'
 
+
+//Conversation
+import conversationSlice from '../features/messenger/conversationSlice'
+
  export const store = configureStore({
     
     reducer: {
@@ -47,7 +51,8 @@ import infoReducer from '../features/information/informationSlice'
         unapprovedProducts: unaaprovedProductsReducer,
         approvedProduct: approvedProductReducer,
         ticket: ticketReducer,
-        info: infoReducer
+        info: infoReducer,
+        conversation: conversationSlice
 
         
     }

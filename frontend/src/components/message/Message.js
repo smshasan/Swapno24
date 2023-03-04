@@ -4,7 +4,7 @@ import './message.css'
 import TimeAgo from 'react-timeago'
 
 const Message = ({message, own}) => {
-    console.log('message', message)
+    console.log('message', message) 
     return (
         <div className={own ? "message own" : "message"}>
             <div className='messageTop'>

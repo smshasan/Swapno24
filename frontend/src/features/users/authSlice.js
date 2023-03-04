@@ -35,20 +35,15 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async(userData) =>
     }
 })
 
-
-
-
-
 export const loadUser = createAsyncThunk('auth/loadUser', async() => {
     try {
         const {data} = await axios.get('/api/v1/me')
         console.log('loadUser', data)
-        return data
+        return data.user
     } catch (error) {
         return error.response.data.message
     }
 })
-
 
 export const fetchLogout = createAsyncThunk('auth/logout', async() => {
     try {
@@ -57,7 +52,6 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
         return error.response.data.message
     }
 })
-
 
  const authSlice = createSlice({
     name: 'auth',
@@ -106,7 +100,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
 
         builder.addCase(loadUser.fulfilled, (state, action) => {
             state.loading = false
-            state.user = action.payload.user
+            state.user = action.payload
         })
 
         builder.addCase(loadUser.rejected, (state, action) => {

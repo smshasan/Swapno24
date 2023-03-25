@@ -35,9 +35,6 @@ export const stuffLogin = createAsyncThunk('stuff/stuffLogin', async(userData) =
     }
 })
 
-
-
-
 const newStuffSlice = createSlice({
     name: 'newStuff',
     initialState,
@@ -62,8 +59,6 @@ const newStuffSlice = createSlice({
             state.error = action.payload
         })
 
-
-
         builder.addCase(stuffRegistration.pending, (state) => {
             state.loading = true
             
@@ -82,7 +77,6 @@ const newStuffSlice = createSlice({
             state.error = action.payload
         })
 
-       
     }
 })
 

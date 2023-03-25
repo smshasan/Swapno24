@@ -4,7 +4,9 @@ import {configureStore} from '@reduxjs/toolkit'
 //Product
 import productReducer from '../features/products/getProductSlice'
 import productsByCategoryReducer  from '../features/products/productsByCategorySlice'
+import productsBySubCategoryReducer from '../features/products/productsBySubCategorySlice'
 import newProductReducer from '../features/products/newProductSlice'
+import singleProductReducer from '../features/products/singleProductSlice'
 
 //UnApproved/Approved Product
 import unaaprovedProductsReducer from '../features/products/unapprovedProductSlice'
@@ -17,6 +19,8 @@ import userReducer from '../features/users/userSlice'
 //Category
 import categoryReducer from '../features/category/categorySlice'
 
+//Salary
+import salaryReducer from '../features/salary/salarySlice'
 
 //Stuff
 import newStuffReducer from '../features/stuff/newStuffSlice'
@@ -41,11 +45,14 @@ import conversationSlice from '../features/messenger/conversationSlice'
     reducer: {
 
         products: productReducer,
+        singleProduct: singleProductReducer,
         users: userReducer,
         auth: authReducer,
         category: categoryReducer,
         newProducts: newProductReducer,
         getProductsByCategory: productsByCategoryReducer,
+        getProductsBySubCategory: productsBySubCategoryReducer,
+        salary: salaryReducer,
         newStuff: newStuffReducer,
         stuff: stuffReducer,
         unapprovedProducts: unaaprovedProductsReducer,

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { useNavigate, useHistory } from 'react-router-dom'
+import { useNavigate, useHistory, Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLogin } from '../../features/users/authSlice';
@@ -7,7 +7,7 @@ import { fetchLogin } from '../../features/users/authSlice';
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData';
 
-const Login = ({ history, location }) => {
+const Login = () => {
 
     
     const [phone, setPhone] = useState('');
@@ -41,7 +41,7 @@ const Login = ({ history, location }) => {
             
         }
 
-    }, [isAuthenticated, error, history])
+    }, [isAuthenticated, error])
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -68,6 +68,7 @@ const Login = ({ history, location }) => {
                                         type="text"
                                         id="phone_field"
                                         className="form-control"
+                                        placeholder='Phone Number'
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
                                     />
@@ -79,6 +80,7 @@ const Login = ({ history, location }) => {
                                         type="password"
                                         id="password_field"
                                         className="form-control"
+                                        placeholder='Password'
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
@@ -91,8 +93,7 @@ const Login = ({ history, location }) => {
                                 >
                                     LOGIN
                                 </button>
-
-
+                                <Link to="/register" className="float-right mt-3">New User?</Link>
                             </form>
                         </div>
                     </div>

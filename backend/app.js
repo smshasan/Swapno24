@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 
 const cors = require('cors');
-app.use(cors())
-
+app.use(cors());
 
 const dotenv = require('dotenv');
 const path = require('path');
@@ -19,7 +18,8 @@ dotenv.config({ path: 'backend/config/config.env' })
 //setting up config file
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
@@ -36,6 +36,8 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 
 }
 
+
+
 //import all routes
 const auth = require('./routes/auth');
 const product = require('./routes/product');
@@ -45,6 +47,7 @@ const stuff = require('./routes/stuff');
 const information = require('./routes/information');
 const conversations = require('./routes/conversations');
 const messages = require('./routes/messages');
+const salary = require('./routes/salary');
 
 
 app.use('/api/v1', auth);
@@ -55,6 +58,7 @@ app.use('/api/v1', stuff)
 app.use('/api/v1', information)
 app.use('/api/v1', conversations);
 app.use('/api/v1', messages);
+app.use('/api/v1', salary)
 
 
 //Middleware to handle errors

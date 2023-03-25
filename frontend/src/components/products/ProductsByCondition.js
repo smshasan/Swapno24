@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
 import { fetchProducts } from '../../features/products/getProductSlice'
 
 import MenuSidebar from '../layout/menuSidebar/MenuSidebar'
+import SidebarMenu from "../sidebarMenu/SidebarMenu";
 
 
 const ProductsByCondition = () => {
 
     const params = useParams()
+    console.log('params', params)
 
     const dispatch = useDispatch()
     const { products } = useSelector((state) => state.products)
@@ -29,7 +31,8 @@ const ProductsByCondition = () => {
             <h4>Products By Category</h4>
             <div className='row'>
                 <div className='col-lg-3 pl-0'>
-                    <MenuSidebar />
+                    {/* <MenuSidebar con={params.status}/> */}
+                    <SidebarMenu con={params.status} />
                 </div>
 
                 <div className='col-lg-9 ' style={{ height: 'min-content' }}>
@@ -37,7 +40,7 @@ const ProductsByCondition = () => {
                     {filteredProducts.map((product) => (
 
                         <Card key={product._id} >
-
+                            <Link to={`/product/${product._id}`}>
                             <div className='cardCustom' style={{ alignItems: 'center', display: 'flex', padding: '5px', boxShadow: '1px 3px 10px #e7e0e3' }}>
 
                                 <div className='col-3 cardImage'>
@@ -58,6 +61,7 @@ const ProductsByCondition = () => {
                                 </div>
 
                             </div>
+                            </Link>
 
                         </Card>
                     ))}

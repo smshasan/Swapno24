@@ -43,7 +43,7 @@ exports.loginStuff = catchAsyncError( async (req, res, next) => {
     }
 
     //Finding Stuff in database
-    const stuff = await Stuff.findOne( { phone }.select('+password'))
+    const stuff = await Stuff.findOne({ phone }).select('+password')
 
     if (!stuff) {
         return next(new ErrorHandler('Invalid phone or password', 401))
@@ -55,7 +55,7 @@ exports.loginStuff = catchAsyncError( async (req, res, next) => {
         return next(new ErrorHandler('Invalid phone or password', 401));
     }
 
-    sendToken( stuff, 200, res)
+    sendToken(stuff, 200, res)
 })
 
 
@@ -78,6 +78,17 @@ exports.getStuffDetails = catchAsyncError(async (req, res, next) => {
     if (!stuff) {
         return next(new ErrorHandler(`Stuff does not found with id: ${req.params.id}`))
     }
+
+    res.status(200).json({
+        success: true,
+        stuff
+    })
+})
+
+//Get currently logged in user details => /api/v1/stuff/me
+exports.loadStuff = catchAsyncError(async (req, res, next) => {
+    // console.log('reqStuff:', req.user)
+    const stuff = await Stuff.findById(req.user.id);
 
     res.status(200).json({
         success: true,

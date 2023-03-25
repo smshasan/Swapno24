@@ -8,6 +8,9 @@ body {
   overflow-x: hidden;
   background-color: #f7f7f7;
 }
+a {
+  color: #0F1111;
+}
 
 /* Scroll Bar */
 
@@ -102,8 +105,6 @@ nav {
 }
 
     
-
-
 .card-title a {
   color: #2e2e2e;
 }
@@ -144,13 +145,11 @@ nav {
 
 /* Footer */
 .footer {
-  margin-top: 8rem;
-  color: rgb(83, 81, 81);
+  margin-top: 4rem;
+  color: rgb(19, 18, 18);
   width: 100%;
-  height: 100px;
-  background: rgb(216, 216, 216);
-  text-align: center;
-  /* position: fixed; */
+  background: rgb(235, 234, 234);
+  text-align: left;
   bottom: 0
 }
 
@@ -654,7 +653,7 @@ ul.CTAs a {
    background-color: #ffffff;
 } */
 
-.menuHeader  ul {
+/* .menuHeader  ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -666,49 +665,49 @@ ul.CTAs a {
 } */
 
 
-.menuHeader > ul {
+/* .menuHeader > ul {
   /* display: flex; */
-  margin: 2px 0;
+  /* margin: 2px 0;
   font-size: 14px;
   position: relative;
   box-shadow: 1px 3px 10px #e7e0e3;
 
-}
+} */
 
-.menuHeader > ul > li {
+/* .menuHeader > ul > li {
   margin: 0;
   padding-bottom: 2px;
   border-bottom: 1px solid #ececef;
   background-color: #fff;
-}
-.menuHeader > ul > li > span{
+} */
+/* .menuHeader > ul > li > span{
   display: block;
   line-height: 40px;
   cursor: pointer;
   padding: 0 20px;
   font-size: 14px;
-}
+} */
 
 
-.menuHeader > ul > li > a{
+/* .menuHeader > ul > li > a{
   color:rgb(0, 0, 0);
   display: block;
   padding: 13px 0 13px 25px;
   /* background-color: azure;
 } */
-}
+ */
 
 
 
-.menuHeader > ul > li:hover ul{
+/* .menuHeader > ul > li:hover ul{
   display: block;
 }
 .menuHeader > ul > li:hover .menuHeader > ul > li {
   padding: 13px 0 13px 25px;
 
-}
+} */
 
-.menuHeader > ul > li > ul{
+/* .menuHeader > ul > li > ul{
   position: absolute;
   background: #fff;
   left: 0;
@@ -729,12 +728,12 @@ ul.CTAs a {
 }
 .menuHeader > ul > li > ul > li:hover .menuHeader > ul > li > ul > li > ul{
   display: block;
-}
+} */
   
 /* .menuHeader > ul > li > ul > li{
   float: left;
 } */
-.menuHeader > ul > li > ul > li > a{
+/* .menuHeader > ul > li > ul > li > a{
   font-weight: bold;
   display: block;
 }
@@ -744,7 +743,7 @@ ul.CTAs a {
   font-size: 12px;
   text-decoration: none;
   color: #707070;
-}
+} */ */ */
 
 
 .categoryPage {
@@ -761,10 +760,84 @@ ul.CTAs a {
 .cardCustom:hover .cardImage {
   transform: scale(1.2, 1.2);
   overflow: hidden;
-
-  /* transform: translate(-50%,-50%) scale(1); */
 }
 
 a:hover {
     text-decoration: none;
 }
+
+
+/* 
+ Product Detail Page
+ */
+
+
+ .product-details {
+   margin-top: 50px;
+ }
+
+.pro_det_col_1 {
+  height: 300px;
+}
+
+.pro_det_col_1 img {
+    width: 90%;
+    height: 90%;
+}
+
+ .Pro_Det_col_2 {
+   display: flex;
+   height: 50px;
+   color: #0F1111;
+   font-size: 16px!important;
+
+ }
+
+ .Pro_Det_col_2 label {
+  width: 110px;
+  font-weight: 700!important;
+ }
+
+ .Pro_Det_col_2 .description {
+   margin-left: 20px;
+   text-align: justify;
+ }
+
+ .pro-det-col-3 {
+    border: 1px solid #d3d0d0;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 10px 10px 13px 10px;
+ }
+
+ .pro-det-col-3 .chat {
+  border: 1px solid #e1dbdb;
+  padding: 2px 12px;
+  text-align: center;
+  border-radius: 100px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.pro-det-col-3 .chat:hover {
+  background-color: #eb9513;
+}
+
+
+
+
+ /* 
+  Related Products
+  */
+
+  .related_products {
+      margin-top: 50px;
+  }
+
+  .related_products p{
+    border-bottom: 1px solid #e4e2df;
+  }
+  
+  a:hover {
+    color: inherit;
+  }

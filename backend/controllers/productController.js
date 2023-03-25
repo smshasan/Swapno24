@@ -60,13 +60,6 @@ exports.getProductsBySlug = (req, res) => {
     })
 }
 
-// exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
-//         const {familyId} = req.params
-//         const id = await Category.find({fid: familyId}).select('_id')
-//         const products = await Product.find({category: id})
-//         res.status(200).json({products})
-// })
-
 
 //Find unapproved products => /api/v1/products/unapproved/
 exports.getUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
@@ -90,7 +83,7 @@ exports.getUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
 //     }
 //  )
 
-//Approve unapporved product /api/v1/approve/product/:id
+//Update => Approve unapporved product => /api/v1/approve/product/:id
 exports.approveProduct = catchAsyncErrors(async (req, res, next) => {
     const product = await Product.updateOne({_id: req.params.id}, {$set: {approved: true}});
     res.status(200).json({

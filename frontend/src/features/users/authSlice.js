@@ -26,7 +26,7 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async(userData) =>
 
         const {data} = await axios.post('/api/v1/login', userData)
         console.log('data', data)
-        return data
+        return data.user
         
     } catch (error) {
 
@@ -65,7 +65,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
         builder.addCase(fetchLogin.fulfilled, (state, action) => {
             state.loading = false
             state.isAuthenticated = true
-            state.user = action.payload.user
+            state.user = action.payload
             state.error =''
         })
 

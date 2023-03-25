@@ -24,8 +24,6 @@ const Header = () => {
 
     const logoutHandler = () => {
         dispatch(fetchLogout());
-        // alert('Logged out successfully.')
-        // console.log('logged out successfully')
     }
 
     return (
@@ -68,13 +66,13 @@ const Header = () => {
                                         className="rounded-circle"
                                     />
                                 </figure>
-                                <span>{user && user.name}</span>
+                                <span style={{color: '#f99008', fontSize: '20px'}}>{user && user.name}</span>
                             </Link>
 
                             <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
 
                                 {user && user.role === 'admin'  && (
-                                    <Link className="dropdown-item" to="dashboard">Dashboard</Link>
+                                    <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 )}
 
 

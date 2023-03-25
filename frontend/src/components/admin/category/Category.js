@@ -38,6 +38,9 @@ const Category = (props) => {
   const [images, setImages] = useState([]);
   const [show, setShow] = useState(false);
 
+  const [category, setCategory] = useState("")
+  const [subCategory, setSubCategory] = useState("")
+
   const dispatch = useDispatch();
 
   useEffect(() => {

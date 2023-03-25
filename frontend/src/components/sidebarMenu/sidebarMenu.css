@@ -1,0 +1,72 @@
+.sidebar{
+    width: 260px;
+    flex-shrink: 0;
+    background-color:  #fff;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  
+  .sidebar-item {
+    padding: .75em 1em;
+    display: block;
+    transition: background-color .15s;
+    border-bottom: 1px solid #e9e9e9;
+  }
+
+  .sidebar-item a {
+    color: #707070;
+    display: block;
+    text-decoration: none;
+    border: none;
+  }
+  
+  .sidebar-item a:hover,active,visited {
+    text-decoration: none;
+  }
+
+  .sidebar-item:hover,active,visited{
+    text-decoration: none!important;
+    background-image: linear-gradient(to bottom right, rgb(216, 108, 36), rgb(230, 169, 119));
+  }
+
+  .sidebar-title{
+    display: flex;
+    font-size: 1.2em;
+    justify-content: space-between;
+  }
+  .sidebar-title span i{
+    display: inline-block;
+    width: 1.5em;
+  }
+  .sidebar-title .toggle-btn{
+    cursor: pointer;
+    transition: transform .3s;
+  }
+  .sidebar-item.open > .sidebar-title .toggle-btn{
+    transform: rotate(180deg);
+  }
+  .sidebar-content{
+    padding-top: .25em;
+    height: 0;
+    overflow: hidden;
+  }
+  .sidebar-item.open > .sidebar-content{
+    height: auto;
+  }
+  
+  .sidebar-item.plain{
+    color: #fff;
+    text-decoration: none;
+  }
+  .sidebar-item.plain:hover{
+    text-decoration: underline;
+  }
+  .sidebar-item.plain i{
+    display: inline-block;
+    width: 1.7em;
+  }
+
+  .sidebar-item:last-child {
+      border: none;
+  }

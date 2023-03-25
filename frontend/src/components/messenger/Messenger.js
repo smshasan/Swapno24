@@ -5,13 +5,13 @@ import { loadUser } from '../../features/users/authSlice';
 
 // import { fetchConversation } from "../../features/messenger/conversationSlice";
 
-
 import './messenger.css'
 import Conversations from "../conversations/Conversations";
 import Message from "../message/Message";
 import ChatOnline from "../chatOnline/ChatOnline";
 import axios from "axios";
 
+import {io} from "socket.io-client"
 
 
 const Messenger = () => {
@@ -20,9 +20,12 @@ const Messenger = () => {
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
+    const [arrivalMessage, setArrivalMessage] = useState(null)
+    
+
+    const socket = useRef()
 
     const scrollRef = useRef()
-
 
 
     const dispatch = useDispatch();
@@ -34,14 +37,46 @@ const Messenger = () => {
 
 
 
-
-
-
-
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
 
+
+
+    useEffect(() => {
+        socket.current = io("ws://localhost:5000");
+        socket.current.on("getMessage", data => {
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: data.now()
+
+            })
+
+        })
+
+    }, [])
+
+    useEffect(() => {
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
+        setMessages((prev) => [...prev, arrivalMessage])
+    }, [arrivalMessage, currentChat])
+
+    useEffect(() => {
+         socket.current.emit("addUser", user?._id)
+         socket.current.on("getUsers", (users) => {
+            console.log('socketUsers',users)
+         })
+    }, [user])
+
+    // useEffect(() => {
+    //     socket?.on('welcome', (message) =>{
+    //         console.log(message)
+    //     })
+    // }, [socket])
+
+
+    //Get Conversations
     useEffect(() => {
         const getConversations = async (userId) => {
             try {
@@ -56,6 +91,8 @@ const Messenger = () => {
         getConversations(user?._id)
     }, [user?._id])
 
+
+    //Get Messages
     useEffect(() => {
         const getMessages = async (id) => {
             try {
@@ -72,7 +109,7 @@ const Messenger = () => {
 
     console.log('messages', messages)
 
-
+    //Handle Message Submit (Post => /message/create)
     const handleSubmitMessage = async (e) => {
         e.preventDefault()
         const message = {
@@ -80,6 +117,14 @@ const Messenger = () => {
             text: newMessage,
             conversationId: currentChat._id
         }
+
+        const receiverId = currentChat.members?.find(member => member._id !==user?._id)
+
+        socket.current.emit("sendMessage", {
+            senderId: user?._id,
+            receiverId,
+            text: newMessage
+        })
 
         try {
             const { data } = await axios.post(`/api/v1/message/create`, message)
@@ -90,6 +135,8 @@ const Messenger = () => {
         }
     }
 
+
+    //ScrollRef
     useEffect(() => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
     }, [messages])

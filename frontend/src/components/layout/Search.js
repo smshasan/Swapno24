@@ -1,6 +1,6 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 
-const Search = ({history}) => {
+const Search = ({ history }) => {
 
     const [keyword, setKeyword] = useState('');
 
@@ -12,7 +12,7 @@ const Search = ({history}) => {
         } else {
             history.push('/')
         }
-        
+
     }
 
     return (
@@ -23,13 +23,13 @@ const Search = ({history}) => {
                     id="search_field"
                     className="form-control"
                     placeholder="Enter Product Name ..."
-                    onChange={ (e) => setKeyword(e.target.value)}
+                    onChange={(e) => setKeyword(e.target.value)}
                 />
                 <div className="input-group-append">
-                    <button id="search_btn" className="btn">
-                    <i className="fa fa-search" aria-hidden="true"></i>
+                    <button id="search_btn" className="btn" style={{backgroundColor: '#f99008'}} >
+                        <i className="fa fa-search" aria-hidden="true"></i>
                     </button>
-                 </div>
+                </div>
             </div>
         </form>
     )

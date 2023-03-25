@@ -14,7 +14,17 @@ export const allStuff = createAsyncThunk('stuff/stuffSlice', async() => {
         console.log('stuff', data)
         return data
     } catch (error) {
-        return error.response.data.message
+        return error.response.data
+    }
+})
+
+export const loadStuff = createAsyncThunk('stuff/loadStuff', async () => {
+    try {
+        const {data} = await axios.get(`/api/v1/stuff/me`)
+        console.log('stuff', data)
+        return data
+    } catch (err) {
+        return err.response.data
     }
 })
 
@@ -38,6 +48,18 @@ const stuffSlice = createSlice({
         builder.addCase(allStuff.rejected, (state, action) => {
             state.loading = false
             state.stuff = null
+            state.error = action.payload
+        })
+
+        builder.addCase(loadStuff.pending, (state, action) => {
+            state.loading = true
+        })
+        builder.addCase(loadStuff.fulfilled, (state, action) => {
+            state.loading = false
+            state.stuff = action.payload.stuff
+            state.error = ''
+        })
+        builder.addCase(loadStuff.rejected, (state, action) => {
             state.error = action.payload
         })
     }

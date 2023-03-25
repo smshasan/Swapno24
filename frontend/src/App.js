@@ -28,6 +28,7 @@ import NewProduct from './components/admin/NewProduct';
 import ProductsByCategory from './components/products/ProductsByCategory';
 import ProductsBySubCategory from './components/products/ProductsBySubCategory';
 import NewProductsByCategory from './components/products/NewProductsByCategory';
+import NewProductsBySubCategory from './components/products/newProductsBySubCategory'
 import ProductsByCondition from './components/products/ProductsByCondition';
 
 
@@ -55,6 +56,12 @@ import GetInformation from './components/information/GetInformation';
 
 //Messenger
 import Messenger from './components/messenger/Messenger'
+import SidebarMenu from './components/sidebarMenu/SidebarMenu';
+import ProductDetails from './components/products/ProductDetails';
+
+import NewSalary from './components/admin/NewSalary';
+import StuffProfile from './components/stuff/StuffProfile';
+import StuffLogin from './components/stuff/StuffLogin';
 
 
 function App() {
@@ -90,17 +97,23 @@ function App() {
             <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
             <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
 
-            <Route path = "/new/products/category/1" element = {<NewProductsByCategory />} exact />
+            <Route path = "/products/category/:new/:id" element = {<NewProductsByCategory />} exact />
+            <Route path = "/products/sub_category/:new/:id" element = {<NewProductsBySubCategory />} exact />
+
+            <Route path="/product/:id" element = {<ProductDetails />} exact />
 
             <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
 
             <Route path = "/location" element = {<Location />} exact />
 
-            //Stuff
 
-            
+            //Stuff Admin Panel
             <Route path = "/stuff/list" element = {<StuffList />} exact />
             <Route path = "/stuff/create" element = {<NewStuff />} exact />
+
+
+            //Salary
+            <Route path = "/salary/create" element = {<NewSalary />} exact />
 
 
             //Proucts Dashboard
@@ -117,6 +130,12 @@ function App() {
             <Route path = "/information/get" element = {<GetInformation />} exact />
 
             <Route path = "/messenger" element={<Messenger />} exact />
+            <Route path = "/sidebarMenu" element = {<SidebarMenu />} exact />
+
+            //Stuff Profile
+            <Route path="/stuff/login" element={<StuffLogin />} exact />
+            <Route path="/stuff/dashboard" element = {<StuffProfile />} exact />
+
         </Routes>
         <Footer />
 

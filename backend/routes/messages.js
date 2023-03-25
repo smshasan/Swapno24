@@ -10,7 +10,7 @@ router.post('/message/create', async function(req, res){
 
     try {
         const saved_message = await newMessage.save();
-        res.status(200).json({saved_message});
+        res.status(201).json({saved_message});
     } catch (err) {
         res.status(500).json({err});
     }

@@ -149,6 +149,28 @@ const Sidebar = () => {
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="#salarySubMenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i
+                            className="fa fa-stuff-hunt"></i>Salary</a>
+                        <ul className="collapse list-unstyled" id="salarySubMenu">
+
+
+                            {user && user.role === 'admin' && (
+                                <li>
+                                    <Link to={"/salary/create"}><i className="fa fa-clipboard"></i>Create</Link>
+                                </li>
+
+                            )}
+
+
+                            {user && user.role === 'admin' && (
+                                <li>
+                                    <Link to="/stuff/create"><i className="fa fa-plus"></i>Manange</Link>
+                                </li>
+                            )}
+
+                        </ul>
+                    </li>
 
                     {user && user.role === 'admin' && (
                         <li>

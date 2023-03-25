@@ -3,18 +3,6 @@ import { Link } from 'react-router-dom'
 
 const Topbar = () => {
 
-    // let products =[
-    //     {
-    //         id: 1,
-    //         title: 'Used Products'
-    //     },
-
-    //     {
-    //         id: 2,
-    //         title: 'New Products'
-    //     }
-    // ]
-
     return (
         <Fragment>
             <div style={{height: '40px', display: 'flex', alignItems: 'center', justifyContent:'center', background: 'chocolate'}}>

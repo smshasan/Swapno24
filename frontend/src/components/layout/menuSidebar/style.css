@@ -4,31 +4,10 @@
     background-color: #ffffff;
     border-bottom: 1px solid #cecece;
     box-shadow: 0 2px 2px -2px #333;
+    overflow: auto;
 }
 
-/* .menuHeader  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
-} */
-/* .menuHeader ul ul a {
-    background-color: #ffc107;;
-} */
-/* .menuHeader > ul {
-    display: flex;
-    margin: 0 50px;
-    position: relative;
-
-} */
-
-/* .menuHeader > ul > li > span{
-    display: block;
-    line-height: 40px;
-    cursor: pointer;
-    padding: 0 20px;
-    font-size: 14px;
-} */
 .menuHeader > ul > li > span:hover{
     color: #2874f0;
 }
@@ -37,12 +16,16 @@
     background: #fff;
     left: 0;
     right: 0;
-    display: none;
+    /* display: none; */
+    height:0;
     border: 1px solid #cecece;
-    z-index: 999;
+    /* z-index: 999; */
+    overflow: hidden;
 }
-.menuHeader > ul > li:hover ul{
-    display: block;
+.menuHeader > ul > li:hover .menuHeader > ul > li > ul{
+    /* display: block; */
+    height: auto;
+    overflow: hidden;
    
 }
 .menuHeader > ul > li > ul > li{
@@ -50,7 +33,8 @@
     min-width: 150px;
 }
 .menuHeader > ul > li > ul > li:hover .menuHeader > ul > li > ul > li > ul{
-    display: block;
+    height: auto;
+    overflow: hidden;
 }
 .menuHeader > ul > li > ul > li{
     float: left;

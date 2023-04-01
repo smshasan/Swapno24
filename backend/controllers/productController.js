@@ -95,8 +95,6 @@ exports.approveProduct = catchAsyncErrors(async (req, res, next) => {
                                 
 })
 
-
-
 //find products by main category item /api/v1/products/fid/:id
 exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
         // const {id} = req.params
@@ -104,7 +102,6 @@ exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
         const products = await Product.find({ $and: [{ category: id}, { approved: true}] })
         res.status(200).json({products})
 })
-
 
 //find products by sub category item /api/v1/products/uid/:id
 exports.getProductsBySubCategory = catchAsyncErrors(async (req, res, next) => {
@@ -137,8 +134,6 @@ exports.getDiscountBySlug = (req, res) => {
             }
     })
 }
-
-
 
 //Get all the products displaying form database => /api/v1/products?keyword = apple
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
@@ -239,6 +234,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
         
         useFindAndModify: false
     });
+
     res.status(200).json({
         success: true,
         product

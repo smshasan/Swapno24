@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
+import Sidebar from '../Sidebar'
 
-import { allStuff } from '../../features/stuff/stuffSlice'
-import { createSalary } from '../../features/salary/salarySlice'
+import { allStuff } from '../../../features/stuff/stuffSlice'
+import { createSalary } from '../../../features/salary/salarySlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const NewSalary = () => {
+const NewCommission = () => {
 
     const [id, setId] = useState("")
     const [commision, setCommision] = useState(0)
@@ -161,4 +161,4 @@ const NewSalary = () => {
     )
 }
 
-export default NewSalary
+export default NewCommission

@@ -22,6 +22,10 @@ import categoryReducer from '../features/category/categorySlice'
 //Salary
 import salaryReducer from '../features/salary/salarySlice'
 
+//Bank
+import bankReducer from '../features/bank/bankSlice'
+import withdrawReducer from '../features/bank/withdrawSlice'
+
 //Stuff
 import newStuffReducer from '../features/stuff/newStuffSlice'
 import stuffReducer from '../features/stuff/stuffSlice'
@@ -53,6 +57,8 @@ import conversationSlice from '../features/messenger/conversationSlice'
         getProductsByCategory: productsByCategoryReducer,
         getProductsBySubCategory: productsBySubCategoryReducer,
         salary: salaryReducer,
+        bank: bankReducer,
+        withdraw: withdrawReducer,
         newStuff: newStuffReducer,
         stuff: stuffReducer,
         unapprovedProducts: unaaprovedProductsReducer,

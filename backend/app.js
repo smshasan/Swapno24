@@ -48,17 +48,19 @@ const information = require('./routes/information');
 const conversations = require('./routes/conversations');
 const messages = require('./routes/messages');
 const salary = require('./routes/salary');
+const commission = require('./routes/commission');
 
 
 app.use('/api/v1', auth);
 app.use('/api/v1', product);
 app.use('/api/v1', category);
 app.use('/api/v1', ticket);
-app.use('/api/v1', stuff)
+app.use('/api/v1', stuff);
 app.use('/api/v1', information)
 app.use('/api/v1', conversations);
 app.use('/api/v1', messages);
-app.use('/api/v1', salary)
+app.use('/api/v1', salary);
+app.use('/api/v1', commission);
 
 
 //Middleware to handle errors

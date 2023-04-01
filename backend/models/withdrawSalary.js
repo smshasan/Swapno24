@@ -2,9 +2,31 @@ const mongoose = require('mongoose');
 
 const withdrawSchema = new mongoose.Schema(
     {
+        employeeId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Stuff',
+        },
 
-        employeeId: { type: String, required: true },
-        amount: { type: Number, required: true}
+        employeeName: {
+            type: String,
+            required: true
+        },
+
+        amount: {
+            type: Number,
+            required: true
+        },
+
+        accountNumber: {
+            type: String,
+            required: true
+        },
+
+        bankName: { type: String, required: true },
+
+        branch: { type: String, required: true },
+
+        withdrawStatus: { type: Boolean, default: false },
 
     },
 

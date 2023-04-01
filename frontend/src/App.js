@@ -21,7 +21,6 @@ import CategoryHome from './components/layout/CategoryHome';
 import Footer from './components/layout/Footer';
 
 
-
 //Products
 import UnaaprovedProducts from './components/admin/UnaaprovedProducts';
 import NewProduct from './components/admin/NewProduct';
@@ -31,10 +30,7 @@ import NewProductsByCategory from './components/products/NewProductsByCategory';
 import NewProductsBySubCategory from './components/products/newProductsBySubCategory'
 import ProductsByCondition from './components/products/ProductsByCondition';
 
-
 import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
-
-
 
 import Location from './components/Location';
 
@@ -48,8 +44,6 @@ import NewStuff from './components/admin/stuff/NewStuff';
 import StuffList from './components/admin/stuff/StuffList';
 
 
-
-
 import InformationCreate from './components/information/InformationCreate';
 import GetInformation from './components/information/GetInformation';
 
@@ -59,9 +53,18 @@ import Messenger from './components/messenger/Messenger'
 import SidebarMenu from './components/sidebarMenu/SidebarMenu';
 import ProductDetails from './components/products/ProductDetails';
 
-import NewSalary from './components/admin/NewSalary';
+
+//Salary Dashboard
+import NewSalary from './components/admin/salary/NewSalary';
+
+
 import StuffProfile from './components/stuff/StuffProfile';
 import StuffLogin from './components/stuff/StuffLogin';
+
+//Salary stuff
+import WithdrawSalary from './components/stuff/WithdrawSalary';
+import WithDrawRequests from './components/admin/salary/WithDrawRequests';
+import NewCommission from './components/admin/salary/NewCommission';
 
 
 function App() {
@@ -112,10 +115,6 @@ function App() {
             <Route path = "/stuff/create" element = {<NewStuff />} exact />
 
 
-            //Salary
-            <Route path = "/salary/create" element = {<NewSalary />} exact />
-
-
             //Proucts Dashboard
             <Route path = "/admin/products/unapproved" element = {<UnaaprovedProducts />} exact />
 
@@ -135,6 +134,14 @@ function App() {
             //Stuff Profile
             <Route path="/stuff/login" element={<StuffLogin />} exact />
             <Route path="/stuff/dashboard" element = {<StuffProfile />} exact />
+
+            //Salary dashboard
+            <Route path = "/salary/create" element = {<NewSalary />} exact />
+            <Route path="/commission/create" element = {<NewCommission />} exact />
+            <Route path = "/salary/withdraw/requests" element = {<WithDrawRequests />} exact />
+
+            //Salary stuff
+            <Route path="/salary/withdraw" element={<WithdrawSalary />} exact />
 
         </Routes>
         <Footer />

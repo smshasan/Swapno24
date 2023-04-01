@@ -157,7 +157,20 @@ const Sidebar = () => {
 
                             {user && user.role === 'admin' && (
                                 <li>
-                                    <Link to={"/salary/create"}><i className="fa fa-clipboard"></i>Create</Link>
+                                    <Link to={"/salary/create"}><i className="fa fa-clipboard"></i>Create Salary</Link>
+                                </li>
+
+                            )}
+                            {user && user.role === 'admin' && (
+                                <li>
+                                    <Link to={"/commission/create"}><i className="fa fa-clipboard"></i>Create Commision</Link>
+                                </li>
+
+                            )}
+
+                            {user && user.role === 'admin' && (
+                                <li>
+                                    <Link to={"/salary/withdraw/requests"}><i className="fa fa-clipboard"></i>Withdraw Requests</Link>
                                 </li>
 
                             )}

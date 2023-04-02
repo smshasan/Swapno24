@@ -841,3 +841,6 @@ a:hover {
   a:hover {
     color: inherit;
   }
+  .clicked:active {
+    border-bottom: 5px solid #fc1707;
+  }

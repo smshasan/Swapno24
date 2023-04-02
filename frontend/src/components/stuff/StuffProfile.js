@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import AddBankAccount from './AddBankAccount'
 import WithdrawSalary from './WithdrawSalary'
+import { getMyCommission } from '../../features/commission/commissionSlice'
 
 const StuffProfile = () => {
 
@@ -17,6 +18,7 @@ const StuffProfile = () => {
 
   const dispatch = useDispatch()
   const { stuff, error } = useSelector((state) => state.stuff)
+  const {commission} = useSelector((state) => state.commission)
   const { salary } = useSelector((state) => state.salary)
   const { loading, bank } = useSelector((state) => state.bank)
 
@@ -31,10 +33,14 @@ const StuffProfile = () => {
   console.log('employee:', employee)
 
   useEffect(() => {
+      dispatch(getMyCommission())
+  }, [dispatch])
+  
+
+  useEffect(() => {
     dispatch(getMySalary())
   }, [dispatch])
 
-  var mySalary = Number(salary?.commision) + Number(salary?.basicSalary)
 
   useEffect(() => {
 
@@ -43,7 +49,6 @@ const StuffProfile = () => {
         const { data } = await axios.get('/api/v1/salary/withdraw/request')
         setWithdrawStatus(data?.withdraw?.withdrawStatus)
 
-        // console.log('effectSalary', mySalary)
         console.log('withdrawRequest', data)
       } catch (error) {
         console.log(error)
@@ -53,21 +58,20 @@ const StuffProfile = () => {
   }, [loading])
 
   useEffect(() => {
-    setBalance(mySalary)
-  }, [mySalary])
+    setBalance(salary?.totalSalary)
+  }, [salary?.totalSalary])
 
  
 
   console.log('withdrawStatus', withdrawStatus)
   console.log(stuff)
-  console.log(salary)
+  console.log('commission', commission)
+  console.log("salary", salary)
   console.log('bank:', bank)
-  console.log('mySalary', mySalary)
   console.log('balance', balance)
 
   return (
     <>
-      {/* <h1>Stuff Profile</h1> */}
       <div className='container'>
 
         <Fragment>
@@ -91,25 +95,25 @@ const StuffProfile = () => {
             </div>
 
             <div>
-
               {
                 withdrawStatus === false &&
                 <div className='salary' >
                   <strong>Withdraw Status: </strong> Pending...
                   <p> It will take 7 working days<br></br> to make transaction</p>
                 </div>
-
-                // withdrawCheck()
-
               }
 
-              <p>Balance: Tk. {balance}</p>
-              <p>Basic Salary: Tk. {salary?.basicSalary}</p>
-              <p>Commision: Tk. {salary?.commision}</p>
-
+              <p>Balance: Tk. {salary?.totalSalary}</p>
+              <p>Basic Salary: Tk. {employee?.basicSalary}</p>
+              {
+                commission?.map((comm, index) => {
+                  return  <p key={index}>Commision: Tk. {comm.commission}</p>
+                })
+              }
+             
               {
                 balance > 0 ? <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#withdrawModal">
-                  Add Bank
+                  Withdraw
                 </button> : <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                   You don't have balance to withdraw.
                 </button>
@@ -120,7 +124,6 @@ const StuffProfile = () => {
         </Fragment>
 
         <Fragment>
-
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >
             Add Bank
           </button>
@@ -134,11 +137,9 @@ const StuffProfile = () => {
               </div>
             </div>
           </div>
-
         </Fragment>
 
         <Fragment>
-
           <div className="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
@@ -149,7 +150,6 @@ const StuffProfile = () => {
             </div>
           </div>
         </Fragment>
-
       </div>
     </>
   )

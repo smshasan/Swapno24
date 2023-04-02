@@ -4,35 +4,30 @@ import Sidebar from '../Sidebar'
 import { allStuff } from '../../../features/stuff/stuffSlice'
 import { createSalary } from '../../../features/salary/salarySlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { getCommission } from '../../../features/commission/commissionSlice'
 
 const NewSalary = () => {
 
     const [id, setId] = useState("")
-    const [commision, setCommision] = useState(0)
-    const [basicSalary, setBasicSalary] = useState(0)
+    // const [commission, setCommission] = useState(0)
+    // const [totalSalary, setTotalSalary] = useState(0)
 
     const dispatch = useDispatch()
     const { stuff } = useSelector(state => state.stuff)
+    const {commission} = useSelector(state => state.commission)
     const { salary, loading } = useSelector(state => state.salary)
 
     console.log('stuff: ', stuff)
+    console.log('commission: ', commission)
 
     useEffect(() => {
         dispatch(allStuff())
     }, [dispatch])
 
-    const submitHandler = (e) => {
-        e.preventDefault()
-
-        const formData = new FormData()
-
-        formData.set('stuffId', id)
-        formData.set('commision', commision)
-        formData.set('basicSalary', basicSalary)
-
-        dispatch(createSalary(formData))
-
-    }
+    useEffect(() => {
+        dispatch(getCommission(id))
+    }, [dispatch, id])
+    
 
     const filteredStuff = (id) => {
         if (id === '') {
@@ -43,6 +38,41 @@ const NewSalary = () => {
         }
 
     }
+
+    // const totalSalaryCal =  async () => {
+    //     let sum = 0
+    //     for(let comm of commission) {
+    //          sum += comm.commission
+    //     }
+    //     sum =  sum + await filteredStuff(id)?.basicSalary
+        
+    //     return sum
+    // }
+
+    // totalSalaryCal().then((res) => setTotalSalary(res))
+    
+    const totalSalaryCal = () => {
+        let sum = 0
+        commission?.map(comm => sum += comm.commission) 
+        
+        return sum
+    }
+
+    let wage = totalSalaryCal() + filteredStuff(id)?.basicSalary
+
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+
+        formData.set('stuffId', id)
+        formData.set('totalSalary', wage)
+
+        dispatch(createSalary(formData))
+
+    }
+    
 
     return (
         <>
@@ -76,26 +106,29 @@ const NewSalary = () => {
                                         ))}
                                     </select>
                                 </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="commision_field">Commision</label>
-                                    <input
-                                        type="number"
-                                        id="commision_field"
-                                        className="form-control"
-                                        value={commision}
-                                        onChange={(e) => setCommision(e.target.value)}
-                                    />
-                                </div>
-
+                                {
+                                    commission?.map((comm, index) => (
+                                        <div className="form-group" key={index}>
+                                        <label htmlFor="commission_field">Commission</label>
+                                        <input
+                                            type="number"
+                                            id="commission_field"
+                                            className="form-control"
+                                            value={comm.commission}
+                                            // onChange={(e) => setCommission(e.target.value)}
+                                        />
+                                    </div>
+    
+                                    ))
+                                }
+                               
                                 <div className="form-group">
                                     <label htmlFor="basic_field">Basic Salary</label>
                                     <input
                                         type="number"
                                         id="basic_field"
                                         className="form-control"
-                                        value={basicSalary}
-                                        onChange={(e) => setBasicSalary(e.target.value)}
+                                        value={filteredStuff(id)?.basicSalary}
                                     />
                                 </div>
 
@@ -105,7 +138,8 @@ const NewSalary = () => {
                                         type="number"
                                         id="total_field"
                                         className="form-control"
-                                        value={Number(commision) + Number(basicSalary)}
+                                        value={wage}
+                                        // onChange={(e) =>setTotalSalary(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -142,6 +176,7 @@ const NewSalary = () => {
                                             value={filteredStuff(id)?.designation}
                                         />
                                     </div>
+
                                 </div>
                             </div>
 

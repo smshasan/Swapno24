@@ -16,12 +16,13 @@ const NewStuff = () => {
     designation: '',
     department: '',
     area: '',
+    basicSalary: '',
     password: ''
 
   })
 
 
-  const { name, phone, designation, department, area, password } = user;
+  const { name, phone, designation, department, area, basicSalary, password } = user;
   const [avatar, setAvatar] = useState('')
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.png')
 
@@ -56,7 +57,8 @@ const NewStuff = () => {
     formData.set('designation', designation);
     formData.set('department', department);
     formData.set('area', area);
-    formData.set('password', password);
+    formData.set('area', area);
+    formData.set('basicSalary', basicSalary);
     formData.set('avatar', avatar);
 
 
@@ -151,6 +153,18 @@ const NewStuff = () => {
                       className="form-control"
                       name='area'
                       value={area}
+                      onChange={onChange}
+                    />
+                  </div>           
+
+                  <div className="form-group">
+                    <label htmlFor="basic_field">Basic Salary</label>
+                    <input
+                      type="number"
+                      id="basic_field"
+                      className="form-control"
+                      name='basicSalary'
+                      value={basicSalary}
                       onChange={onChange}
                     />
                   </div>                  

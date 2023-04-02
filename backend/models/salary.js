@@ -5,8 +5,7 @@ const salarySchema = new mongoose.Schema({
     stuffId: {
         type: 'String'
     },
-    commision: {type: Number},
-    basicSalary: {type: Number},
+    totalSalary: {type: Number}
 },
 
 {timestamps: true}

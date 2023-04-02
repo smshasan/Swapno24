@@ -36,6 +36,11 @@ const stuffSchema = new mongoose.Schema({
 
     },
 
+    basicSalary: {
+        type: Number,
+        required: true
+    },
+
     password: {
         type: String,
         required: true,

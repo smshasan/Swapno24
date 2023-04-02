@@ -7,6 +7,7 @@ import productsByCategoryReducer  from '../features/products/productsByCategoryS
 import productsBySubCategoryReducer from '../features/products/productsBySubCategorySlice'
 import newProductReducer from '../features/products/newProductSlice'
 import singleProductReducer from '../features/products/singleProductSlice'
+import searchProuductsReducer from '../features/products/searchProuductsSlice'
 
 //UnApproved/Approved Product
 import unaaprovedProductsReducer from '../features/products/unapprovedProductSlice'
@@ -21,6 +22,9 @@ import categoryReducer from '../features/category/categorySlice'
 
 //Salary
 import salaryReducer from '../features/salary/salarySlice'
+
+//Commssion
+import commssionReducer from '../features/commission/commissionSlice'
 
 //Bank
 import bankReducer from '../features/bank/bankSlice'
@@ -49,6 +53,7 @@ import conversationSlice from '../features/messenger/conversationSlice'
     reducer: {
 
         products: productReducer,
+        searchProducts: searchProuductsReducer,
         singleProduct: singleProductReducer,
         users: userReducer,
         auth: authReducer,
@@ -57,6 +62,7 @@ import conversationSlice from '../features/messenger/conversationSlice'
         getProductsByCategory: productsByCategoryReducer,
         getProductsBySubCategory: productsBySubCategoryReducer,
         salary: salaryReducer,
+        commission: commssionReducer,
         bank: bankReducer,
         withdraw: withdrawReducer,
         newStuff: newStuffReducer,

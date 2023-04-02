@@ -5,7 +5,7 @@ const commissionSchema = new mongoose.Schema({
     stuffId: {
         type: 'String'
     },
-    commision: {type: Number}
+    commission: {type: Number}
 },
 
 {timestamps: true}

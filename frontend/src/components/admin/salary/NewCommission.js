@@ -2,14 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 
 import { allStuff } from '../../../features/stuff/stuffSlice'
-import { createSalary } from '../../../features/salary/salarySlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { createCommission } from '../../../features/commission/commissionSlice'
 
 const NewCommission = () => {
 
     const [id, setId] = useState("")
-    const [commision, setCommision] = useState(0)
-    const [basicSalary, setBasicSalary] = useState(0)
+    const [commission, setCommission] = useState(0)
 
     const dispatch = useDispatch()
     const { stuff } = useSelector(state => state.stuff)
@@ -27,10 +26,9 @@ const NewCommission = () => {
         const formData = new FormData()
 
         formData.set('stuffId', id)
-        formData.set('commision', commision)
-        formData.set('basicSalary', basicSalary)
+        formData.set('commission', commission)
 
-        dispatch(createSalary(formData))
+        dispatch(createCommission(formData))
 
     }
 
@@ -78,39 +76,30 @@ const NewCommission = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="commision_field">Commision</label>
-                                    <input
-                                        type="number"
-                                        id="commision_field"
-                                        className="form-control"
-                                        value={commision}
-                                        onChange={(e) => setCommision(e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="form-group">
                                     <label htmlFor="basic_field">Basic Salary</label>
                                     <input
                                         type="number"
                                         id="basic_field"
                                         className="form-control"
-                                        value={basicSalary}
-                                        onChange={(e) => setBasicSalary(e.target.value)}
+                                        value={filteredStuff(id)?.basicSalary}
+                                       
                                     />
                                 </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="total_field">Total Salary</label>
+                                 <div className="form-group">
+                                    <label htmlFor="commission_field">Commission</label>
                                     <input
                                         type="number"
-                                        id="total_field"
+                                        id="commission_field"
                                         className="form-control"
-                                        value={Number(commision) + Number(basicSalary)}
+                                        value={commission}
+                                        onChange={(e) => setCommission(e.target.value)}
                                     />
                                 </div>
+
                             </div>
 
-                            <div className='float-right' style={{ padding: '10px', border: '1px solid #d7d2d2', borderRadius: '10px' }}>
+                            <div className='float-right' style={{ padding: '10px', marginBottom: "30px", border: '1px solid #d7d2d2', borderRadius: '10px' }}>
                                 <div style={{ textAlign: 'center' }}>Employee Details</div>
                                 <div className="form-group">
                                     <div style={{ marginBottom: '1rem' }}>

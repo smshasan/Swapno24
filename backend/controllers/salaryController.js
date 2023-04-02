@@ -3,33 +3,22 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const BankAccount = require('../models/addBankAccount');
 const WithdrawSalary = require('../models/withdrawSalary');
 
-exports.createSalary = async (req, res, next) => {
+exports.createSalary = catchAsyncErrors(async (req, res, next) => {
+     const salary = await Salary.create(req.body);
+     res.status(201).json({
+         success: true,
+         salary
+     })
+ }) 
 
-   try {
-    const salary = await Salary.create(req.body);
-    res.status(201).json({
-        success: true,
-        salary
-    })
-    
-   } catch (err) {
-        res.status(500).json({error})
-   }
-}
+exports.getAllSalaries = catchAsyncErrors( async (req, res, next) => {
+            const salaries = await Salary.find();
+            res.status(200).json({
+                success: true,
+                salaries
+            })
+        }) 
 
-exports.getAllSalaries = async (req, res, next) => {
-
-    try {
-        const salaries = await Salary.find();
-        res.status(200).json({
-            success: true,
-            salaries
-        })
-
-    } catch (err) {
-        res.status(500).json({error: err})
-    } 
-}
 
 exports.getMySalary = async(req, res, next) => {
 

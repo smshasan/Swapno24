@@ -17,3 +17,9 @@ exports.getMyCommssion = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({success: true, commission})
 })
 
+exports.getCommission = catchAsyncErrors(async (req, res, next) =>{
+    const {id} = req.params;
+    const commission = await Commission.find({stuffId: id})
+    res.status(200).json({success: true, commission})
+})
+

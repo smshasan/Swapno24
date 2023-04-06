@@ -8,15 +8,15 @@ let users = [];
 
 const addUser = (userId, socketId) => {
     !users.some((user) => user.userId === userId) && 
-        users.push({ userId, socketId })
+       users.push({ userId, socketId })
 }
 
 const removeUser = (socketId) => {
     users = users.filter((user) => user.socketId !== socketId)
 }
 
-const getUser = (userId) => {
-    return users.find((user) => user.userId === userId)
+const getUser = async (userId) => {
+    return await users.find((user) => user.userId === userId)
 }
 
 io.on("connection", (socket) => {
@@ -24,15 +24,15 @@ io.on("connection", (socket) => {
     console.log('a user connected')
 
     //take userId and socketId from user
-    socket.on("addUser", (userId) => {
+    socket.on("addUser", async (userId) => {
         addUser(userId, socket.id)
-        io.emit("getUsers", users)
+        await io.emit("getUsers", users)
     })
 
     //send and get message
-    socket.on("sendMessage", ({senderId, receiverId, text}) => {
-        const user = getUser(receiverId)  
-        io.to(user.socketId).emit("getMessage", {
+    socket.on("sendMessage", async ({senderId, receiverId, text}) => {
+        const user = await getUser(receiverId)  
+        await io.to(user.socketId).emit("getMessage", {
             senderId,
             text
         } )

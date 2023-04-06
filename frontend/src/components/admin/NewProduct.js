@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Collapse } from 'react-bootstrap'
 
 import MetaData from '../layout/MetaData'
-import Sidebar from './Sidebar'
 
 import { getCategory } from '../../features/category/categorySlice'
 import { newProduct } from '../../features/products/newProductSlice'
@@ -108,21 +107,18 @@ const NewProduct = ({ history }) => {
     }
     console.log('subCategoryFiltered', subCategoryFiltered(category))
 
-console.log('subCategory', subCategory)
+    console.log('subCategory', subCategory)
+    
     return (
-        <Fragment>
+        <>
             <MetaData title={'New Product'} />
-            <div className="row">
-                <div className="col-12 col-md-2">
-                    <Sidebar />
-                </div>
-                <div className="col-12 col-md-10">
+            <div className="container">
                     <Fragment>
                         <div className='row'>
 
                             <div className="wrapper col-12 col-lg-12 col-md-12 my-5" >
-                                <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'  style={{width: '1000px'}}>
-                                    <h1 className="mb-4">New Product</h1>
+                                <form onSubmit={submitHandler} encType='multipart/form-data'  style={{width: '1000px'}}>
+                                    <h1 className="mb-4" style={{textAlign: 'center'}}>Post your product</h1>
                                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                         <div>
                                             <div className="form-group">
@@ -228,7 +224,7 @@ console.log('subCategory', subCategory)
                                                 aria-controls="example-collapse-text"
                                                 aria-expanded={open}
                                             >
-                                                click
+                                                Set your location
                                             </Button>
                                             <Collapse in={open}>
                                                 <div id="example-collapse-text">
@@ -338,9 +334,8 @@ console.log('subCategory', subCategory)
                             </div>
                         </div>
                     </Fragment>
-                </div>
             </div>
-        </Fragment>
+        </>
     )
 }
 

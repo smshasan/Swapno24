@@ -6,7 +6,6 @@ import { fetchSingleProduct } from '../../features/products/singleProductSlice'
 import RelatedProducts from './RelatedProducts';
 
 
-
 const ProductDetails = () => {
 
     const [user, setUser] = useState([])
@@ -32,11 +31,11 @@ const ProductDetails = () => {
         }
         getUser(product.user)
 
-    }, [product])
+    }, [product.user])
+
 
     return (
         <>
-
             <div className='container product-details'>
                 <div className='row'>
 
@@ -87,7 +86,6 @@ const ProductDetails = () => {
                         <div className='chat'>
                             Chat
                         </div>
-                       
                     </div>
 
                 </div>

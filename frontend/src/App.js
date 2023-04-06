@@ -65,6 +65,7 @@ import StuffLogin from './components/stuff/StuffLogin';
 import WithdrawSalary from './components/stuff/WithdrawSalary';
 import WithDrawRequests from './components/admin/salary/WithDrawRequests';
 import NewCommission from './components/admin/salary/NewCommission';
+import SearchPage from './components/layout/SearchPage';
 
 
 function App() {
@@ -95,6 +96,8 @@ function App() {
 
             <Route path = "/categories" element = {<CategoryHome />} exact />
 
+            <Route path="/search/:keyword" element = {<SearchPage />} exact />
+            
             <Route path = "/products/:status" element = {<ProductsByCondition />} exact />
 
             <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />

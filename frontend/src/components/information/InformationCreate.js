@@ -64,7 +64,7 @@ const InformationCreate = () => {
             <div className='row wrapper'>
 
                 <div className='col-10 col-lg-5'>
-                    <h3>Send Your Information</h3>
+                    <h3 style={{textAlign: 'center'}}>Send Your Information to Police Station</h3>
                     <form className='shadow-lg' onSubmit={submitHandler} encType='multipart/form-data'>
 
                         <div className="form-group">

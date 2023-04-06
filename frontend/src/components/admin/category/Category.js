@@ -165,7 +165,7 @@ const Category = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Create Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Input
@@ -181,8 +181,8 @@ const Category = (props) => {
             }
                       >
             <option>select category</option>
-            {createCategoryList(categories).map((option) => (
-              <option key={option.value} value={option.value}>
+            {categories.map((option, index) => (
+              <option key={index} value={option._id}>
                 {option.name}
               </option>
             ))}

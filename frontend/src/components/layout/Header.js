@@ -37,15 +37,14 @@ const Header = () => {
                     </div>
                 </div>
 
-                <div className="col-12 col-md-6 mt-2 mt-md-0">
-                   
+                <div className="col-12 col-md-5 mt-2 mt-md-0">
                      <Search />
-                    {/* <Routes>
-                        <Route render={({ history }) => <Search history={history} />} />
-                    </Routes> */}
+                </div>
+                <div className="col-12 col-md-1 mt-2 mt-md-0 sell-products">
+                    <Link to={`/products/create`}>Sell Products</Link>
                 </div>
 
-                <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
+                <div className="col-12 col-md-2 mt-4 mt-md-0 text-center">
 
                     
 
@@ -107,7 +106,7 @@ const Header = () => {
 
                         </div>
 
-                    ) : !loading && <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
+                    ) : !loading && <Link to="/login" className="btn ml-4" style={{color: 'white', fontSize: '19px'}} id="login_btn">Login</Link>}
 
                 </div>
             </nav>

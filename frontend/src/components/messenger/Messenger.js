@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { loadUser } from '../../features/users/authSlice';
 
-// import { fetchConversation } from "../../features/messenger/conversationSlice";
-
 import './messenger.css'
 import Conversations from "../conversations/Conversations";
 import Message from "../message/Message";
@@ -25,22 +23,17 @@ const Messenger = () => {
 
     const socket = useRef()
 
-    const scrollRef = useRef()
-
-
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.auth)
-    const { conversation } = useSelector((state) => state.conversation)
     console.log('data', user)
-    console.log('conversation', conversation)
-
-
+    
 
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
 
+    const scrollRef = useRef()
 
 
     useEffect(() => {
@@ -49,31 +42,23 @@ const Messenger = () => {
             setArrivalMessage({
                 sender: data.senderId,
                 text: data.text,
-                createdAt: data.now()
+                createdAt: Date.now()
 
             })
 
+            console.log('data', data)
+
         })
 
-    }, [])
+    }, [socket.current])
 
     useEffect(() => {
-        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
-        setMessages((prev) => [...prev, arrivalMessage])
-    }, [arrivalMessage, currentChat])
+        socket.current.emit("addUser", user?._id)
+        socket.current.on("getUsers", (users) => {
+           console.log('socketUsers',users)
+        })
+   }, [socket.current, user?._id])
 
-    useEffect(() => {
-         socket.current.emit("addUser", user?._id)
-         socket.current.on("getUsers", (users) => {
-            console.log('socketUsers',users)
-         })
-    }, [user])
-
-    // useEffect(() => {
-    //     socket?.on('welcome', (message) =>{
-    //         console.log(message)
-    //     })
-    // }, [socket])
 
 
     //Get Conversations
@@ -91,23 +76,6 @@ const Messenger = () => {
         getConversations(user?._id)
     }, [user?._id])
 
-
-    //Get Messages
-    useEffect(() => {
-        const getMessages = async (id) => {
-            try {
-                const { data } = await axios.get(`/api/v1/message/${id}`)
-                setMessages(data.messages)
-                console.log('message', data)
-            } catch (err) {
-                console.log(err)
-            }
-
-        }
-        getMessages(currentChat?._id)
-    }, [currentChat])
-
-    console.log('messages', messages)
 
     //Handle Message Submit (Post => /message/create)
     const handleSubmitMessage = async (e) => {
@@ -135,11 +103,38 @@ const Messenger = () => {
         }
     }
 
+    //Get Messages
+    useEffect(() => {
+        const getMessages = async (id) => {
+            try {
+                const { data } = await axios.get(`/api/v1/message/${id}`)
+                setMessages(data.messages)
+                // console.log('message', data)
+            } catch (err) {
+                console.log(err)
+            }
+
+        }
+        getMessages(currentChat?._id)
+    }, [currentChat?._id])
+
+    console.log('messages', messages)
+
+
+    
+
+    
+    
+    useEffect(() => {
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
+        setMessages((prev) => [...prev, arrivalMessage])
+    }, [arrivalMessage, currentChat])
+
 
     //ScrollRef
     useEffect(() => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, [messages])
+    }, [messages, scrollRef.current])
 
     return (
         <Fragment>
@@ -159,9 +154,7 @@ const Messenger = () => {
                             ))
                         }
 
-                        {/* <Conversations />
-                            <Conversations />
-                            <Conversations /> */}
+                        
                     </div>
                 </div>
                 <div className='chatBox'>
@@ -174,9 +167,9 @@ const Messenger = () => {
 
                                 <div className='chatBoxTop'>
                                     {
-                                        messages?.map(message => (
+                                        messages?.map(smg => (
                                             <div ref={scrollRef}>
-                                                <Message key={message._id} message={message} own={message.sender === user?._id} />
+                                                <Message key={smg._id} message={smg} own={smg.sender === user?._id} />
                                             </div>
 
                                         ))

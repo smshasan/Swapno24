@@ -34,7 +34,6 @@ import withdrawReducer from '../features/bank/withdrawSlice'
 import newStuffReducer from '../features/stuff/newStuffSlice'
 import stuffReducer from '../features/stuff/stuffSlice'
 
-
 //Ticket
 import ticketReducer from '../features/ticket/ticketSlice'
 

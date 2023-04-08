@@ -14,7 +14,7 @@ exports.registerStuff = catchAsyncError( async (req, res, next) => {
         crop: 'scale'
     })
 
-    const {name, phone, designation, department, area, password} = req.body;
+    const {name, phone, designation, department, basicSalary, area, password} = req.body;
 
     const stuff = await Stuff.create({
         name,
@@ -22,6 +22,7 @@ exports.registerStuff = catchAsyncError( async (req, res, next) => {
         designation,
         department,
         area,
+        basicSalary,
         password,
         avatar: {
             public_id: result.public_id,
@@ -99,10 +100,14 @@ exports.loadStuff = catchAsyncError(async (req, res, next) => {
 
 // Update user profile   =>   /api/v1/admin/stuff/:id
 exports.updateStuff = catchAsyncError(async (req, res, next) => {
+    
     const newStuffData = {
         name: req.body.name,
         phone: req.body.phone,
-        role: req.body.role
+        designation: req.body.designation,
+        area: req.body.area,
+        department: req.body.department,
+        basicSalary: req.body.basicSalary
     }
 
     const stuff = await Stuff.findByIdAndUpdate(req.params.id, newStuffData, {
@@ -112,7 +117,8 @@ exports.updateStuff = catchAsyncError(async (req, res, next) => {
     })
 
     res.status(200).json({
-        success: true
+        success: true,
+        stuff
     })
 })
 

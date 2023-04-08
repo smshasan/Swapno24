@@ -66,6 +66,7 @@ import WithdrawSalary from './components/stuff/WithdrawSalary';
 import WithDrawRequests from './components/admin/salary/WithDrawRequests';
 import NewCommission from './components/admin/salary/NewCommission';
 import SearchPage from './components/layout/SearchPage';
+import UpdateStuff from './components/admin/stuff/UpdateStuff';
 
 
 function App() {
@@ -116,6 +117,7 @@ function App() {
             //Stuff Admin Panel
             <Route path = "/stuff/list" element = {<StuffList />} exact />
             <Route path = "/stuff/create" element = {<NewStuff />} exact />
+            <Route path = "/stuff/:id" element = {<UpdateStuff />} exact />
 
 
             //Proucts Dashboard

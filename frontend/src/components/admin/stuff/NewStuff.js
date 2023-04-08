@@ -16,7 +16,7 @@ const NewStuff = () => {
     designation: '',
     department: '',
     area: '',
-    basicSalary: '',
+    basicSalary: 0,
     password: ''
 
   })
@@ -40,7 +40,7 @@ const NewStuff = () => {
     }
 
     if (isAuthenticated) {
-      alert('registraion ')
+      alert('Stuff registered successfully ')
       navigate('/')
     }
 
@@ -57,8 +57,8 @@ const NewStuff = () => {
     formData.set('designation', designation);
     formData.set('department', department);
     formData.set('area', area);
-    formData.set('area', area);
     formData.set('basicSalary', basicSalary);
+    formData.set('password', password);
     formData.set('avatar', avatar);
 
 
@@ -85,6 +85,8 @@ const NewStuff = () => {
     }
   }
 
+  console.log('basicSalary: ' + basicSalary)
+  
   return (
 
     <Fragment>

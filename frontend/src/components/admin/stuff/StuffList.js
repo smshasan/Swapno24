@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MDBDataTable } from 'mdbreact'
@@ -7,42 +7,42 @@ import MetaData from '../../layout/MetaData'
 import Loader from '../../layout/Loader'
 import Sidebar from '../Sidebar'
 
-//import { useAlert } from 'react-alert'
-
-import { loadUser } from '../../../features/users/authSlice'
 import { allStuff } from '../../../features/stuff/stuffSlice'
+import axios from 'axios'
 
 const StuffList = () => {
-    const dispatch = useDispatch(); 
+
     
-    // const { user, loading } = useSelector(state => state.auth)
-    const {loading,   stuff, error, } = useSelector(state => state.stuff);
+    const [removed, setRemoved] = useState(false)
+
+
+    const dispatch = useDispatch();
+
+    const { loading, stuff, error } = useSelector(state => state.stuff);
     console.log('stuff', stuff);
-     //const alert = useAlert();
-    
 
     useEffect(
         () => {
-       
-        //  dispatch(loadUser())
-        dispatch(allStuff());
 
-        if (error) {
-            alert(error);
+            dispatch(allStuff());
+
+            if (error) {
+                alert(error);
+            }
+ 
+            if(removed) {
+                alert("The employee is deleted successfully");
+            }
+
+        }, [dispatch, error, removed])
+
+
+        const deleteStuffHandler = (id) => {
+            const {data} = axios.delete(`/api/v1/stuff/delete/${id}`)
+            console.log('delete', data)
+            setRemoved(data.suceess)
         }
 
-        // if (isDeleted) {
-        //     alert('User deleted successfully');
-        //     history.push('/admin/users');
-        //     dispatch({ type: DELETE_USER_RESET })
-        // }
-
-    }, [dispatch, error])
-
-    // const deleteUserHandler = (id) => {
-    //     dispatch(deleteUser(id))
-    // }
-    
     console.log('stuff', stuff)
     const setStuff = () => {
         const data = {
@@ -78,6 +78,11 @@ const StuffList = () => {
                     sort: 'asc'
                 },
                 {
+                    label: 'Basic (Tk)',
+                    field: 'basic',
+                    sort: 'asc'
+                },
+                {
                     label: 'Actions',
                     field: 'actions',
                 },
@@ -85,19 +90,20 @@ const StuffList = () => {
             rows: []
         }
 
-        stuff?.forEach(stuff => {
+        stuff?.forEach(stuf => {
             data.rows.push({
-                id: stuff._id,
-                name: stuff.name,
-                phone: stuff.phone,
-                designation: stuff.designation,
-                department: stuff.department,
-                area: stuff.area,
+                id: stuf._id,
+                name: stuf.name,
+                phone: stuf.phone,
+                designation: stuf.designation,
+                department: stuf.department,
+                area: stuf.area,
+                basic: stuf.basicSalary,
                 actions: <Fragment>
-                    <Link to={`/#`} className="btn btn-primary py-1 px-2">
+                    <Link to={`/stuff/${stuf._id}`} className="btn btn-primary py-1 px-2">
                         <i className="fa fa-pencil"></i>
                     </Link>
-                    <button className="btn btn-danger py-1 px-2 ml-2" >
+                    <button className="btn btn-danger py-1 px-2 ml-2" onClick={() => deleteStuffHandler(stuf._id)}>
                         <i className="fa fa-trash"></i>
                     </button>
                 </Fragment>
@@ -108,10 +114,10 @@ const StuffList = () => {
         return data;
     }
 
+   
 
     return (
         <Fragment>
-            stuff
             <MetaData title={'All stuff'} />
             <div className="row">
                 <div className="col-12 col-md-2">
@@ -120,24 +126,22 @@ const StuffList = () => {
 
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        <h1 className="my-5">All Stuff</h1>
-
-                            <MDBDataTable
-                                data={setStuff()}
-                                className="px-3"
-                                bordered
-                                striped
-                                hover
-                            />
+                        <h1 className="my-5 text-center">All Stuff</h1>
+                    {
+                        loading? <Loader />: 
+                        <MDBDataTable
+                        data={setStuff()}
+                        className="px-3"
+                        bordered
+                        striped
+                        hover
+                    />
+                    }
+                       
 
                     </Fragment>
                 </div>
             </div>
-            {stuff?.map(st => <p>{st.name}</p>)}
-            
-                
-            
-
         </Fragment>
     )
 }

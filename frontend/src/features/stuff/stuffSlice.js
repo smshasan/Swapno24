@@ -4,7 +4,9 @@ import axios from "axios"
 
 const initialState = {
     loading: false,
+    success: false,
     stuff: null,
+    updatedStuff: null,
     error: ''
 }
 
@@ -27,6 +29,16 @@ export const loadStuff = createAsyncThunk('stuff/loadStuff', async () => {
         return err.response.data
     }
 })
+
+export const FetchStuffDetails = createAsyncThunk('stuff/fetchStuffDetails', async (id) => {
+    try {
+        const {data} = await axios.get(`/api/v1/stuff/get/${id}`)
+        return data
+    } catch (err) {
+        return err.response.data
+    }
+})
+
 
 
 const stuffSlice = createSlice({
@@ -61,6 +73,16 @@ const stuffSlice = createSlice({
         })
         builder.addCase(loadStuff.rejected, (state, action) => {
             state.error = action.payload
+        })
+
+        builder.addCase(FetchStuffDetails.pending, (state, action) => {
+            state.loading = true
+        })
+        builder.addCase(FetchStuffDetails.fulfilled, (state, action) => {
+            state.stuff = action.payload.stuff
+        })
+        builder.addCase(FetchStuffDetails.rejected, (state, action) => {
+            state.error = ''
         })
     }
 })

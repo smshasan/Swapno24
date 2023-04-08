@@ -20,7 +20,6 @@ const Messenger = () => {
     const [newMessage, setNewMessage] = useState('')
     const [arrivalMessage, setArrivalMessage] = useState(null)
     
-
     const socket = useRef()
 
     const dispatch = useDispatch();
@@ -28,13 +27,11 @@ const Messenger = () => {
     const { user } = useSelector((state) => state.auth)
     console.log('data', user)
     
-
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
 
     const scrollRef = useRef()
-
 
     useEffect(() => {
         socket.current = io("ws://localhost:5000");
@@ -59,8 +56,6 @@ const Messenger = () => {
         })
    }, [socket.current, user?._id])
 
-
-
     //Get Conversations
     useEffect(() => {
         const getConversations = async (userId) => {
@@ -75,7 +70,6 @@ const Messenger = () => {
         }
         getConversations(user?._id)
     }, [user?._id])
-
 
     //Handle Message Submit (Post => /message/create)
     const handleSubmitMessage = async (e) => {
@@ -120,11 +114,6 @@ const Messenger = () => {
 
     console.log('messages', messages)
 
-
-    
-
-    
-    
     useEffect(() => {
         arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
         setMessages((prev) => [...prev, arrivalMessage])
@@ -154,7 +143,6 @@ const Messenger = () => {
                             ))
                         }
 
-                        
                     </div>
                 </div>
                 <div className='chatBox'>
@@ -162,9 +150,6 @@ const Messenger = () => {
 
                         {
                             currentChat ? <>
-
-
-
                                 <div className='chatBoxTop'>
                                     {
                                         messages?.map(smg => (
@@ -173,7 +158,6 @@ const Messenger = () => {
                                             </div>
 
                                         ))
-
                                     }
                                 </div>
                                 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SidebarMenu from '../sidebarMenu/SidebarMenu'
+import TimeAgo from 'react-timeago'
 
 const ProuductsModel = ({products}) => {
 
@@ -24,15 +25,16 @@ const ProuductsModel = ({products}) => {
                   </div>
 
                   <div className='col-6' style={{ listStyle: 'none', paddingLeft: '12%' }}>
-                    <li ><h5 style={{ color: '#33383ecc', fontWeight: 'bold' }}>{product.name}</h5></li>
-                    <br></br>
-                    <li style={{ color: '#212121' }}><strong><p>Tk {product.price}</p></strong></li>
+                    <li ><p style={{ color: '#212121', fontWeight: '500' }}>{product.name}</p></li>
+                    <li style={{ color: '#33383ecc', textTransform: 'capitalize' }}>Condition : {product.condition} </li>
+                    <li style={{ color: '#33383ecc' }}><p>Tk {product.price}</p></li>
                   </div>
 
                   <div className='col-3' style={{ listStyle: 'none' }}>
-                    <li style={{ textTransform: 'capitalize' }}>Status : {product.condition} </li>
+                   
                     <br></br>
-                    <li><p>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></li>
+                    <li><p style={{ color: '#33383ecc' }}>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></li>
+                    <li style={{ color: '#33383ecc' }}>Posted: {<TimeAgo date={product.createdAt}/>}</li>
                   </div>
                 </div>
               </Link>

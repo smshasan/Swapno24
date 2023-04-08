@@ -20,17 +20,10 @@ const TicketRequest = () => {
     },[dispatch])
 
 
-
-
-
   const setTicket = () => {
     const data = {
         columns: [
-            // {
-            //     label: 'User ID',
-            //     field: 'id',
-            //     sort: 'asc'
-            // },
+            
             {
                 label: 'From',
                 field: 'from',
@@ -81,7 +74,6 @@ const TicketRequest = () => {
 
     ticket?.forEach(ticket => {
         data.rows.push({
-            // id: stuff._id,
             from: ticket.from,
             to: ticket.to,
             departDate: ticket.departDate,
@@ -102,14 +94,12 @@ const TicketRequest = () => {
         })
     })
 
-    return data;
+    return data
 }
-
 
 
   return (
     <Fragment>
-            Ticket Requests
             <MetaData title={'Ticket Requests'} />
             <div className="row">
                 <div className="col-12 col-md-2">
@@ -118,7 +108,7 @@ const TicketRequest = () => {
 
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        <h1 className="my-5">Ticket Requests</h1>
+                        <h1 className="my-5 text-center mt-20">Ticket Requests</h1>
 
                             <MDBDataTable
                                 data={setTicket()}

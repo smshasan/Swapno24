@@ -1,9 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
 import MetaData from '../layout/MetaData';
-// import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRegistration } from '../../features/users/authSlice'
 
@@ -105,19 +103,6 @@ const Register = () => {
                 onChange={onChange}
               />
             </div>
-            
-            {/* <div className="form-group">
-              <label htmlFor="email_field">Email</label>
-              <input
-                type="email"
-                id="email_field"
-                                className="form-control"
-                                name='email'
-                                value={email}
-                                onChange={onChange}
-               
-              />
-            </div> */}
 
             <div className="form-group">
               <label htmlFor="password_field">Password</label>

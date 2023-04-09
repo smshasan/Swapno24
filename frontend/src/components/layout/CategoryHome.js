@@ -28,7 +28,7 @@ const CategoryHome = () => {
                   
           {categories.map(category => (
 
-            <div key={category._id} className="col-4 p-3">
+            <div key={category._id} className="col-lg-4 col-md-4 col-sm-6 col-12 p-3">
               <Link to={`/products/category/${category._id}`}>
                 <Card style={{ textDecoration: 'none' }} key={category._id} >
                   <div className='category' style={{ alignItems: 'center', display: 'flex', padding: '5px', textDecoration: 'none' }}>

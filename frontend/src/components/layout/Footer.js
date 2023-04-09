@@ -8,7 +8,7 @@ const Footer = () => {
 
         <div className='container' style={{ padding: '20px' }}>
           <div className='row'>
-            <div className='col-lg-3'>
+            <div className='col-lg-3 col-md-3 col-sm-3 col-12'>
               <p className='footer-head'> Sell Categories</p>
               <div className='footer-body'>
                 <p>Retails</p>
@@ -17,7 +17,7 @@ const Footer = () => {
               </div>
 
             </div>
-            <div className='col-lg-3'>
+            <div className='col-lg-3 col-md-3 col-sm-3 col-12'>
               <p className='footer-head'>About Swapno24</p>
               <div className='footer-body'>
                 <p>About Us</p>
@@ -27,7 +27,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className='col-lg-3'>
+            <div className='col-lg-3 col-md-3 col-sm-3 col-12'>
               <p className='footer-head'>Customer Supports</p>
               <div className='footer-body'>
                 <p>FAQ</p>
@@ -37,7 +37,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className='col-lg-3'>
+            <div className='col-lg-3 col-md-3 col-sm-3 col-12'>
               <p className='footer-head'>Social Contacts</p>
               <div className='footer-body'>
                 <p>Facebook</p>

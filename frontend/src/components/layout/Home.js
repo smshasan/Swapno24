@@ -7,6 +7,7 @@ import { fetchProducts } from '../../features/products/getProductSlice'
 import CategoryHome from './CategoryHome'
 
 import MetaData from './MetaData'
+import ShopCategory from './shopCategory/ShopCategory'
 
 
 const Home = (props) => {
@@ -28,20 +29,8 @@ const Home = (props) => {
       <MetaData title = "Homepage" />
 
         <CategoryHome />
-        {/* <h2>List of Products</h2> */}
-        <>
-          {loading && <div>Loading...</div>}
-          {!loading && error ? <div>Error: {error}</div> : null }
-          
-              {/* <ul>  
-                     {products.map((product) => (
-                          <li key={product._id}>{product.name}</li>
-                          )
-                          
-                      ) }
-              </ul> */}
-          
-        </>
+        <ShopCategory />
+        
     </>
   )
 }

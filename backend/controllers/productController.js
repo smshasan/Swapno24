@@ -71,6 +71,14 @@ exports.getUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
+exports.getShopProducts = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find({shopCategory: req.params.shop})
+    res.status(200).json({
+        success: true,
+        products
+    })
+})
+
 
 // db.products.updateOne(
 //     { _id: 100 },

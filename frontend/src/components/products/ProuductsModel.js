@@ -24,17 +24,16 @@ const ProuductsModel = ({products}) => {
                     <img width="160px" height='120px' src={product.images[0].url} />
                   </div>
 
-                  <div className='col-6' style={{ listStyle: 'none', paddingLeft: '12%' }}>
-                    <li ><p style={{ color: '#212121', fontWeight: '500' }}>{product.name}</p></li>
-                    <li style={{ color: '#33383ecc', textTransform: 'capitalize' }}>Condition : {product.condition} </li>
-                    <li style={{ color: '#33383ecc' }}><p>Tk {product.price}</p></li>
+                  <div className='col-6' style={{ listStyle: 'none', paddingLeft: '12%' , textTransform: 'capitalize' }}>
+                    <li className='product-desc'><p style={{ color: '#212121', fontWeight: '500' }}>{product.name}</p></li>
+                    <li className='product-desc color' >Condition : {product.condition} </li>
+                    <li className='product-desc color'>Shop Category : {product.shopCategory} </li>
+                    <li className='product-desc color'><p>Tk {product.price}</p></li>
                   </div>
 
                   <div className='col-3' style={{ listStyle: 'none' }}>
-                   
-                    <br></br>
-                    <li><p style={{ color: '#33383ecc' }}>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></li>
-                    <li style={{ color: '#33383ecc' }}>Posted: {<TimeAgo date={product.createdAt}/>}</li>
+                    <div><p style={{ color: '#33383ecc' }}>{product.district} {'>'} {product.thana} {'>'} {product.village}</p></div>
+                    <div style={{ color: '#33383ecc', minHeight: '100px', display: 'flex', alignItems: 'end' }}>Posted : <span style={{marginLeft: '10px'}}></span>{<TimeAgo date={product.createdAt}/>}</div>
                   </div>
                 </div>
               </Link>

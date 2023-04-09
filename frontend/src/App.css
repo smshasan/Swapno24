@@ -797,3 +797,36 @@ a:hover {
   .clicked:active {
     border-bottom: 5px solid #fc1707;
   }
+
+/* //ProudctsModel */
+
+.product-desc {
+  line-height: 2;
+  
+}
+.product-desc.color {
+  color: #33383ecc
+}
+
+.shop-box {
+  color: black;
+  width: 85%;
+  height: 200px;
+  border-radius: 10px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 16px 3px rgba(0,0,0,.1);
+
+}
+
+.shop-footer {
+  margin-top: -9px;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: rgb(249, 144, 8);
+}
+
+.shop-footer a {
+  color:rgb(255, 255, 255)
+}

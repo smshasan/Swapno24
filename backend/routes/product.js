@@ -14,7 +14,8 @@ const {
     getProductsByCategory,
     getProductsBySubCategory,
     getUnapprovedProducts,
-    approveProduct
+    approveProduct,
+    getShopProducts
 
 } = require('../controllers/productController');
 
@@ -25,6 +26,8 @@ const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth');
 //router.get("/products/:slug", getProductsBySlug);
 router.route('/products/:slug').get(getProductsBySlug);
 router.route('/discount/:slug').post(getDiscountBySlug);
+
+router.route('/products/shop/:shop').get(getShopProducts)
 
 
 router.route('/unapproved/products').get(getUnapprovedProducts);

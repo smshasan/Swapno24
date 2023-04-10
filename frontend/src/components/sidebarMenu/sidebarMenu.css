@@ -41,7 +41,7 @@
   }
   .sidebar-title .toggle-btn{
     cursor: pointer;
-    transition: transform .3s;
+    transition: transform .5s;
   }
   .sidebar-item.open > .sidebar-title .toggle-btn{
     transform: rotate(180deg);

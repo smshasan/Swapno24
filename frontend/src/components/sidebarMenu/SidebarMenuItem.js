@@ -4,11 +4,10 @@ import './sidebarMenu.css'
 
 const SidebarMenuItem = ({ category, condi }) => {
     console.log('condi',  condi)
-    // console.log('category', category)
     const [status, setStatus] = useState(condi)
     console.log('status', status)
     const [open, setOpen] = useState(false)
-    console.log('status', status)
+    // console.log('status', status)
 
     useEffect(() => {
         setStatus(condi)

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {getSearchedProducts} from '../../features/products/searchProuductsSlice'
-import ProuductsModel from '../products/ProuductsModel'
+import ProuductsModel from '../products/ProductsModel'
 
 const SearchPage = () => {
 

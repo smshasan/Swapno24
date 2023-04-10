@@ -4,7 +4,7 @@ import {useParams } from 'react-router-dom'
 
 
 import { fetchProductsBySubCategory } from '../../features/products/productsBySubCategorySlice'
-import ProuductsModel from './ProuductsModel'
+import ProuductsModel from './ProductsModel'
 
 const ProductsBySubCategory = () => {
 

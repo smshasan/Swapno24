@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { fetchProductsBySubCategory } from '../../features/products/productsBySubCategorySlice'
 
-import ProuductsModel from './ProuductsModel'
+import ProductsModel from './ProductsModel'
 
 const NewProductsBySubCategory = () => {
 
@@ -29,7 +29,7 @@ const NewProductsBySubCategory = () => {
   
   return (
     <>
-      <ProuductsModel proudcts={filteredProducts}/>
+      <ProductsModel products={filteredProducts} condition={status}/>
     </>
   )
 }

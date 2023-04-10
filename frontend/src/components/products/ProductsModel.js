@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SidebarMenu from '../sidebarMenu/SidebarMenu'
 import TimeAgo from 'react-timeago'
 
-const ProuductsModel = ({products}) => {
+const ProductsModel = ({products, condition}) => {
+
+  const [con, setCon] = useState('')
+
+  useEffect(() => {
+    setCon(con)
+  }, [condition])
+
+  console.log('condition', condition)
+  console.log('con', con)
+  console.log('products', products)
 
   return (
     <>
@@ -11,8 +21,7 @@ const ProuductsModel = ({products}) => {
       <h4>Products By Category</h4>
       <div className='row'>
         <div className='col-lg-3 pl-0'>
-          {/* <MenuSidebar /> */}
-          <SidebarMenu />
+          <SidebarMenu con={condition}/>
         </div>
 
         <div className='col-lg-9 ' style={{ height: 'min-content' }}>
@@ -49,4 +58,4 @@ const ProuductsModel = ({products}) => {
   )
 }
 
-export default ProuductsModel
+export default ProductsModel

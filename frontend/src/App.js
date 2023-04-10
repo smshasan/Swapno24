@@ -67,6 +67,7 @@ import WithDrawRequests from './components/admin/salary/WithDrawRequests';
 import NewCommission from './components/admin/salary/NewCommission';
 import SearchPage from './components/layout/SearchPage';
 import UpdateStuff from './components/admin/stuff/UpdateStuff';
+import ProductsByShopCategory from './components/products/ProductsByShopCategory';
 
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
             <Route path="/search/:keyword" element = {<SearchPage />} exact />
             
             <Route path = "/products/:status" element = {<ProductsByCondition />} exact />
+            <Route path="/shop/:shop/products" element = {<ProductsByShopCategory />} exact />
 
             <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
             <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />

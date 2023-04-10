@@ -8,6 +8,7 @@ import productsBySubCategoryReducer from '../features/products/productsBySubCate
 import newProductReducer from '../features/products/newProductSlice'
 import singleProductReducer from '../features/products/singleProductSlice'
 import searchProuductsReducer from '../features/products/searchProuductsSlice'
+import productsByShopReducer from '../features/products/productsByShopSlice'
 
 //UnApproved/Approved Product
 import unaaprovedProductsReducer from '../features/products/unapprovedProductSlice'
@@ -54,6 +55,7 @@ import conversationSlice from '../features/messenger/conversationSlice'
         products: productReducer,
         searchProducts: searchProuductsReducer,
         singleProduct: singleProductReducer,
+        productsByShop: productsByShopReducer,
         users: userReducer,
         auth: authReducer,
         category: categoryReducer,

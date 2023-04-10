@@ -13,7 +13,7 @@ const ShopCategory = () => {
               <p style={{color: '#212529c9'}}>101 ads</p>
               <hr></hr>
               <div className='float-right shop-footer'>
-                <Link to={'#'}>Visit Shop</Link>
+                <Link to={`/shop/retail/products`}>Visit Shop</Link>
               </div>
             </div>
 
@@ -26,7 +26,7 @@ const ShopCategory = () => {
               <p style={{color: '#212529c9'}}>99 ads</p>
               <hr></hr>
               <div className='float-right shop-footer'>
-                <Link to={'#'}>Visit Shop</Link>
+                <Link to={`/shop/wholesale/products`}>Visit Shop</Link>
               </div>
             </div>
 
@@ -38,7 +38,7 @@ const ShopCategory = () => {
               <p style={{color: '#212529c9'}}>105 ads</p>
               <hr></hr>
               <div className='float-right shop-footer'>
-                <Link to={'#'}>Visit Shop</Link>
+                <Link to={`/shop/manufacturer/products`}>Visit Shop</Link>
               </div>
             </div>
 

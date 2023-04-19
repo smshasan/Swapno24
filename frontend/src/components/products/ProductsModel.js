@@ -20,11 +20,13 @@ const ProductsModel = ({products, condition}) => {
         <div className='container categoryPage'>
       <h4>Products By Category</h4>
       <div className='row'>
+        
         <div className='col-lg-3 pl-0'>
           <SidebarMenu con={condition}/>
         </div>
 
         <div className='col-lg-9 ' style={{ height: 'min-content' }}>
+        <div style ={{textTransform: 'capitalize'}}>{condition} Shop / Products</div>
           {products?.map((product) => (
             <div key={product._id} className='card'>
               <Link to={`/product/${product._id}`}>

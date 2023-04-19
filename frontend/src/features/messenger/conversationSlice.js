@@ -3,18 +3,19 @@ import axios from 'axios'
 
 const initialState = {
     loading: false,
+    success: false,
     conversation: [],
     error: ''
 }
 
 
-export const fetchConversation = createAsyncThunk('conversation/fetchConversation', async (userId) => {
+export const createConversation = createAsyncThunk('conversation/createConversation', async (conversationData) => {
     try {
-        const {data} = await axios.get(`/api/v1/conversations/${userId}`)
-        
+        const {data} = await axios.post(`/api/v1/conversations`, conversationData)
         return data
+
     } catch (err) {
-        return err.response.data.messages
+        return err.response.data
         
     }
 })
@@ -25,17 +26,17 @@ const conversationSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
 
-        builder.addCase(fetchConversation.pending, (state) => {
+        builder.addCase(createConversation.pending, (state) => {
             state.loading = true
         })
-        builder.addCase(fetchConversation.fulfilled, (state, action) => {
-            state.loading = false
-            state.conversation = action.payload.conversation
-            state.error = ''
+
+        builder.addCase(createConversation.fulfilled, (state, action) => {
+            state.success = action.payload.success 
+            state.conversation = action.payload.savedConversation
         })
-        builder.addCase(fetchConversation.rejected, (state, action) => {
-            state.loading = false
-            state.conversation = []
+
+        builder.addCase(createConversation.rejected, (state, action) => {
+         
             state.error = action.payload
         })
     }

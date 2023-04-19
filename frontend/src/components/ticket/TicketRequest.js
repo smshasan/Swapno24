@@ -108,7 +108,7 @@ const TicketRequest = () => {
 
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        <h1 className="my-5 text-center mt-20">Ticket Requests</h1>
+                        <h2 className="my-5 text-secondary text-center mt-20">Ticket Requests</h2>
 
                             <MDBDataTable
                                 data={setTicket()}

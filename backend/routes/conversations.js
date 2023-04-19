@@ -10,9 +10,16 @@ router.post('/conversations', async (req, res) => {
 
     try {
         const savedConversation = await newConversation.save();
-        res.status(200).json({savedConversation})
+
+        res.status(200).json({
+            success: true,
+            savedConversation
+        })
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({
+            
+            error 
+        })
     }
 })
 
@@ -21,6 +28,16 @@ router.get('/conversations/:userId', async (req, res) => {
         const conversation = await Conversation.find({
             members: { $in: [req.params.userId]}
         })
+        res.status(200).json({conversation})
+        
+    } catch (error) {
+        res.status(500).json({error})
+    }
+})
+
+router.get('/converse/:id', async (req, res) => {
+    try {
+        const conversation = await Conversation.find({_id: req.params.id})
         res.status(200).json({conversation})
         
     } catch (error) {

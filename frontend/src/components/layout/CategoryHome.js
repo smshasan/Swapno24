@@ -23,7 +23,8 @@ const CategoryHome = () => {
 
   return (
     <Fragment>
-      <div className='container'>
+      <div className='container'style={{ marginTop: '80px'}}>
+        <h3 className='text-center text-secondary'>Products By Category</h3>
         <div className='row'>
                   
           {categories.map(category => (

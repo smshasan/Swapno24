@@ -33,7 +33,7 @@ const Footer = () => {
                 <p>FAQ</p>
                 <p>Help Center</p>
                 <p>Report illegalism</p>
-                <p>Sitemap</p>
+                <Link to={"/information/create"}><p style={{color: 'white'}}>Send Information to Thana</p></Link>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       <div style={{background: '#afb3b9', fontSize: '14px'}}>
         <div className='container'>
-        <p style={{color: 'rgb(18 18 18)'}}>Copyright © Swapno24</p>
+        <p style={{color: '#343a40'}}>Copyright © Swapno24</p>
         </div>
       </div>
 

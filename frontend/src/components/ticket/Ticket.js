@@ -61,7 +61,7 @@ if (success) {
       <div  className='row wrapper'>
         
         <div className='col-10 col-lg-5'>
-        <h3>Buy Ticket from here </h3>
+        <h2 className='text-center text-secondary mb-50'>Buy Ticket from here </h2>
         <form className='shadow-lg' onSubmit={submitHandler} encType='multipart/form-data'>
           <div className="form-group">
             <label htmlFor="from_field">From</label>

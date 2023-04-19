@@ -13,7 +13,17 @@ const NewProductsBySubCategory = () => {
   const dispatch = useDispatch()
   
   const {products} = useSelector(state => state.getProductsBySubCategory)
-  const filteredProducts = products.filter((product) => product.condition === status);
+
+  // const filteredProducts = products.filter((product) => product.condition === status);
+
+  var filteredProducts;
+
+  if(status === 'new' || status === 'used') {
+    filteredProducts = products.filter((product) => product.condition === status);
+  } else {
+    filteredProducts = products.filter((product) => product.shopCategory === status);
+  }
+  
   console.log('productsbycategory', products)
   console.log('new', filteredProducts)
 

@@ -32,7 +32,6 @@ import ProductsByCondition from './components/products/ProductsByCondition';
 
 import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
 
-import Location from './components/Location';
 
 
 // Ticket
@@ -68,6 +67,7 @@ import NewCommission from './components/admin/salary/NewCommission';
 import SearchPage from './components/layout/SearchPage';
 import UpdateStuff from './components/admin/stuff/UpdateStuff';
 import ProductsByShopCategory from './components/products/ProductsByShopCategory';
+import ProductMessenger from './components/messenger/ProductMessenger';
 
 
 function App() {
@@ -103,6 +103,8 @@ function App() {
             <Route path = "/products/:status" element = {<ProductsByCondition />} exact />
             <Route path="/shop/:shop/products" element = {<ProductsByShopCategory />} exact />
 
+            <Route path = "/product/messenger/:conId/:receiverId/:productId" element = {<ProductMessenger />} exact />
+
             <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
             <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
 
@@ -113,7 +115,7 @@ function App() {
 
             <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
 
-            <Route path = "/location" element = {<Location />} exact />
+            
 
 
             //Stuff Admin Panel

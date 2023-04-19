@@ -46,7 +46,7 @@ import infoReducer from '../features/information/informationSlice'
 
 
 //Conversation
-import conversationSlice from '../features/messenger/conversationSlice'
+import conversationReducer from '../features/messenger/conversationSlice'
 
  export const store = configureStore({
     
@@ -72,7 +72,7 @@ import conversationSlice from '../features/messenger/conversationSlice'
         approvedProduct: approvedProductReducer,
         ticket: ticketReducer,
         info: infoReducer,
-        conversation: conversationSlice
+        conversation: conversationReducer
 
         
     }

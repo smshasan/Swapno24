@@ -8,6 +8,7 @@ import CategoryHome from './CategoryHome'
 
 import MetaData from './MetaData'
 import ShopCategory from './shopCategory/ShopCategory'
+import Carousel from './carousel/Carousel'
 
 
 const Home = (props) => {
@@ -28,6 +29,7 @@ const Home = (props) => {
     <>
       <MetaData title = "Homepage" />
 
+        {/* <Carousel /> */}
         <CategoryHome />
         <ShopCategory />
         

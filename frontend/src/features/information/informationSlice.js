@@ -17,6 +17,15 @@ export const createInformation = createAsyncThunk('information/createInformation
     }
 })
 
+export const getInformation = createAsyncThunk('information/getInformation', async () => {
+    try {
+        const {data} = await axios.get(`/api/v1/information/get`)
+        return data
+    } catch (error) {
+        return error.response.data
+    }
+})
+
 const informationSlice = createSlice({
     name: 'information',
     initialState,
@@ -35,6 +44,20 @@ const informationSlice = createSlice({
             state.information = []
             state.error = action.payload
         })
+
+        builder.addCase(getInformation.pending, (state, action) => {
+            state.loading = true
+          
+        })
+        builder.addCase(getInformation.fulfilled, (state, action) => {
+            state.information = action.payload.information
+           
+        })
+        builder.addCase(getInformation.rejected, (state, action) => {
+            state.error = action.payload
+        })
+
+
         
     }
 })

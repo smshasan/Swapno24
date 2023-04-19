@@ -25,9 +25,6 @@ const Conversations = ({conversation, currentUser}) => {
         getUser(friendId)
       
     }, [conversation, currentUser])
-    
-
-
 
     return (
         <div className='conversation'>

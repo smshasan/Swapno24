@@ -191,6 +191,12 @@ const Sidebar = () => {
                         </li>
                     )}
 
+                    {user && user.role === 'admin' && (
+                        <li>
+                            <Link to={`/information/get`}> Information </Link>
+                        </li>
+                    )}
+
 
 
                 </ul>

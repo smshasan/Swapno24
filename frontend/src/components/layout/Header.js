@@ -28,7 +28,7 @@ const Header = () => {
 
     return (
         <Fragment>
-            <nav className="navbar row">
+            <nav className="navbar row topbar">
                 <div className="col-12 col-md-3">
                     <div className="navbar-brand" style={{display: 'flex', justifyContent: 'right'}}>
                         <Link to="/">

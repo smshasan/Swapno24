@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import './sidebarMenu.css'
 
 const SidebarMenuItem = ({ category, condi }) => {
-    console.log('condi',  condi)
+    // console.log('condi',  condi)
     const [status, setStatus] = useState(condi)
-    console.log('status', status)
+    // console.log('status', status)
     const [open, setOpen] = useState(false)
     // console.log('status', status)
 

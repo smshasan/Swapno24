@@ -5,6 +5,7 @@ const ShopCategory = () => {
   return (
     <>
       <div className='container' style={{ marginTop: '80px', textAlign: 'center' }}>
+      <h3 className='text-secondary' style={{marginBottom: "30px"}}>Products By Shop</h3>
         <div className='row' >
           <div className='col-lg-4 col-md-4 col-sm-4 col-12 shop-box' style={{ borderRight: '1px solid #cecece', display: 'flex' }} >
             <div className='w-100'>

@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchProductsByShop } from '../../features/products/productsByShopSlice'
 
+import ProductsModel from './ProductsModel'
+
 const ProductsByShopCategory = () => {
+
+   const[status, setStatus] = useState('')
 
     const {shop} = useParams()
     console.log('shop', shop)
@@ -12,17 +16,22 @@ const ProductsByShopCategory = () => {
     const { products } = useSelector((state) => state.productsByShop)
     console.log('products', products)
 
-    // const fileteredProducts = products.filter(product => product.shopCategory === shop)
-    // console.log('filereducedproducts', fileteredProducts)
-    
-
     useEffect(() => {
         dispatch(fetchProductsByShop(shop))
+        
     }, [dispatch, shop])
+
+    useEffect(() => {
+        setStatus(shop)
+    }, [shop])
+    
+
+    
+
 
   return (
     <>
-        ProductsByShopCategory
+       <ProductsModel products={products} condition={status}/>
     </>
   )
 }

@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchProductsBySubCategory } from '../../features/products/productsBySubCategorySlice'
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import ProductCarousel from './ProductCarousel';
+
+
+
+
 const RelatedProducts = ({ categoryId, id }) => {
     console.log('categoryId', categoryId)
 
@@ -20,6 +27,31 @@ const RelatedProducts = ({ categoryId, id }) => {
     }, [dispatch, categoryId, id])
 
 
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 4
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
+
+    // var product = filterdProducts.map((item, index) => {
+    //     return <ProductCarousel key={index} item={item} />
+    // })
+
+
     return (
         <>
             <div className='related_products'>
@@ -27,25 +59,17 @@ const RelatedProducts = ({ categoryId, id }) => {
                     <p>Related Products</p>
                 </div>
                 }
-                
+
                 <Fragment>
-                    <div className='row' style={{ textAlign: 'center' }} >
-                        {filterdProducts?.map((product, index) => {
+                    
+                    <Carousel
+                        ssr={true}
+                        responsive={responsive}
+                    >
+                       { filterdProducts.map((product, index) => (<ProductCarousel key={index} item={product} />))}
 
-                            return <div className="card p-3 rounded col-lg-3 m-3">
-                                <Link to={`/product/${product._id}`}>
-                                    <img className="card-img-top mx-auto" src={product.images[0].url} alt="hello first" />
-                                    <div className="card-body d-flex flex-column">
-                                        <h5 className="card-title">
-                                            {product.name}
-                                        </h5>
+                    </Carousel>
 
-                                    </div>
-                                </Link>
-
-                            </div>
-                        })}
-                    </div>
                 </Fragment>
 
             </div>

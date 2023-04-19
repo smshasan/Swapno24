@@ -1,17 +1,32 @@
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchSingleProduct } from '../../features/products/singleProductSlice'
 import RelatedProducts from './RelatedProducts';
 
+import { createConversation } from '../../features/messenger/conversationSlice'
+import { loadUser } from '../../features/users/authSlice';
+import Messenger from '../messenger/Messenger';
+
+import Loader from '../layout/Loader'
+import ProductMessenger from '../messenger/ProductMessenger';
 
 const ProductDetails = () => {
 
-    const [user, setUser] = useState([])
+    const [poster, setPoster] = useState([])
+    const [conv, setConv] = useState([])
+    const [success, setSuccess] = useState(false)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const { product } = useSelector((state) => state.singleProduct)
+
+    const { user } = useSelector((state) => state.auth)
+
+    // const {loading, success, conversation } = useSelector(state => state.conversation)
+
     const params = useParams()
     console.log('product', product)
 
@@ -23,7 +38,7 @@ const ProductDetails = () => {
         const getUser = async (id) => {
             try {
                 const { data } = await axios.get(`/api/v1/user/${id}`)
-                setUser(data.user)
+                setPoster(data.user)
                 console.log('data', data)
             } catch (err) {
                 console.log(err)
@@ -33,6 +48,46 @@ const ProductDetails = () => {
 
     }, [product.user])
 
+    useEffect(() => {
+        dispatch(loadUser())
+    }, [dispatch])
+
+
+
+    const handleSubmit = async (e) => {
+        
+        e.preventDefault()
+
+        const conversations = {
+            senderId: user._id,
+            receiverId: product.user,
+        }
+
+        try {
+            const {data} = await axios.post(`/api/v1/conversations`, conversations)
+            console.log(data)
+            setConv(data.savedConversation)
+            setSuccess(data.success)
+            
+        } catch (error) {
+            console.log(error.response.data)
+        }
+      
+     }
+
+     useEffect(() => { 
+        if(success===true) {
+            navigate(`/product/messenger/${conv._id}/${product.user}/${product._id}`)
+        }
+    }, [success])
+
+    
+
+    // console.log('conversation', conversation)
+    console.log('conv', conv)
+
+    console.log('user', user)
+     
 
     return (
         <>
@@ -79,12 +134,12 @@ const ProductDetails = () => {
 
                     <div className='col-lg-3 pro-det-col-3'>
                         Contact the Seller: <br></br><br></br>
-                        {user?.name}
+                        {poster?.name}
                         <hr></hr>
-                        {user?.phone}
+                        {poster?.phone}
                         <hr></hr>
-                        <div className='chat'>
-                            Chat
+                        <div className='chat' onClick={handleSubmit}>
+                           Chat
                         </div>
                     </div>
 

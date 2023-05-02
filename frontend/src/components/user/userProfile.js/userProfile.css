@@ -1,0 +1,11 @@
+
+.user-profile {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile img {
+    border: 1px solid rgb(134, 131, 131);
+    border-radius: 50%;
+}

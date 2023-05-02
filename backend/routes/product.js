@@ -15,7 +15,8 @@ const {
     getProductsBySubCategory,
     getUnapprovedProducts,
     approveProduct,
-    getShopProducts
+    getShopProducts,
+    getMyUnapprovedProducts
 
 } = require('../controllers/productController');
 
@@ -31,6 +32,7 @@ router.route('/products/shop/:shop').get(getShopProducts)
 
 
 router.route('/unapproved/products').get(getUnapprovedProducts);
+router.route('/unapproved/products/me').get(isAuthenticatedUser, getMyUnapprovedProducts);
 router.route('/approve/product/:id').put(approveProduct)
 router.route('/products/fid/:id').get(getProductsByCategory)
 router.route('/products/uid/:id').get(getProductsBySubCategory)
@@ -44,7 +46,7 @@ router.route('/product/:id').get(getSingleProduct);
 
 router.route('/product/new').post(isAuthenticatedUser, newProduct);
 
-router.route('/admin/product/:id')
+router.route('/control/product/:id')
     .put( isAuthenticatedUser, authorizeRoles('admin', 'vendor'), updateProduct)
     .delete(isAuthenticatedUser, deleteProduct);
 

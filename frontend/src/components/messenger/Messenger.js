@@ -128,7 +128,7 @@ const Messenger = () => {
     return (
         <Fragment>
 
-            <div className='messenger'>
+            <div className='messenger container'>
 
                 <div className='chatMenu'>
                     <div className='chatMenuWrapper'>
@@ -179,11 +179,11 @@ const Messenger = () => {
                                 </div></> : <span className="noConversationText">Open conversation to start a chat</span>}
                     </div>
                 </div>
-                <div className='chatOnline'>
+                {/* <div className='chatOnline'>
                     <div className='chatOnlineWrapper'>
                         <ChatOnline />
                     </div>
-                </div>
+                </div> */}
 
             </div>
 

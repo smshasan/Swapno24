@@ -6,8 +6,9 @@ import Topbar from './components/layout/Topbar';
 import Header from './components/layout/Header';
 import Home from './components/layout/Home';
 
+//User
 import Login from './components/user/Login';
-// import DataFetch from './components/DataFetch';
+import UserProfile from './components/user/userProfile.js/UserProfile';
 
 import UsersList from './components/admin/UsersList';
 import Register from './components/user/Register';
@@ -68,6 +69,8 @@ import SearchPage from './components/layout/SearchPage';
 import UpdateStuff from './components/admin/stuff/UpdateStuff';
 import ProductsByShopCategory from './components/products/ProductsByShopCategory';
 import ProductMessenger from './components/messenger/ProductMessenger';
+import UserDashboard from './components/user/UserDashboard';
+import EditProduct from './components/user/userProfile.js/EditProduct';
 
 
 function App() {
@@ -84,9 +87,13 @@ function App() {
             
             <Route path = "/" element = {<Home />} exact />
         
+            //User
             <Route path ="/login" element = {<Login />} exact />
             <Route path ="/dashboard/users" element = {<UsersList />} exact />
             <Route path = "/register" element = {<Register />} exact />
+            <Route path ="/user/dashboard" element = {<UserDashboard />} exact />
+            <Route path = "/user/profile" element = {<UserProfile />} exact />
+            <Route path = "/product/edit/:id" element = {<EditProduct />} exact />
 
           
             <Route path = "/dashboard" element = {<Dashboard />} exact />

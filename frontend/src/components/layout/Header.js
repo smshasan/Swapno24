@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import {BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 //import { useAlert } from 'react-alert'
@@ -30,7 +30,7 @@ const Header = () => {
         <Fragment>
             <nav className="navbar row topbar">
                 <div className="col-12 col-md-3">
-                    <div className="navbar-brand" style={{display: 'flex', justifyContent: 'right'}}>
+                    <div className="navbar-brand" style={{ display: 'flex', justifyContent: 'right' }}>
                         <Link to="/">
                             <img className="logoSize" src="/images/swapno24.png" alt="logo" />
                         </Link>
@@ -38,7 +38,7 @@ const Header = () => {
                 </div>
 
                 <div className="col-12 col-md-5 mt-2 mt-md-0">
-                     <Search />
+                    <Search />
                 </div>
                 <div className="col-12 col-md-1 mt-2 mt-md-0 sell-products">
                     <Link to={`/products/create`}>Sell Products</Link>
@@ -46,15 +46,13 @@ const Header = () => {
 
                 <div className="col-12 col-md-2 mt-4 mt-md-0 text-center">
 
-                    
-
                     {/* <Link to="/cart" style={{ textDecoration: 'none' }} >
                         <span id="cart" className="ml-3">Cart</span>
                         <span className="ml-1" id="cart_count">{cartItems.length}</span>
                     </Link> */}
 
                     {user ? (
-                       
+
                         <div className="ml-4 dropdown d-inline">
                             <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -65,12 +63,12 @@ const Header = () => {
                                         className="rounded-circle"
                                     />
                                 </figure>
-                                <span style={{color: '#f99008', fontSize: '20px'}}>{user && user.name}</span>
+                                <span style={{ color: '#f99008', fontSize: '20px' }}>{user && user.name}</span>
                             </Link>
 
                             <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
 
-                                {user && user.role === 'admin'  && (
+                                {user && user.role === 'admin' && (
                                     <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 )}
 
@@ -97,7 +95,12 @@ const Header = () => {
                                 </Link> */}
 
                                 <Link className="dropdown-item" to="#">Orders</Link>
-                                <Link className="dropdown-item" to="#">Profile</Link>
+                                {
+                                    user && user.role !== 'admin' && (
+                                        <Link className="dropdown-item" to="/user/dashboard">Profile</Link>
+                                    )
+                                }
+
                                 <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
                                     Logout
                                 </Link>
@@ -106,7 +109,7 @@ const Header = () => {
 
                         </div>
 
-                    ) : !loading && <Link to="/login" className="btn ml-4" style={{color: 'white', fontSize: '19px'}} id="login_btn">Login</Link>}
+                    ) : !loading && <Link to="/login" className="btn ml-4" style={{ color: 'white', fontSize: '19px' }} id="login_btn">Login</Link>}
 
                 </div>
             </nav>

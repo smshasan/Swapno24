@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
-import MetaData from '../../layout/MetaData'
+import MetaData from '../../layout/MetaData';
 import Sidebar from '../Sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -76,7 +76,6 @@ const UpdateStuff = () => {
     }
 
 
-
     return (
         <Fragment>
             <MetaData title={`Update User`} />
@@ -85,7 +84,6 @@ const UpdateStuff = () => {
                     <Sidebar />
                 </div>
 
-              
                 <div className="col-12 col-md-10">
                     <div className="row wrapper">
                         <div className="col-10 col-lg-5">

@@ -2,7 +2,7 @@
     width: 260px;
     flex-shrink: 0;
     background-color:  #fff;
-    height: 100%;
+    height: fit-content;
     overflow: auto;
   }
   

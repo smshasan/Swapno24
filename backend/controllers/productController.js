@@ -71,6 +71,14 @@ exports.getUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
+
+exports.getMyUnapprovedProducts = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find({ $and: [{user: req.user.id}, {approved: false}] })
+    res.status(200).json({
+        success: true,
+        products})
+})
+
 exports.getShopProducts = catchAsyncErrors(async (req, res, next) => {
     const products = await Product.find({shopCategory: req.params.shop})
     res.status(200).json({

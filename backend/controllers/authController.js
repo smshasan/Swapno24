@@ -237,12 +237,17 @@ exports.getUserDetails = catchAsyncError(async (req, res, next) => {
     })
 })
 
-// Update user profile   =>   /api/v1/admin/user/:id
+// Update user profile   =>   /api/v1/control/user/:id
 exports.updateUser = catchAsyncError(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         phone: req.body.phone,
-        role: req.body.role
+        division: req.body.division,
+        district: req.body.district,
+        thana: req.body.thana,
+        municipality: req.body.municipality,
+        ward: req.body.ward,
+        village: req.body.village
     }
 
     const user = await User.findByIdAndUpdate(req.params.id, newUserData, {

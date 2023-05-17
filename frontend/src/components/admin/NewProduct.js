@@ -348,12 +348,12 @@ const NewProduct = ({ history }) => {
 
                                         </div>
                                         {/* </Collapse> */}
-                                    
+
                                     </div>
                                 </div>
-                                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                     <button
-                                        style={{width: '200px', marginTop: 0}}
+                                        style={{ width: '200px', marginTop: 0 }}
                                         id="login_button"
                                         type="submit"
                                         className="btn btn-block py-3"

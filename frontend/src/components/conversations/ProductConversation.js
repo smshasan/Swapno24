@@ -34,13 +34,12 @@ const ProductConversation = ({productId}) => {
         <div className='conversation'>
            
                 <div className='chat-sidebar-product'>
-                {
-                            product?.images?.map((image, index) => (
-                                <img key={index} src={image.url}
+              
+                                <img  src={product.images[0].url}
                                     alt={product.name}
                                 />
-                            ))
-                        }
+                            
+                       
                 </div>
                         
 

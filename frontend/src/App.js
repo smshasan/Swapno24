@@ -8,7 +8,7 @@ import Home from './components/layout/Home';
 
 //User
 import Login from './components/user/Login';
-import UserProfile from './components/user/userProfile.js/UserProfile';
+import UserProfile from './components/user/userProfile/UserProfile';
 
 import UsersList from './components/admin/UsersList';
 import Register from './components/user/Register';
@@ -70,7 +70,8 @@ import UpdateStuff from './components/admin/stuff/UpdateStuff';
 import ProductsByShopCategory from './components/products/ProductsByShopCategory';
 import ProductMessenger from './components/messenger/ProductMessenger';
 import UserDashboard from './components/user/UserDashboard';
-import EditProduct from './components/user/userProfile.js/EditProduct';
+import EditProduct from './components/user/userProfile/EditProduct';
+import EditProfile from './components/user/userProfile/EditProfile';
 
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
             <Route path ="/user/dashboard" element = {<UserDashboard />} exact />
             <Route path = "/user/profile" element = {<UserProfile />} exact />
             <Route path = "/product/edit/:id" element = {<EditProduct />} exact />
+            <Route path="/user/profile/edit/:id" element = {<EditProfile />} exact />
 
           
             <Route path = "/dashboard" element = {<Dashboard />} exact />

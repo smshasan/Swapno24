@@ -13,7 +13,7 @@ const initialState = {
 export const updateProduct = createAsyncThunk('product/updateProduct', async (id, productData) => {
 
     try {
-        const {data} = await axios.post(`/api/v1/control/product/${id}`, productData)
+        const {data} = await axios.put(`/api/v1/control/product/${id}`, productData)
         return data
     } catch (error) {
         return error.response.data.messages

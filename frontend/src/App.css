@@ -789,8 +789,6 @@ a:hover {
 }
 
 
-
-
 /* 
   Related Products
   */
@@ -846,8 +844,6 @@ a:hover {
 }
 
 
-
-
 /* Carousel  */
 .carousel-outer {
   background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%);
@@ -857,8 +853,8 @@ a:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: .33;
-  mix-blend-mode: overlay;
+  /* opacity: .33;
+  mix-blend-mode: overlay; */
 }
 
 .topbar {
@@ -927,14 +923,22 @@ a:hover {
 }
 
 
-
 .userdashboard-button a {
+  background-color: #0159D3;
+  padding: 3px 10px;
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
+.userdashboard-button button {
+  border: none;
   padding: 3px 10px;
   color: rgb(255, 255, 255);
   background-color: red;
   border-radius: 8px;
 }
 
-.userdashboard-button a:first-child {
-  background-color: #0159D3;
-}
+/* .carousel-item.active {
+  display: block;
+  z-index: 999;
+} */

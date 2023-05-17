@@ -152,7 +152,7 @@ exports.getDiscountBySlug = (req, res) => {
 }
 
 //Get all the products displaying form database => /api/v1/products?keyword = apple
-exports.getProducts = catchAsyncErrors(async (req, res, next) => {
+exports.getProducts = catchAsyncErrors( async (req, res, next) => {
 
     const resPerPage = 12;
     const productsCount = await Product.countDocuments();

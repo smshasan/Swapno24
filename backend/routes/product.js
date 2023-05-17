@@ -47,7 +47,7 @@ router.route('/product/:id').get(getSingleProduct);
 router.route('/product/new').post(isAuthenticatedUser, newProduct);
 
 router.route('/control/product/:id')
-    .put( isAuthenticatedUser, authorizeRoles('admin', 'vendor'), updateProduct)
+    .put( isAuthenticatedUser, updateProduct)
     .delete(isAuthenticatedUser, deleteProduct);
 
 

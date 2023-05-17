@@ -6,8 +6,9 @@ import { divisions, thanas } from '../../Location'
 import MetaData from '../../layout/MetaData'
 import { fetchSingleProduct } from '../../../features/products/singleProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateProduct } from '../../../features/products/productUpateSlice'
+// import { updateProduct } from '../../../features/products/productUpateSlice'
 import { getCategory } from '../../../features/category/categorySlice'
+import axios from 'axios'
 
 
 const filteredDistricts = (div) => {
@@ -47,59 +48,62 @@ const EditProduct = () => {
     const [ward, setWard] = useState(0)
     const [village, setVillage] = useState('')
 
+    const [update, setUpdate] = useState(false)
+    const [error, setError] = useState('')
+
 
     const { id } = useParams()
     console.log('id:', id)
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const { product } = useSelector((state) => state.singleProduct)
+    const { loading, product } = useSelector((state) => state.singleProduct)
     const { categories } = useSelector((state) => state.category)
-    const { loading, success, error } = useSelector(state => state.productUpdate)
+    // const { loading, success, error } = useSelector(state => state.productUpdate)
 
 
     useEffect(() => {
         dispatch(getCategory())
     }, [dispatch])
 
-    // useEffect(() => {
-    //     fetchSingleProduct(id)
-    // }, [dispatch, id])
-
+    
+    useEffect(() => {
+        dispatch(fetchSingleProduct(id));
+    }, [dispatch, id])
+    
 
     useEffect(() => {
 
-        if (product && product._id !== id) {
-            dispatch(fetchSingleProduct(id));
-        } else {
             setName(product.name);
             setPrice(product.price);
             setCondition(product.discount);
-            setShopCategory(product.description);
-            setDescription(product.category);
-            // setCategory(product.seller);
-            setSubCategory(product.category)
+            setShopCategory(product.shopCategory);
+            setDescription(product.description);
+            
             setOldImages(product.images)
 
             setDivision(product.division)
             setDistrict(product.district)
             setThana(product.thana)
-            setUnion(product.union)
+            setUnion(product.municipality)
             setWard(product.ward)
             setVillage(product.village)
-        }
+        
 
-        if (error) {
-            alert(error);
-        }
+            if (error !== '')  {
+                alert(error);
+            }
 
-        if (success) {
+        if (update) {
             alert('Product Edited Successfully');
+            navigate("/user/dashboard")
         }
 
-    }, [dispatch, id, error, success])
+    }, [dispatch, error, update, navigate, product])
 
-    const submitHandler = (e) => {
+    
+
+    const submitHandler =async (e) => {
         e.preventDefault()
 
         const formData = new FormData();
@@ -122,7 +126,15 @@ const EditProduct = () => {
             formData.append('images', image)
         })
 
-        dispatch(updateProduct(id, formData))
+        try {
+            const { data } = await axios.put(`/api/v1/control/product/${id}`, formData)
+            console.log('data', data);
+            setUpdate(data.success)
+        } catch (err) {
+            console.log(err)
+            setError('Not updated! ')
+        }
+
     }
 
     const onChange = e => {
@@ -154,6 +166,8 @@ const EditProduct = () => {
         return filteredCategory
     }
 
+   
+
 
     return (
         <>
@@ -164,10 +178,10 @@ const EditProduct = () => {
 
                         <div className="wrapper col-12 col-lg-12 col-md-12 my-5" >
                             <form onSubmit={submitHandler} encType='multipart/form-data' style={{ width: '1000px' }}>
-                                <h2 style={{ textAlign: 'center', marginBottom: '45px' }}>Post your product</h2>
+                                <h2 style={{ textAlign: 'center', marginBottom: '45px' }}>Edit your product</h2>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <div>
-                                        <div style={{ display: 'flex', justifyContent: 'start' }}><h4 style={{ width: 'fit-content', marginBottom: '30px', borderBottom: '2px solid rgb(249, 144, 8)' }}>Set Product Details</h4></div>
+                                        <div style={{ display: 'flex', justifyContent: 'start' }}><h4 style={{ width: 'fit-content', marginBottom: '30px', borderBottom: '2px solid rgb(249, 144, 8)' }}>Edit Product Details</h4></div>
                                         <div className="form-group">
                                             <label htmlFor="name_field">Name</label>
                                             <input
@@ -175,6 +189,7 @@ const EditProduct = () => {
                                                 id="name_field"
                                                 className="form-control"
                                                 value={name}
+                                                required
                                                 onChange={(e) => setName(e.target.value)}
                                             />
                                         </div>
@@ -185,6 +200,7 @@ const EditProduct = () => {
                                                 id="price_field"
                                                 className="form-control"
                                                 value={price}
+                                                required
                                                 onChange={(e) => setPrice(e.target.value)}
                                             />
                                         </div>
@@ -194,6 +210,7 @@ const EditProduct = () => {
                                                 className="form-control"
                                                 id="condition_field"
                                                 value={condition}
+                                                required
                                                 onChange={(e) => setCondition(e.target.value)}
                                             >
                                                 <option>select condition</option>
@@ -208,6 +225,7 @@ const EditProduct = () => {
                                                 className="form-control"
                                                 id="shop_field"
                                                 value={shopCategory}
+                                                required
                                                 onChange={(e) => setShopCategory(e.target.value)}
                                             >
 
@@ -226,7 +244,7 @@ const EditProduct = () => {
                                                 value={category}
                                                 onChange={(e) => setCategory(e.target.value)}
                                             >
-
+                                                
                                                 {categories.map((category) => (
                                                     <option key={category._id} value={category.name}>
                                                         {category.name}
@@ -242,9 +260,11 @@ const EditProduct = () => {
                                                 className="form-control"
                                                 id="subCategory_field"
                                                 value={subCategory}
+                                                required
                                                 onChange={(e) => setSubCategory(e.target.value)}
+                                                
                                             >
-                                                <option>Select</option>
+                                                <option>select</option>
                                                 {
                                                     subCategoryFiltered(category)[0]?.children?.map(subCat => (
                                                         <option key={subCat._id} value={subCat._id}>{subCat.name}</option>
@@ -260,12 +280,12 @@ const EditProduct = () => {
                                                 id="description_field"
                                                 rows="8"
                                                 value={description}
+                                                required
                                                 onChange={(e) => setDescription(e.target.value)}></textarea>
                                         </div>
 
                                         <div className='form-group'>
                                             {/* <label>Images</label> */}
-
 
 
                                             {oldImages && oldImages.map(img => (
@@ -297,7 +317,7 @@ const EditProduct = () => {
                                     </div>
 
                                     <div>
-                                        <div style={{ display: 'flex', justifyContent: 'start' }}><h4 style={{ width: 'fit-content', marginBottom: '30px', borderBottom: '2px solid rgb(249, 144, 8)' }}>Set Your Location</h4></div>
+                                        <div style={{ display: 'flex', justifyContent: 'start' }}><h4 style={{ width: 'fit-content', marginBottom: '30px', borderBottom: '2px solid rgb(249, 144, 8)' }}>Edit Your Location</h4></div>
                                         <div id="example-collapse-text">
 
                                             <div className="form-group">
@@ -307,6 +327,7 @@ const EditProduct = () => {
                                                     id="division_field"
                                                     className="form-control"
                                                     value={division}
+                                                    required
                                                     onChange={(e) => setDivision(e.target.value)}
                                                 >
                                                     < option value="select">select</option>
@@ -327,6 +348,7 @@ const EditProduct = () => {
                                                     id="district_field"
                                                     className="form-control"
                                                     value={district}
+                                                    required
                                                     onChange={(e) => setDistrict(e.target.value)}
 
                                                 >   <option>select</option>
@@ -343,6 +365,7 @@ const EditProduct = () => {
                                                     id="thana_field"
                                                     className="form-control"
                                                     value={thana}
+                                                    required
                                                     onChange={(e) => setThana(e.target.value)}
                                                 >
 
@@ -360,6 +383,7 @@ const EditProduct = () => {
                                                     id="union_field"
                                                     className="form-control"
                                                     value={union}
+                                                    required
                                                     onChange={(e) => setUnion(e.target.value)}
                                                 />
                                             </div>
@@ -371,6 +395,7 @@ const EditProduct = () => {
                                                     id="ward_field"
                                                     className="form-control"
                                                     value={ward}
+                                                    required
                                                     onChange={(e) => setWard(e.target.value)}
                                                 />
                                             </div>
@@ -382,6 +407,7 @@ const EditProduct = () => {
                                                     id="village_field"
                                                     className="form-control"
                                                     value={village}
+                                                    required
                                                     onChange={(e) => setVillage(e.target.value)}
                                                 />
                                             </div>
@@ -402,9 +428,6 @@ const EditProduct = () => {
                                         Submit
                                     </button>
                                 </div>
-
-
-
                             </form>
                         </div>
                     </div>

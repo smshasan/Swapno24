@@ -17,13 +17,13 @@ const userSchema = new mongoose.Schema({
        
     },
     
-
     password: {
         type: String,
         required: [true, 'Please enter password'],
         minlength: [5, 'Your password must be equal or longer than 5 characters'],
         select: false
     },
+
     avatar: {
         public_id: {
             type: String,
@@ -34,6 +34,38 @@ const userSchema = new mongoose.Schema({
             required: true      // true
         }
     },
+
+    division: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    district: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    thana: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+    
+    municipality: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    ward: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    village: {
+        type: String,
+        maxLength: [15, 'Product name cannot exceed 15 characters']
+    },
+
+    
     role: {
             type: String,
             default: 'user'

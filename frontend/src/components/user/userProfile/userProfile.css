@@ -9,3 +9,7 @@
     border: 1px solid rgb(134, 131, 131);
     border-radius: 50%;
 }
+
+td:nth-child(even), th:nth-child(even) {
+    background-color: #D6EEEE;
+  }

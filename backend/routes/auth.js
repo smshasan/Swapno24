@@ -37,9 +37,9 @@ router.route('/admin/users').get(isAuthenticatedUser, allUsers);
 
 router.route('/user/:id').get(getUserDetails)
 
-router.route('/admin/user/:id')
-    .get(isAuthenticatedUser, authorizeRoles('admin'), getUserDetails)
-    .put(isAuthenticatedUser, authorizeRoles('admin'), updateUser)
+router.route('/control/user/:id')
+    .get(isAuthenticatedUser, getUserDetails)
+    .put(isAuthenticatedUser, updateUser)
     .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteUser)
 
 

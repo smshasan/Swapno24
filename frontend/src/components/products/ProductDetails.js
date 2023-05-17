@@ -11,6 +11,7 @@ import Messenger from '../messenger/Messenger';
 
 import Loader from '../layout/Loader'
 import ProductMessenger from '../messenger/ProductMessenger';
+import { Carousel } from 'react-bootstrap'
 
 const ProductDetails = () => {
 
@@ -24,8 +25,6 @@ const ProductDetails = () => {
     const { product } = useSelector((state) => state.singleProduct)
 
     const { user } = useSelector((state) => state.auth)
-
-    // const {loading, success, conversation } = useSelector(state => state.conversation)
 
     const params = useParams()
     console.log('product', product)
@@ -80,28 +79,26 @@ const ProductDetails = () => {
             navigate(`/product/messenger/${conv._id}/${product.user}/${product._id}`)
         }
     }, [success])
-
-    
-
-    // console.log('conversation', conversation)
-    console.log('conv', conv)
-
-    console.log('user', user)
      
 
     return (
         <>
             <div className='container product-details'>
-                <div className='row'>
+                <div className='row d-flex justify-content-around'>
 
-                    <div className='col-lg-4 pro_det_col_1'>
+                    <div className='col-lg-4 pro_det_col_1 img-fluid'>
+                        <Carousel  pause='hover'>
                         {
                             product.images?.map((image, index) => (
-                                <img key={index} src={image.url}
+                                <Carousel.Item >
+                                    <img  className="d-block w-100" key={index} src={image.url}
                                     alt={product.name}
                                 />
+                                </Carousel.Item>
+                                
                             ))
                         }
+                        </Carousel>  
 
                     </div>
                     <div className='col-lg-5'>

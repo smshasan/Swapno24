@@ -72,9 +72,9 @@ const Register = () => {
     formData.set('division', division);
     formData.set('district', district);
     formData.set('thana', thana);
-    formData.set('munic', division);
-    formData.set('division', division);
-    formData.set('division', division);
+    formData.set('municipality', union);
+    formData.set('ward', ward);
+    formData.set('village', village);
 
 
     dispatch(fetchRegistration(formData))

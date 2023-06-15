@@ -9,6 +9,7 @@ import Home from './components/layout/Home';
 //User
 import Login from './components/user/Login';
 import UserProfile from './components/user/userProfile/UserProfile';
+import MyMembership from './components/user/MyMembership';
 
 import UsersList from './components/admin/UsersList';
 import Register from './components/user/Register';
@@ -72,6 +73,8 @@ import ProductMessenger from './components/messenger/ProductMessenger';
 import UserDashboard from './components/user/UserDashboard';
 import EditProduct from './components/user/userProfile/EditProduct';
 import EditProfile from './components/user/userProfile/EditProfile';
+import CreateMembership from './components/user/CreateMembership';
+import PaymentDetails from './components/products/payment/PaymentDetails';
 
 
 function App() {
@@ -96,37 +99,33 @@ function App() {
             <Route path = "/user/profile" element = {<UserProfile />} exact />
             <Route path = "/product/edit/:id" element = {<EditProduct />} exact />
             <Route path="/user/profile/edit/:id" element = {<EditProfile />} exact />
+            <Route path="/user/membership" element = {<MyMembership />} exact />
+            <Route path="/user/membership/create" element= {<CreateMembership />} exact />
 
           
             <Route path = "/dashboard" element = {<Dashboard />} exact />
             <Route path = "/dashboard/category" element = {<Category />} exact />
            
            
-            <Route path = "/products/create" element = {<NewProduct />} exact />
-
-
             <Route path = "/categories" element = {<CategoryHome />} exact />
 
             <Route path="/search/:keyword" element = {<SearchPage />} exact />
-            
+
+            <Route path = "/products/create" element = {<NewProduct />} exact />
             <Route path = "/products/:status" element = {<ProductsByCondition />} exact />
             <Route path="/shop/:shop/products" element = {<ProductsByShopCategory />} exact />
-
             <Route path = "/product/messenger/:conId/:receiverId/:productId" element = {<ProductMessenger />} exact />
-
             <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
             <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
-
             <Route path = "/products/category/:new/:id" element = {<NewProductsByCategory />} exact />
             <Route path = "/products/sub_category/:new/:id" element = {<NewProductsBySubCategory />} exact />
-
             <Route path="/product/:id" element = {<ProductDetails />} exact />
+
+            <Route path="/payment/details" element = {<PaymentDetails />} exact />
 
             <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
 
             
-
-
             //Stuff Admin Panel
             <Route path = "/stuff/list" element = {<StuffList />} exact />
             <Route path = "/stuff/create" element = {<NewStuff />} exact />

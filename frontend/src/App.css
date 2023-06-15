@@ -55,7 +55,7 @@ nav {
 #search_field {
   height: 2.4rem;
   padding: 20px;
-  border: 1px solid #f99008;
+  /* border: 1px solid #f99008; */
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
@@ -64,10 +64,10 @@ nav {
   outline: none;
 }
 
-input {
+/* input {
   outline: none;
   outline: 0;
-}
+} */
 
 /* .sell-products a {
   text-align: center;
@@ -79,28 +79,59 @@ input {
 } */
 
 .sell-products a {
+  width: fit-content;
   text-align: center;
   display: block;
-  padding: 7px;
+  padding: 7px 10px;
   color: rgba(33, 37, 41, 0.79);
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(249, 144, 8);
-  border-radius: 20px;
+  /* border: 1px solid rgb(249, 144, 8); */
+   border-radius: 20px;
   transition: 0.7s;
-}
+} 
 
 .sell-products a:hover {
   background-color: rgb(249, 144, 8);
   color: rgb(255, 255, 255)
 }
 
+/* .sell-products a {
+  text-align: center;
+  display: block;
+  padding: 7px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(249, 144, 8);
+  
+  border-radius: 20px;
+  transition: 0.7s;
+} */
+
+/* border: 1px solid rgb(249, 144, 8); */
+/* .sell-products a:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgba(33, 37, 41, 0.79);
+} */
+
 
 #login_btn,
 #view_btn {
-  background-color: rgb(249, 144, 8);
-  padding: 0.4rem 1.8rem;
+  background-color: rgb(255, 255, 255);
+  color: rgba(33, 37, 41, 0.79);
+  padding: 0.3rem 1.8rem;
   font-family: calibri;
   border-radius: 30px;
+  transition: 0.7s;
+}
+
+/* #login_btn,
+#view_btn a {
+  color: rgba(33, 37, 41, 0.79);
+} */
+
+
+#login_btn:hover {
+  background-color: rgb(249, 144, 8);
+  color: rgba(255, 255, 255);
 }
 
 #cart {
@@ -195,6 +226,14 @@ input {
 
 .footer-body {
   font-size: 14px;
+}
+
+.footer btn {
+  color: rgba(33, 37, 41, 0.79);
+}
+
+.footer #login_button:hover {
+  color: rgb(255, 255, 255);
 }
 
 /* Ratings */
@@ -942,3 +981,70 @@ a:hover {
   display: block;
   z-index: 999;
 } */
+
+
+/* Membership */
+.membership_create {
+  margin-top: 30px;
+}
+
+
+/* Payment details */
+.payment_details {
+  margin-top: 30px;
+}
+
+.pay_option_button {
+  margin-left: 10px;
+}
+
+.payment_details i.fa.fa-plus {
+  border: 1px solid gray;
+  padding: 5px 7px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.payment_online {
+  margin-top: 30px;
+}
+
+.payment_online p {
+  color: gray;
+  font-size: 18px;
+  margin-top: 11px;
+  margin-bottom: 0;
+}
+
+.payment_online div {
+  margin-top: 20px;
+}
+
+.payment_online img {
+  width: 250px;
+}
+
+.payment_online button {
+  width: 56%;
+  color: rgb(87, 87, 87);
+  background-color: rgb(249, 144, 8);
+  padding: 5px;
+  border-radius: 50rem;
+  border: none;
+  transition: 0.7s
+}
+
+.payment_online button:hover {
+  background-color: rgb(255, 145, 0);
+  color: #000;
+  transform: scale(1.1);
+}
+
+.payment_online button:focus {
+  outline: none;
+}
+
+.pay_modal_input {
+  display: block;
+}
+

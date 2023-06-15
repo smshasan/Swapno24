@@ -6,6 +6,7 @@ import { loadUser } from '../../../features/users/authSlice'
 
 import MetaData from '../../../components/layout/MetaData'
 
+
 const EditProfile = () => {
 
 
@@ -54,6 +55,8 @@ const EditProfile = () => {
 
     if(update) {
       alert("Updated Successfully!")
+      navigate("/user/profile")
+
     }
 
   }, [dispatch, error, update]);

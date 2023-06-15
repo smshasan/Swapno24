@@ -11,9 +11,9 @@ const UserSidebar = ({user}) => {
                 <nav id='user-sidebar'>
                     {user && user.role !== 'admin' && (
                             <ul className='list-unstyled'>
-                                <Link to={"/user/profile"}><li className='components'>My Profile</li></Link>
+                                <Link to="/user/profile"><li className='components'>My Profile</li></Link>
                                 <li className='components'>Settings</li>
-                                <li className='components'>My Membership</li>
+                                <Link to="/user/membership"><li className='components'>My Membership</li></Link>
                             </ul>
                     )
                     

@@ -13,3 +13,10 @@
 td:nth-child(even), th:nth-child(even) {
     background-color: #D6EEEE;
   }
+
+  .membership-status a {
+    padding: 6px 10px;
+    color: white !important;
+    background-color: #0159D3;
+    border-radius: 8px !important;
+  }

@@ -40,7 +40,7 @@ router.route('/user/:id').get(getUserDetails)
 router.route('/control/user/:id')
     .get(isAuthenticatedUser, getUserDetails)
     .put(isAuthenticatedUser, updateUser)
-    .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteUser)
+    .delete(isAuthenticatedUser, deleteUser)
 
 
 

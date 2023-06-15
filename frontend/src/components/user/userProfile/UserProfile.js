@@ -3,28 +3,59 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadUser } from '../../../features/users/authSlice'
 
 import UserSidebar from '../UserSidebar'
-import { fetchProducts } from '../../../features/products/getProductSlice'
+// import { fetchProducts } from '../../../features/products/getProductSlice'
 
 import './userProfile.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Loader from '../../layout/Loader'
+import axios from 'axios'
 
 const UserProfile = () => {
 
+    const [deleted, setDeleted] = useState(false)
+    const [error, setError] = useState('')
+
     const { loading, user } = useSelector(state => state.auth)
-    const { products, error } = useSelector(state => state.products)
+    // const { products } = useSelector(state => state.products)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
-    useEffect(() => {
-        dispatch(fetchProducts())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchProducts())
+    // }, [dispatch])
 
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
+
+
+    const deleteHandler = async (id) => {
+        try {
+            const {data} = await axios.delete(`/api/v1/control/user/${id}`)
+            console.log('deletedUser', data)
+            setDeleted(data.success)
+
+        } catch (error) {
+            setError('Something went wrong!')
+        }
+
+    }
+
+    useEffect(() => {
+      
+        if(deleted) {
+            alert('Your Account deleted successfully')
+            navigate('/')
+        }
+        if(error !=='') {
+            alert('Something went wrong!')
+        }
+      
+    }, [deleted, error])
+
 
     return (
         <>
@@ -75,7 +106,7 @@ const UserProfile = () => {
               
                             <div className='float-right userdashboard-button mt-3' style={{ padding: '7px', gap: '5px', height: 'inherit', display: 'flex', alignItems: 'end' }}>
                                 <Link to={`/user/profile/edit/${user._id}`}>Edit</Link>
-                                <button>
+                                <button onClick={() => deleteHandler(user._id)}>
                                     Delete
                                 </button>
                             </div>

@@ -45,7 +45,7 @@ const Footer = () => {
                 <p>Youtube</p>
                 <p>Instagram</p>
                 <p>LinkedIn</p>
-                <Link to="/stuff/login" className="btn" id="login_btn" style={{color: 'white'}}>Login</Link>
+                <Link to="/stuff/login" className="btn" id="login_btn" style={{color: 'rgba(33, 37, 41, 0.79)'}}>Login</Link>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       <div style={{background: '#afb3b9', fontSize: '14px'}}>
         <div className='container'>
-        <p style={{color: '#343a40'}}>Copyright © Swapno24</p>
+        <p style={{color: '#fff'}}>Copyright © Swapno24</p>
         </div>
       </div>
 

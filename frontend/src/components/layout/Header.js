@@ -109,7 +109,7 @@ const Header = () => {
 
                         </div>
 
-                    ) : !loading && <Link to="/login" className="btn ml-4" style={{ color: 'white', fontSize: '19px' }} id="login_btn">Login</Link>}
+                    ) : !loading && <Link to="/login" className="btn ml-4" style={{fontSize: '19px' }} id="login_btn">Login</Link>}
 
                 </div>
             </nav>

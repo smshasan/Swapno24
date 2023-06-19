@@ -21,6 +21,7 @@ import userReducer from '../features/users/userSlice'
 
 //Category
 import categoryReducer from '../features/category/categorySlice'
+import plainCategoryReducer from '../features/category/plainCategorySlice'
 
 //Salary
 import salaryReducer from '../features/salary/salarySlice'
@@ -61,6 +62,7 @@ import conversationReducer from '../features/messenger/conversationSlice'
         users: userReducer,
         auth: authReducer,
         category: categoryReducer,
+        plainCategory: plainCategoryReducer,
         newProducts: newProductReducer,
         getProductsByCategory: productsByCategoryReducer,
         getProductsBySubCategory: productsBySubCategoryReducer,

@@ -82,6 +82,13 @@ exports.getCategories = async(req, res, next) => {
  });
 }
 
+exports.getPlainCategories = catchAsyncErrors( async(req, res, next) => {
+
+  const categories = await Category.find()
+  res.status(200).json({categories})
+
+}) 
+
 exports.updateCategories = async (req, res) => {
   const { _id, name, parentId, type } = req.body;
   const updatedCategories = [];

@@ -110,6 +110,7 @@ function App() {
             <Route path = "/categories" element = {<CategoryHome />} exact />
 
             <Route path="/search/:keyword" element = {<SearchPage />} exact />
+            {/* <Route path="/search/:category" element = {<SearchPage />} exact /> */}
 
             <Route path = "/products/create" element = {<NewProduct />} exact />
             <Route path = "/products/:status" element = {<ProductsByCondition />} exact />

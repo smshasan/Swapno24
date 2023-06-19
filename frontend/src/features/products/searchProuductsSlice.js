@@ -10,8 +10,18 @@ const initialState = {
 
 export const getSearchedProducts = createAsyncThunk('products/getSearchedProducts', async (keyword) => {
     try {
-        const {data} = await axios.get(`/api/v1/products?keyword=${keyword}`)
-        return data
+        
+        
+            const {data} = await axios.get(`/api/v1/products?keyword=${keyword}`)
+            return data
+      
+
+       
+            // const {data} = await axios.get(`/api/v1/products?category=${category}`)
+            // return data
+     
+        
+        
     } catch (error) {
         return error.response.data
     }

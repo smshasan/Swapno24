@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const initialState = {
     loading: false,
-    categories : [],
+    plainCategories : [],
     error: ''
 }
 
@@ -31,12 +31,11 @@ export const getPlainCategory = createAsyncThunk('category/getPlainCategory', as
           state.loading = true
         })
          builder.addCase(getPlainCategory.fulfilled, (state, action) => { 
-          state.loading = false
-          state.categories = action.payload.categories
+          state.plainCategories = action.payload.categories
          })
         builder.addCase(getPlainCategory.rejected, (state, action) => {
-          state.loading = false
-          state.categories = action.payload
+         
+          state.error = action.payload
         })
 
     }

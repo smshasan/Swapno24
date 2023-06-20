@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxLength: [30, 'Product name cannot exceed 30 characters']
+        maxLength: [100, 'Product name cannot exceed 30 characters']
     },
 
     price: {
@@ -31,9 +31,21 @@ const productSchema = new mongoose.Schema({
         maxlength: [500, 'Product description cannot exceed 500 characters']
     },
 
+    
+
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
+    },
+
+    cateClass: {
+        type: String,
+        required: true
+    },
+
+    cateSubClass: {
+        type: String,
+        required: true
     },
 
     approved: {

@@ -9,6 +9,7 @@ import { getCategory } from '../../features/category/categorySlice'
 import { newProduct } from '../../features/products/newProductSlice'
 
 import { divisions, thanas } from '../Location'
+import { getPlainCategory } from '../../features/category/plainCategorySlice'
 
 
 const filteredDistricts = (div) => {
@@ -34,6 +35,8 @@ const NewProduct = ({ history }) => {
 
     const [category, setCategory] = useState("")
     const [subCategory, setSubCategory] = useState("")
+    const [cateClass, setCateClass] = useState("")
+    const [cateSubClass, setCateSubClass] = useState("")
 
     const [open, setOpen] = useState(false)
 
@@ -48,6 +51,7 @@ const NewProduct = ({ history }) => {
     const navigate = useNavigate()
 
     const { categories } = useSelector((state) => state.category)
+    const { plainCategories } = useSelector((state) => state.plainCategory)
     const { loading, error, success } = useSelector((state) => state.newProducts)
 
     console.log('catgories: ', categories)
@@ -65,31 +69,11 @@ const NewProduct = ({ history }) => {
 
     }, [dispatch, error, success])
 
-    const submitHandler = (e) => {
-        e.preventDefault();
 
-        const formData = new FormData()
+    useEffect(() => {
+        dispatch(getPlainCategory())
+    },[dispatch])
 
-        formData.set('name', name)
-        formData.set('price', price)
-        formData.set('condition', condition)
-        formData.set('shopCategory', shopCategory)
-        formData.set('description', description)
-        formData.set('category', subCategory)
-
-        formData.set('division', division)
-        formData.set('district', district)
-        formData.set('thana', thana)
-        formData.set('municipality', union)
-        formData.set('ward', ward)
-        formData.set('village', village)
-
-        images.forEach(image => {
-            formData.append('images', image)
-        })
-
-        dispatch(newProduct(formData))
-    }
 
     const onChange = (e) => {
         const files = Array.from(e.target.files)
@@ -118,6 +102,57 @@ const NewProduct = ({ history }) => {
         const filteredCategory = categories.filter(c => c.name === cats)
         return filteredCategory
     }
+
+    const plainCategoryFiltered = (cats) => {
+        const filteredPlainCategories =  plainCategories.filter( pc => pc._id === cats)
+        return filteredPlainCategories
+    }
+
+    useEffect(() => {
+        setCateClass(category)
+    }, [category])
+
+    
+    useEffect(() => {
+        setCateSubClass(plainCategoryFiltered(subCategory)[0]?.name)
+    }, [subCategory])
+
+    console.log('plainCategories', plainCategories)
+
+    console.log('plainFiltered',  plainCategoryFiltered(subCategory))
+
+
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData()
+
+        formData.set('name', name)
+        formData.set('price', price)
+        formData.set('condition', condition)
+        formData.set('shopCategory', shopCategory)
+        formData.set('description', description)
+
+        formData.set('category', subCategory)
+        formData.set('cateClass', cateClass)
+        formData.set('cateSubClass', cateSubClass)
+
+        formData.set('division', division)
+        formData.set('district', district)
+        formData.set('thana', thana)
+        formData.set('municipality', union)
+        formData.set('ward', ward)
+        formData.set('village', village)
+
+        images.forEach(image => {
+            formData.append('images', image)
+        })
+
+        dispatch(newProduct(formData))
+    }
+
+
     console.log('subCategoryFiltered', subCategoryFiltered(category))
 
     console.log('subCategory', subCategory)

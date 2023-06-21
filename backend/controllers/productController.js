@@ -125,6 +125,30 @@ exports.getProductsBySubCategory = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({products})
 })
 
+
+exports.getSearchedProducts = catchAsyncErrors(async (req, res, next) => {
+ 
+    const search = req.query.search || "";
+
+    const searchRegExp = new RegExp('.*' + search + '.*', 'i');
+
+    const filteredData = {
+        $or: [
+            {name: { $regex: searchRegExp}},
+            {cateClass: { $regex: searchRegExp}},
+            {cateSubClass: { $regex: searchRegExp}},
+        ]
+    }
+
+    const products = await Product.find(filteredData)
+    res.status(200).json({
+        success: true,
+        products
+    })
+   
+})
+
+
 exports.getDiscountBySlug = (req, res) => {
     const { slug } = req.params;
     Category.findOne({ slug: slug })

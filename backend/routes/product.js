@@ -16,7 +16,8 @@ const {
     getUnapprovedProducts,
     approveProduct,
     getShopProducts,
-    getMyUnapprovedProducts
+    getMyUnapprovedProducts,
+    getSearchedProducts
 
 } = require('../controllers/productController');
 
@@ -43,6 +44,8 @@ router.route('/products').get(getProducts);
 router.route('/admin/products').get(getAdminProducts);
 
 router.route('/product/:id').get(getSingleProduct);
+
+router.route('/items/sort').get(getSearchedProducts)
 
 router.route('/product/new').post(isAuthenticatedUser, newProduct);
 

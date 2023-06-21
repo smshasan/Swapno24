@@ -12,7 +12,7 @@ export const getSearchedProducts = createAsyncThunk('products/getSearchedProduct
     try {
         
         
-            const {data} = await axios.get(`/api/v1/products?keyword=${keyword}`)
+            const {data} = await axios.get(`/api/v1/items/sort?search=${keyword}`)
             return data
       
 

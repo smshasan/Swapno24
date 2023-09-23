@@ -1,0 +1,50 @@
+{
+    "topbar": {
+        "usedProducts": "ব্যবহৃত পণ্য",
+        "newProducts": "নতুন পণ্য"
+    },
+    "menuBar": {
+        "searchProducts": "পণ্য অনুসন্ধান করুন ...",
+        "sellProducts": "পণ্য বিক্রি করেন",
+        "login": "প্রবেশ করুন"
+    },
+    "homePage": {
+        "category":{
+            "categoryHead": "পণ্য তালিকা"
+        },
+        
+        "productShop": {
+            "shopTitle": "পণ্যের দোকান",
+            "retail": "খুচরা পণ্য",
+            "wholeSale": "পাইকারি পণ্য",
+            "manufacturer": "প্রস্তুতকারকের পণ্য",
+            "button": "দোকানে যান"
+        }
+    },
+    "footer": {
+        "sellCategories": {
+            "retail": "খুচরা",
+            "wholeSale": "পাইকারি",
+            "manufacturer": "প্রস্তুতকারক"
+        },
+        "aboutSwapno24": {
+            "as":"আমাদের সম্পর্কে",
+            "tc":"শর্তাবলী",
+            "ca":"কেরিয়ার",
+            "miss":"মিশন"
+        },
+        "customerSupports": {
+            "f":"প্রশ্ন",
+            "h":"সাহায্য কেন্দ্র",
+            "r":"অবৈধতার রিপোর্ট করুন",
+            "c":"থানায় তথ্য পাঠান"
+        },
+        "socialContacts": {
+            "f": "ফেসবুক",
+            "t": "টুইটার",
+            "y": "ইউটিউব",
+            "i": "ইনস্টাগ্রাম",
+            "l": "লিঙ্কডইন"
+        }
+    }
+}

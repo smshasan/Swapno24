@@ -45,7 +45,7 @@ const PaymentDetails = () => {
             <div style={{ backgroundColor: 'rgb(232 235 235)' }}>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
                 <div style={{ width: '70%' }}>
-                  Urgent Bundle! Sell faster for less!
+                  Silver Package! Sell faster for less!
                   <ul>
                     <li>Ad will be promoted as Urgent for 3 days</li>
                     <li>Ad will be promoted as Urgent for 3 days</li>
@@ -61,7 +61,7 @@ const PaymentDetails = () => {
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
                 <div style={{ width: '70%' }}>
-                  Urgent Bundle! Sell faster for less!
+                  Gold Package! Sell faster for less!
                   <ul>
                     <li>Ad will be promoted as Urgent for 3 days</li>
                     <li>Ad will be promoted as Urgent for 3 days</li>
@@ -77,7 +77,7 @@ const PaymentDetails = () => {
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
                 <div style={{ width: '70%' }}>
-                  Urgent Bundle! Sell faster for less!
+                  Diamond Package! Sell faster for less!
                   <ul>
                     <li>Ad will be promoted as Urgent for 3 days</li>
                     <li>Ad will be promoted as Urgent for 3 days</li>
@@ -93,7 +93,7 @@ const PaymentDetails = () => {
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
                 <div style={{ width: '70%' }}>
-                  Urgent Bundle! Sell faster for less!
+                  Platinum Package! Sell faster for less!
                   <ul>
                     <li>Ad will be promoted as Urgent for 3 days</li>
                     <li>Ad will be promoted as Urgent for 3 days</li>

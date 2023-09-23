@@ -884,6 +884,9 @@ a:hover {
 
 
 /* Carousel  */
+.carousel {
+  height: inherit;
+}
 .carousel-outer {
   background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%);
 }
@@ -1047,4 +1050,49 @@ a:hover {
 .pay_modal_input {
   display: block;
 }
+
+
+.navbar-brand {
+  display: flex;
+  justify-content: right;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-brand {
+    justify-content: center;
+  }
+  .sell-products {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem!important;
+  }
+
+  .user_profile {
+    margin-top: 1rem!important;
+  }
+
+  #login_btn {
+    margin-left: 0px !important;
+  }
+  
+}
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {...} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
 

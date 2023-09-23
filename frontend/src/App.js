@@ -1,5 +1,6 @@
+import React, { Suspense } from 'react';
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Topbar from './components/layout/Topbar';
 
@@ -77,97 +78,105 @@ import CreateMembership from './components/user/CreateMembership';
 import PaymentDetails from './components/products/payment/PaymentDetails';
 
 
+import {useTranslation} from "react-i18next";
+
+
 function App() {
+
+  const [t, i18n] = useTranslation('common');
 
   return (
 
-    <BrowserRouter>
+    <Suspense fallback="loading">
+      <BrowserRouter>
 
-      <div className="app">
-        <Topbar />
-        <Header />
-        
-        <Routes>
-            
-            <Route path = "/" element = {<Home />} exact />
-        
+        <div className="app">
+          {/* <Topbar /> */}
+          <Topbar t={t} i18n={i18n} />
+          <Header t={t} i18n={i18n}/>
+
+          <Routes>
+
+            <Route path="/" element={<Home t={t} i18n={i18n}/>} exact />
+
             //User
-            <Route path ="/login" element = {<Login />} exact />
-            <Route path ="/dashboard/users" element = {<UsersList />} exact />
-            <Route path = "/register" element = {<Register />} exact />
-            <Route path ="/user/dashboard" element = {<UserDashboard />} exact />
-            <Route path = "/user/profile" element = {<UserProfile />} exact />
-            <Route path = "/product/edit/:id" element = {<EditProduct />} exact />
-            <Route path="/user/profile/edit/:id" element = {<EditProfile />} exact />
-            <Route path="/user/membership" element = {<MyMembership />} exact />
-            <Route path="/user/membership/create" element= {<CreateMembership />} exact />
+            <Route path="/login" element={<Login />} exact />
+            <Route path="/dashboard/users" element={<UsersList />} exact />
+            <Route path="/register" element={<Register />} exact />
+            <Route path="/user/dashboard" element={<UserDashboard />} exact />
+            <Route path="/user/profile" element={<UserProfile />} exact />
+            <Route path="/product/edit/:id" element={<EditProduct />} exact />
+            <Route path="/user/profile/edit/:id" element={<EditProfile />} exact />
+            <Route path="/user/membership" element={<MyMembership />} exact />
+            <Route path="/user/membership/create" element={<CreateMembership />} exact />
 
-          
-            <Route path = "/dashboard" element = {<Dashboard />} exact />
-            <Route path = "/dashboard/category" element = {<Category />} exact />
-           
-           
-            <Route path = "/categories" element = {<CategoryHome />} exact />
 
-            <Route path="/search/:keyword" element = {<SearchPage />} exact />
+            <Route path="/dashboard" element={<Dashboard />} exact />
+            <Route path="/dashboard/category" element={<Category />} exact />
+
+
+            <Route path="/categories" element={<CategoryHome />} exact />
+
+            <Route path="/search/:keyword" element={<SearchPage />} exact />
             {/* <Route path="/search/:category" element = {<SearchPage />} exact /> */}
 
-            <Route path = "/products/create" element = {<NewProduct />} exact />
-            <Route path = "/products/:status" element = {<ProductsByCondition />} exact />
-            <Route path="/shop/:shop/products" element = {<ProductsByShopCategory />} exact />
-            <Route path = "/product/messenger/:conId/:receiverId/:productId" element = {<ProductMessenger />} exact />
-            <Route path = "/products/category/:id" element = {<ProductsByCategory />} exact />
-            <Route path = "/products/sub_category/:id" element = {<ProductsBySubCategory />} exact />
-            <Route path = "/products/category/:new/:id" element = {<NewProductsByCategory />} exact />
-            <Route path = "/products/sub_category/:new/:id" element = {<NewProductsBySubCategory />} exact />
-            <Route path="/product/:id" element = {<ProductDetails />} exact />
+            <Route path="/products/create" element={<NewProduct />} exact />
+            <Route path="/products/:status" element={<ProductsByCondition />} exact />
+            <Route path="/shop/:shop/products" element={<ProductsByShopCategory />} exact />
+            <Route path="/product/messenger/:conId/:receiverId/:productId" element={<ProductMessenger />} exact />
+            <Route path="/products/category/:id" element={<ProductsByCategory />} exact />
+            <Route path="/products/sub_category/:id" element={<ProductsBySubCategory />} exact />
+            <Route path="/products/category/:new/:id" element={<NewProductsByCategory />} exact />
+            <Route path="/products/sub_category/:new/:id" element={<NewProductsBySubCategory />} exact />
+            <Route path="/product/:id" element={<ProductDetails />} exact />
 
-            <Route path="/payment/details" element = {<PaymentDetails />} exact />
+            <Route path="/payment/details" element={<PaymentDetails />} exact />
 
-            <Route path = "/menuSideBar" element = {<MenuSidebar />} exact />
+            <Route path="/menuSideBar" element={<MenuSidebar />} exact />
 
-            
+
             //Stuff Admin Panel
-            <Route path = "/stuff/list" element = {<StuffList />} exact />
-            <Route path = "/stuff/create" element = {<NewStuff />} exact />
-            <Route path = "/stuff/:id" element = {<UpdateStuff />} exact />
+            <Route path="/stuff/list" element={<StuffList />} exact />
+            <Route path="/stuff/create" element={<NewStuff />} exact />
+            <Route path="/stuff/:id" element={<UpdateStuff />} exact />
 
 
             //Proucts Dashboard
-            <Route path = "/admin/products/unapproved" element = {<UnaaprovedProducts />} exact />
+            <Route path="/admin/products/unapproved" element={<UnaaprovedProducts />} exact />
 
 
             //Ticket
-            <Route path = "/ticket" element = {<Ticket />} exact />
-            <Route path = "/ticket/request" element = {<TicketRequest />} exact />
+            <Route path="/ticket" element={<Ticket />} exact />
+            <Route path="/ticket/request" element={<TicketRequest />} exact />
 
 
             //Information
-            <Route path = "/information/create" element = {<InformationCreate />} exact />
-            <Route path = "/information/get" element = {<GetInformation />} exact />
+            <Route path="/information/create" element={<InformationCreate />} exact />
+            <Route path="/information/get" element={<GetInformation />} exact />
 
-            <Route path = "/messenger" element={<Messenger />} exact />
-            <Route path = "/sidebarMenu" element = {<SidebarMenu />} exact />
+            <Route path="/messenger" element={<Messenger />} exact />
+            <Route path="/sidebarMenu" element={<SidebarMenu />} exact />
 
             //Stuff Profile
             <Route path="/stuff/login" element={<StuffLogin />} exact />
-            <Route path="/stuff/dashboard" element = {<StuffProfile />} exact />
+            <Route path="/stuff/dashboard" element={<StuffProfile />} exact />
 
             //Salary dashboard
-            <Route path = "/salary/create" element = {<NewSalary />} exact />
-            <Route path="/commission/create" element = {<NewCommission />} exact />
-            <Route path = "/salary/withdraw/requests" element = {<WithDrawRequests />} exact />
+            <Route path="/salary/create" element={<NewSalary />} exact />
+            <Route path="/commission/create" element={<NewCommission />} exact />
+            <Route path="/salary/withdraw/requests" element={<WithDrawRequests />} exact />
 
             //Salary stuff
             <Route path="/salary/withdraw" element={<WithdrawSalary />} exact />
 
-        </Routes>
-        <Footer />
+          </Routes>
+          <Footer t={t}/>
 
-      </div>
+        </div>
 
-    </BrowserRouter>
-    
+      </BrowserRouter>
+    </Suspense>
+
   );
 }
 

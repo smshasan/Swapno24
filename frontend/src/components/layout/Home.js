@@ -10,12 +10,18 @@ import MetaData from './MetaData'
 import ShopCategory from './shopCategory/ShopCategory'
 import Carousel from './carousel/Carousel'
 
+import {useTranslation} from "react-i18next";
+
 
 const Home = (props) => {
 
+    const [t, i18n] = useTranslation('common');
+   
+
     const {error, loading, products} = useSelector((state) => state.products)
     console.log('data,', products)
-   
+
+
 
     const dispatch = useDispatch()
 
@@ -30,8 +36,8 @@ const Home = (props) => {
       <MetaData title = "Homepage" />
 
         {/* <Carousel /> */}
-        <CategoryHome />
-        <ShopCategory />
+        <CategoryHome t={t}/>
+        <ShopCategory t={t}/>
         
     </>
   )

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 const Search = () => {
 
     const [keyword, setKeyword] = useState('');
+    const [t, i18n] = useTranslation('common');
 
     const nagivate = useNavigate()
 
@@ -25,7 +27,7 @@ const Search = () => {
                     type="text"
                     id="search_field"
                     className="form-control"
-                    placeholder="Enter Product Name ..."
+                    placeholder={t('menuBar.searchProducts')}
                     onChange={(e) => setKeyword(e.target.value)}
                 />
 

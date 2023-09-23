@@ -10,8 +10,8 @@ import Search from './Search'
 
 import '../../App.css'
 
-const Header = () => {
-    // const alert = useAlert();
+const Header = (props) => {
+    const {t, i18n} = props;
     const dispatch = useDispatch();
 
     const { user, loading, isAuthenticated } = useSelector(state => state.auth)
@@ -30,7 +30,7 @@ const Header = () => {
         <Fragment>
             <nav className="navbar row topbar">
                 <div className="col-12 col-md-3">
-                    <div className="navbar-brand" style={{ display: 'flex', justifyContent: 'right' }}>
+                    <div className="navbar-brand">
                         <Link to="/">
                             <img className="logoSize" src="/images/swapno24.png" alt="logo" />
                         </Link>
@@ -41,10 +41,10 @@ const Header = () => {
                     <Search />
                 </div>
                 <div className="col-12 col-md-1 mt-2 mt-md-0 sell-products">
-                    <Link to={`/products/create`}>Sell Products</Link>
+                    <Link to={`/products/create`}>{t('menuBar.sellProducts')}</Link>
                 </div>
 
-                <div className="col-12 col-md-2 mt-4 mt-md-0 text-center">
+                <div className="col-12 col-md-2 mt-4 mt-md-0 text-center user_profile">
 
                     {/* <Link to="/cart" style={{ textDecoration: 'none' }} >
                         <span id="cart" className="ml-3">Cart</span>
@@ -109,7 +109,7 @@ const Header = () => {
 
                         </div>
 
-                    ) : !loading && <Link to="/login" className="btn ml-4" style={{fontSize: '19px' }} id="login_btn">Login</Link>}
+                    ) : !loading && <Link to="/login" className="btn ml-4 login" style={{fontSize: '19px' }} id="login_btn">{t('menuBar.login')}</Link>}
 
                 </div>
             </nav>

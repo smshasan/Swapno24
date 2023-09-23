@@ -1,0 +1,69 @@
+{
+    "topbar": {
+        "usedProducts": "Used Products",
+        "newProducts": "New Products"
+    },
+    "menuBar": {
+        "searchProducts": "Search Products ...",
+        "sellProducts": "sell Products",
+        "login": "Login"
+    },
+    "homePage": {
+        "category":{
+            "categoryHead": "Product Category",
+            "home&living": "Home & Living",
+            "vehicles": "Vehicles",
+            "property": "Property",
+            "pet&animal": "Pet & Animal",
+            "hobbies,sports&kids": "Hobbies, sports &kids",
+            "men's fashion": "Men's Fashion & Grooming",
+            "movies": "Movies   ",
+            "women": "Women's Fashion & Beauty",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   ",
+            "movies": "Movies   "
+        },
+
+        "productShop": {
+            "shopTitle": "Product Shop",
+            "retail": "Retail Products",
+            "wholeSale": "Wholesale Products",
+            "manufacturer": "Manufacturers Products",
+            "button": "Visit Shop"
+        }
+    },
+    "footer": {
+        "sellCategories": {
+            "retail": "Retails",
+            "wholeSale": "Wholesales",
+            "manufacturer": "Manufacturers"
+        },
+        "aboutSwapno24": {
+            "as":"About Us",
+            "tc":"Terms & Conditions",
+            "ca":"Careers",
+            "miss":"Missions"
+        },
+        "customerSupports": {
+            "f":"FAQ",
+            "h":"Help Center",
+            "r":"Report illegalism",
+            "c":"Send Information to Thana"
+        },
+        "socialContacts": {
+            "f": "Facebook",
+            "t": "Twitter",
+            "y": "Youtube",
+            "i": "Instagram",
+            "l": "LinkedIn"
+        }
+    }
+    
+}

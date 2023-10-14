@@ -122,7 +122,6 @@ const NewProduct = ({ history }) => {
     console.log('plainFiltered',  plainCategoryFiltered(subCategory))
 
 
-
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -397,9 +396,6 @@ const NewProduct = ({ history }) => {
                                         CREATE
                                     </button>
                                 </div>
-
-
-
                             </form>
                         </div>
                     </div>

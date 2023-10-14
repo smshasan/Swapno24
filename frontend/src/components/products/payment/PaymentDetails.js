@@ -1,14 +1,45 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import PayModal from './PayModal'
+
 
 const PaymentDetails = () => {
 
-  const [day, setDay] = useState(0)
+  const [recommended, setRecommended] = useState(0)
+  const [silver, setSilver] = useState(0)
+  const [gold, setGold] = useState(0)
+  const [diamond, setDiamond] = useState(0)
+  const [platinum, setPlatinum] = useState(0)
   const [amount, setAmount] = useState(0)
+  const [selectedButtonData, setSelectedButtonData] = useState('');
 
-  const addHandle = () => {
-    console.log("OK clicked")
+  const handleButtonClick = (buttonData) => {
+    setSelectedButtonData(buttonData);
+  };
+
+  console.log('typeof:', typeof recommended)
+
+  const updateData = (newData) => {
+    if (selectedButtonData == 'recommended') setRecommended(newData)
+
+    if (selectedButtonData == 'silver') setSilver(newData)
+
+    if (selectedButtonData == 'gold') setGold(newData)
+
+    if (selectedButtonData == 'diamond') setDiamond(newData)
+
+    if (selectedButtonData == 'platinum') setPlatinum(newData)
+
   }
+
+  useEffect(() => {
+    const totalAmount = () => {
+      const sum = recommended + silver + gold + diamond + platinum
+      setAmount(sum)
+    }
+    totalAmount();
+  }, [recommended, silver, gold, diamond, platinum])
+
+  console.log('recommended: ' + recommended)
 
   return (
     <>
@@ -35,9 +66,9 @@ const PaymentDetails = () => {
                 </div>
                 <div className='w-30 d-flex align-items-center justify-content-end' style={{ width: '30%' }}>
                   <p>From Tk. 100</p>
-                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModal" >
-                    <i className='fa fa-plus' onClick={addHandle}></i>
-                    </button>
+                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModalRecommended" >
+                    <i className='fa fa-plus' onClick={() => handleButtonClick('recommended')}></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -54,9 +85,9 @@ const PaymentDetails = () => {
                 </div>
                 <div className='w-30 d-flex align-items-center justify-content-end' style={{ width: '30%' }}>
                   <p>From Tk. 150</p>
-                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModal" >
-                    <i className='fa fa-plus' onClick={addHandle}></i>
-          </button>
+                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModalSilver" >
+                    <i className='fa fa-plus' onClick={() => handleButtonClick('silver')}></i>
+                  </button>
                 </div>
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
@@ -70,9 +101,9 @@ const PaymentDetails = () => {
                 </div>
                 <div className='w-30 d-flex align-items-center justify-content-end' style={{ width: '30%' }}>
                   <p>From Tk. 250</p>
-                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModal" >
-          <i className='fa fa-plus' onClick={addHandle}></i>
-          </button>
+                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModalGold" >
+                    <i className='fa fa-plus' onClick={() => handleButtonClick('gold')}></i>
+                  </button>
                 </div>
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
@@ -86,9 +117,9 @@ const PaymentDetails = () => {
                 </div>
                 <div className='w-30 d-flex align-items-center justify-content-end' style={{ width: '30%' }}>
                   <p>From Tk. 300</p>
-                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModal" >
-          <i className='fa fa-plus' onClick={addHandle}></i>
-          </button>
+                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModalDiamond" >
+                    <i className='fa fa-plus' onClick={() => handleButtonClick('diamond')}></i>
+                  </button>
                 </div>
               </div>
               <div className='d-flex' style={{ borderBottom: '1px solid #d5d0d0', padding: '5px 10px' }}>
@@ -102,9 +133,9 @@ const PaymentDetails = () => {
                 </div>
                 <div className='w-30 d-flex align-items-center justify-content-end' style={{ width: '30%' }}>
                   <p>From Tk. 350</p>
-                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModal" >
-          <i className='fa fa-plus' onClick={addHandle}></i>
-          </button>
+                  <button type="button" className="btn btn-primary pay_option_button" data-toggle="modal" data-target="#paymentModalPlatinum" >
+                    <i className='fa fa-plus' onClick={() => handleButtonClick('platinum')}></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -118,18 +149,43 @@ const PaymentDetails = () => {
             </div>
             <div className='payment_summary' style={{ backgroundColor: 'rgb(232, 235, 235)', padding: '10px 20px' }}>
               <h4>Payment Summary</h4>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Top Add</span>
-                <span>Tk. 340</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Top Add</span>
-                <span>Tk. 340</span>
-              </div>
+              {recommended > 0 &&
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>Top Add</span>
+                  <span>Tk. {recommended}</span>
+                </div>
+              }
+
+              {silver > 0 &&
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>Top Add</span>
+                  <span>Tk. {silver}</span>
+                </div>
+              }
+              {gold > 0 &&
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>Top Add</span>
+                  <span>Tk. {gold}</span>
+                </div>
+              }
+              {diamond > 0 &&
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>Top Add</span>
+                  <span>Tk. {diamond}</span>
+                </div>
+                
+              }
+              {platinum > 0 &&
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>Top Add</span>
+                  <span>Tk. {platinum}</span>
+                </div>
+              }
+
               <hr></hr>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>Total Amount</span>
-                <span>Tk. 680</span>
+                <span>Tk. {amount}</span>
               </div>
             </div>
 
@@ -137,7 +193,7 @@ const PaymentDetails = () => {
               <p>Pay Online</p>
               <img className="gateway_image" src='/images/payment.png' />
 
-              <div style={{display:'flex', justifyContent: 'center'}}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button>Pay Bill</button>
               </div>
             </div>
@@ -146,23 +202,63 @@ const PaymentDetails = () => {
         </div>
       </div>
       <Fragment>
-          <div className="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-body" style={{ padding: 0 }}>
-                  <PayModal />
-                </div>
+        <div className="modal fade" id="paymentModalRecommended" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" style={{ padding: 0 }}>
+                <PayModal updateData={updateData} button={selectedButtonData} />
               </div>
             </div>
           </div>
-        </Fragment>
+        </div>
+      </Fragment>
+      <Fragment>
+        <div className="modal fade" id="paymentModalSilver" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" style={{ padding: 0 }}>
+                <PayModal updateData={updateData} button={selectedButtonData} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+      <Fragment>
+        <div className="modal fade" id="paymentModalGold" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" style={{ padding: 0 }}>
+                <PayModal updateData={updateData} button={selectedButtonData} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+      <Fragment>
+        <div className="modal fade" id="paymentModalDiamond" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" style={{ padding: 0 }}>
+                <PayModal updateData={updateData} button={selectedButtonData} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+      <Fragment>
+        <div className="modal fade" id="paymentModalPlatinum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" style={{ padding: 0 }}>
+                <PayModal updateData={updateData} button={selectedButtonData}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
     </>
   )
-
 }
-
-
-
-        
 
 export default PaymentDetails

@@ -29,7 +29,7 @@ const Header = (props) => {
     return (
         <Fragment>
             <nav className="navbar row topbar">
-                <div className="col-12 col-md-3">
+                <div className="col-12 col-lg-3 col-md-3 col-sm-3">
                     <div className="navbar-brand">
                         <Link to="/">
                             <img className="logoSize" src="/images/swapno24.png" alt="logo" />
@@ -37,10 +37,10 @@ const Header = (props) => {
                     </div>
                 </div>
 
-                <div className="col-12 col-md-5 mt-2 mt-md-0">
+                <div className="col-12 col-lg-5 col-md-5 col-sm-5 mt-2 mt-md-0">
                     <Search />
                 </div>
-                <div className="col-12 col-md-1 mt-2 mt-md-0 sell-products">
+                <div className="col-12 col-lg-2 col-md-2 col-sm-2 mt-2 mt-md-0 sell-products">
                     <Link to={`/products/create`}>{t('menuBar.sellProducts')}</Link>
                 </div>
 
@@ -109,7 +109,7 @@ const Header = (props) => {
 
                         </div>
 
-                    ) : !loading && <Link to="/login" className="btn ml-4 login" style={{fontSize: '19px' }} id="login_btn">{t('menuBar.login')}</Link>}
+                    ) : !loading && <Link to="/login" className="btn login" style={{fontSize: '19px' }} id="login_btn">{t('menuBar.login')}</Link>}
 
                 </div>
             </nav>

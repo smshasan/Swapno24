@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 
 const CategoryHome = ({t}) => {
 
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,18 +39,15 @@ const CategoryHome = ({t}) => {
 
                     <div className='col-9' style={{ color: '#212529c9', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
                       <span>{category.name}</span>
-
                     </div>
                   </div>
 
                 </Card>
               </Link>
             </div>
-
           ))}
         </div>
       </div>
-
     </Fragment>
 
   )

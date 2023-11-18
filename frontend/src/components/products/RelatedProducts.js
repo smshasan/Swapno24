@@ -8,8 +8,6 @@ import "react-multi-carousel/lib/styles.css";
 import ProductCarousel from './ProductCarousel';
 
 
-
-
 const RelatedProducts = ({ categoryId, id }) => {
     console.log('categoryId', categoryId)
 
@@ -17,7 +15,6 @@ const RelatedProducts = ({ categoryId, id }) => {
 
     const { products } = useSelector(state => state.getProductsBySubCategory);
     console.log('products', products)
-
 
     const filterdProducts = products.filter(product => product._id !== id)
     console.log('fileterd product', filterdProducts)
@@ -47,11 +44,6 @@ const RelatedProducts = ({ categoryId, id }) => {
         }
     };
 
-    // var product = filterdProducts.map((item, index) => {
-    //     return <ProductCarousel key={index} item={item} />
-    // })
-
-
     return (
         <>
             <div className='related_products'>
@@ -61,7 +53,6 @@ const RelatedProducts = ({ categoryId, id }) => {
                 }
 
                 <Fragment>
-                    
                     <Carousel
                         ssr={true}
                         responsive={responsive}
@@ -69,9 +60,7 @@ const RelatedProducts = ({ categoryId, id }) => {
                        { filterdProducts.map((product, index) => (<ProductCarousel key={index} item={product} />))}
 
                     </Carousel>
-
                 </Fragment>
-
             </div>
         </>
     )

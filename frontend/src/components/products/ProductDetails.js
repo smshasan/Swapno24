@@ -52,7 +52,6 @@ const ProductDetails = () => {
     }, [dispatch])
 
 
-
     const handleSubmit = async (e) => {
         
         e.preventDefault()
@@ -86,7 +85,7 @@ const ProductDetails = () => {
             <div className='container product-details'>
                 <div className='row d-flex justify-content-around'>
 
-                    <div className='col-lg-4 pro_det_col_1 img-fluid'>
+                    <div className='col-lg-4 col-md-4 pro_det_col_1 img-fluid'>
                         <Carousel  pause='hover'>
                         {
                             product.images?.map((image, index) => (
@@ -99,9 +98,8 @@ const ProductDetails = () => {
                             ))
                         }
                         </Carousel>  
-
                     </div>
-                    <div className='col-lg-5'>
+                    <div className='col-lg-5 col-md-5'>
                         <div className='Pro_Det_col_2' >
                             <label >Name:</label>
                             <div>{product.name}</div>
@@ -124,12 +122,11 @@ const ProductDetails = () => {
                         <hr></hr>
 
                         <div className='Pro_Det_col_2' style={{height: 'auto'}}>
-                            <label >Description:</label>
-                            <div className='description'>{product.description}</div>
+                            <div className='description'><label >Description:</label>{product.description}</div>
                         </div>
                     </div>
 
-                    <div className='col-lg-3 pro-det-col-3'>
+                    <div className='col-lg-3 col-md-3 pro-det-col-3'>
                         Contact the Seller: <br></br><br></br>
                         {poster?.name}
                         <hr></hr>

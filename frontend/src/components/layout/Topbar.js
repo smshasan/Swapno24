@@ -19,7 +19,7 @@ const Topbar = (props) => {
     
     return (
         <Fragment>
-            <div className='topbar' style={{height: '40px', display: 'flex', alignItems: 'center', justifyContent:'center', background: '#f7f7f7'}}>
+            <div style={{height: '40px', display: 'flex', alignItems: 'center', justifyContent:'center', background: '#f7f7f7'}}>
                 <Link to={`/products/used`} style={{margin:"0 20px", color: '#000'}} className='clicked'>{t('topbar.usedProducts')}</Link>
                 <Link to={`/products/new`} style={{margin:"0 20px", color: '#000'}} className="clicked">{t('topbar.newProducts')}</Link>
 

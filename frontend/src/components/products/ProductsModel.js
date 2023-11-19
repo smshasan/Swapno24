@@ -6,6 +6,24 @@ import TimeAgo from 'react-timeago'
 const ProductsModel = ({ products, condition }) => {
 
   const [con, setCon] = useState('')
+  const [open, setOpen] = useState(false)
+
+  const handleSidebarMenu = () => {
+    setOpen(!open)
+   
+  }
+
+  const handleMobileButton = (val) => {
+      setOpen(val)
+  };
+
+  const isMobile = window.innerWidth <= 414;
+  const isDesktop = window.innerWidth >= 415;
+
+  console.log('screen width: ' + window.innerWidth)
+
+  console.log('isMobile :', isMobile)
+  console.log('open :', open)
 
   useEffect(() => {
     setCon(con)
@@ -22,7 +40,40 @@ const ProductsModel = ({ products, condition }) => {
         <div className='row'>
 
           <div className='col-md-4 col-lg-3 col-sm-3 col-12 pl-0'>
-            <SidebarMenu con={condition} />
+            <div className={`${isMobile && !open ? 'mobile-button-open' : 'mobile-button-close'}`}>
+              <button onClick={handleSidebarMenu}>
+                Menu
+              </button>
+            </div>
+            {/* <div className={`${isMobile && !open ? 'mobile-button-open' : 'mobile-button-close'}`}>
+              <button onClick={handleSidebarMenu}>
+                Menu
+              </button>
+            </div> */}
+            {/* {
+              isMobile &&
+              <div className='mobile-button'>
+                <button onClick={handleSidebarMenu}>
+                  Menu
+                </button>
+              </div>
+            } */}
+
+
+            {isMobile && open &&
+              <div className="mobile-sidebar">
+                <SidebarMenu con={condition} close={false} mobileButton={handleMobileButton}/>
+              </div>}
+            {/* {isMobile && open &&
+              <div className="mobile-sidebar">
+                <SidebarMenu con={condition} close={false} />
+              </div>} */}
+
+            {isDesktop &&
+              <div>
+                <SidebarMenu con={condition} close={true} />
+              </div>}
+
           </div>
 
           <div className='col-md-8 col-lg-9 col-sm-9 col-12 cardGroup' style={{ height: 'min-content', left: '20px' }}>

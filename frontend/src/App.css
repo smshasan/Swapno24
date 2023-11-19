@@ -916,9 +916,9 @@ p:hover {
   display: none;
 }
 
-.topbar {
+/* .topbar {
   background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%);
-}
+} */
 
 
 .chat-sidebar-product img {
@@ -1072,7 +1072,10 @@ p:hover {
 .navbar-brand {
   display: flex;
   justify-content: right;
+}
 
+.navbar {
+  background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%);
 }
 
 
@@ -1099,7 +1102,26 @@ p:hover {
   }
   
 } */
+
+.mobile-button-open {
+  display: block;
+}
+
+.mobile-button-close {
+  display: none;
+}
+
+/* .mobile-sidebar {
+  display: none;
+} */
+
+
+
 @media only screen and (max-width: 414px) {
+
+  .navbar {
+    padding-bottom: 20px;
+  }
 
   .navbar-brand {
     justify-content: center;
@@ -1127,6 +1149,10 @@ p:hover {
     padding: 0 5px;
   }
 
+  .shop-box {
+    margin-bottom: 5px;
+  }
+
 }
   
 
@@ -1138,16 +1164,12 @@ p:hover {
   .sell-products {
     display: flex;
     justify-content: center;
-    margin-top: 1rem!important;
   }
 
-  .user_profile {
-    margin-top: 1rem!important;
-  }
 
   #login_btn {
     margin-left: 0px !important;
-  }
+  } 
   
 }
 

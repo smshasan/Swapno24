@@ -22,6 +22,8 @@ const SidebarMenu = ({ con, close, mobileButton }) => {
 
   const handleSidebarMenu = () => {
     const sidebarMenu = document.getElementsByClassName("mobile-sidebar")
+    
+    // sidebarMenu[0].style.transition = "all 5s";
     sidebarMenu[0].style.display = "none";
 
     mobileButton(false)
@@ -37,7 +39,7 @@ const SidebarMenu = ({ con, close, mobileButton }) => {
       </div>
       {!close && 
         <div>
-          <button onClick={handleSidebarMenu}>Clo</button>
+          <button style={{border: 'none', background: 'transparent', color: '#5f5c5c'}} onClick={handleSidebarMenu}><i className="fa fa-close"></i></button>
         </div>
       }
 

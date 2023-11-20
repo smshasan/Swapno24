@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import SidebarMenu from '../sidebarMenu/SidebarMenu'
 import TimeAgo from 'react-timeago'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 const ProductsModel = ({ products, condition }) => {
 
   const [con, setCon] = useState('')
@@ -41,24 +44,11 @@ const ProductsModel = ({ products, condition }) => {
 
           <div className='col-md-4 col-lg-3 col-sm-3 col-12 pl-0'>
             <div className={`${isMobile && !open ? 'mobile-button-open' : 'mobile-button-close'}`}>
-              <button onClick={handleSidebarMenu}>
-                Menu
+              <button style={{border: 'none', marginLeft: '5px', background: 'transparent'}} onClick={handleSidebarMenu}>
+              
+              <i className="fa fa-bars"></i>
               </button>
             </div>
-            {/* <div className={`${isMobile && !open ? 'mobile-button-open' : 'mobile-button-close'}`}>
-              <button onClick={handleSidebarMenu}>
-                Menu
-              </button>
-            </div> */}
-            {/* {
-              isMobile &&
-              <div className='mobile-button'>
-                <button onClick={handleSidebarMenu}>
-                  Menu
-                </button>
-              </div>
-            } */}
-
 
             {isMobile && open &&
               <div className="mobile-sidebar">

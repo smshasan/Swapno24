@@ -1111,9 +1111,10 @@ p:hover {
   display: none;
 }
 
-/* .mobile-sidebar {
-  display: none;
-} */
+
+.mobile-sidebar {
+    transition: all 10s;
+}
 
 
 

@@ -30,7 +30,7 @@ const Sidebar = () => {
 
                             {user && user.role === 'admin' && (
                                 <li>
-                                    <Link to="#"><i className="fa fa-clipboard"></i> All</Link>
+                                    <Link to="/admin/products/list"><i className="fa fa-clipboard"></i> All</Link>
                                 </li>
 
                             )}

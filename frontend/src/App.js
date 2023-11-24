@@ -25,6 +25,7 @@ import Footer from './components/layout/Footer';
 
 
 //Products
+import ProductsList from './components/admin/ProductsList';
 import UnaaprovedProducts from './components/admin/UnaaprovedProducts';
 import NewProduct from './components/admin/NewProduct';
 import ProductsByCategory from './components/products/ProductsByCategory';
@@ -33,7 +34,6 @@ import NewProductsByCategory from './components/products/NewProductsByCategory';
 import NewProductsBySubCategory from './components/products/newProductsBySubCategory'
 import ProductsByCondition from './components/products/ProductsByCondition';
 
-import MenuSidebar from './components/layout/menuSidebar/MenuSidebar';
 
 
 
@@ -81,6 +81,7 @@ import PaymentDetails from './components/products/payment/PaymentDetails';
 import {useTranslation} from "react-i18next";
 
 
+
 function App() {
 
   const [t, i18n] = useTranslation('common');
@@ -119,7 +120,8 @@ function App() {
 
             <Route path="/search/:keyword" element={<SearchPage />} exact />
             {/* <Route path="/search/:category" element = {<SearchPage />} exact /> */}
-
+            
+            <Route path="/admin/products/list" element={<ProductsList />} exact />
             <Route path="/products/create" element={<NewProduct />} exact />
             <Route path="/products/:status" element={<ProductsByCondition />} exact />
             <Route path="/shop/:shop/products" element={<ProductsByShopCategory />} exact />
@@ -131,8 +133,6 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} exact />
 
             <Route path="/payment/details" element={<PaymentDetails />} exact />
-
-            <Route path="/menuSideBar" element={<MenuSidebar />} exact />
 
 
             //Stuff Admin Panel

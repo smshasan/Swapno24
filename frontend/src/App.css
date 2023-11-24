@@ -823,10 +823,12 @@ a:hover {
   border-radius: 100px;
   transition: 1s;
   cursor: pointer;
+  font-family: sans-serif;
 }
 
 .pro-det-col-3 .chat:hover {
   background-color: rgb(249, 144, 8);
+  color: #fff;
 }
 
 
@@ -1079,6 +1081,20 @@ p:hover {
 }
 
 
+.mobile-button-open {
+  display: block;
+}
+
+.mobile-button-close {
+  display: none;
+}
+
+
+.mobile-sidebar {
+    transition: all 10s;
+}
+
+
 /**
   Responsive
 **/
@@ -1102,20 +1118,6 @@ p:hover {
   }
   
 } */
-
-.mobile-button-open {
-  display: block;
-}
-
-.mobile-button-close {
-  display: none;
-}
-
-
-.mobile-sidebar {
-    transition: all 10s;
-}
-
 
 
 @media only screen and (max-width: 414px) {
@@ -1152,6 +1154,20 @@ p:hover {
 
   .shop-box {
     margin-bottom: 5px;
+  }
+
+  .pro-det-col-3 {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .wrapper form {
+    padding: 0 !important;
+  }
+
+  .product-spec {
+    margin-right: 10px;
   }
 
 }

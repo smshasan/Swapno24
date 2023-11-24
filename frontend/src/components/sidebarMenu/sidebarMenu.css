@@ -18,6 +18,7 @@
     display: block;
     text-decoration: none;
     border: none;
+    font-family: poppins;
   }
   
   .sidebar-item a:hover,active,visited {
@@ -31,7 +32,6 @@
 
   .sidebar-title{
     display: flex;
-    font-size: 1.2em;
     justify-content: space-between;
   }
   .sidebar-title span i{

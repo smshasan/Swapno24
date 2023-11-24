@@ -168,7 +168,7 @@ const NewProduct = ({ history }) => {
                             <form onSubmit={submitHandler} encType='multipart/form-data' style={{ width: '1000px' }}>
                                 <h2 style={{ textAlign: 'center', marginBottom: '45px' }}>Post your product</h2>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div>
+                                    <div className='product-spec'>
                                         <div style={{ display: 'flex', justifyContent: 'start' }}><h4 style={{ width: 'fit-content', marginBottom: '30px', borderBottom: '2px solid rgb(249, 144, 8)' }}>Set Product Details</h4></div>
                                         <div className="form-group">
                                             <label htmlFor="name_field">Name</label>
@@ -212,7 +212,6 @@ const NewProduct = ({ history }) => {
                                                 value={shopCategory}
                                                 onChange={(e) => setShopCategory(e.target.value)}
                                             >
-
                                                 <option value="retail">Retail</option>
                                                 <option value="wholeSale">Wholesale</option>
                                                 <option value="manufacturer">Manufacturer</option>
@@ -228,7 +227,6 @@ const NewProduct = ({ history }) => {
                                                 value={category}
                                                 onChange={(e) => setCategory(e.target.value)}
                                             >
-
                                                 {categories.map((category) => (
                                                     <option key={category._id} value={category.name}>
                                                         {category.name}

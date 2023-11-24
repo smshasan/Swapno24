@@ -10,6 +10,8 @@ const ProductCarousel = ({item}) => {
                     <h5 className="card-title">
                         {item.name}
                     </h5>
+                    <p>Tk. {item.price}</p>
+                    <p>{item.district}, {item.thana}, {item.village}.</p>
                 </div>
             </Link>
         </div>

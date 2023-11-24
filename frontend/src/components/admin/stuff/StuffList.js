@@ -114,8 +114,6 @@ const StuffList = () => {
         return data;
     }
 
-   
-
     return (
         <Fragment>
             <MetaData title={'All stuff'} />
@@ -129,16 +127,13 @@ const StuffList = () => {
                         <h1 className="my-5 text-center">All Stuff</h1>
                     {
                         loading? <Loader />: 
-                        <MDBDataTable
+                        < MDBDataTable
                         data={setStuff()}
                         className="px-3"
                         bordered
                         striped
-                        hover
-                    />
+                        hover />
                     }
-                       
-
                     </Fragment>
                 </div>
             </div>

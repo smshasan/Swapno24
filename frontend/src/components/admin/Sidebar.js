@@ -117,7 +117,7 @@ const Sidebar = () => {
 
                     {user && user.role === 'admin' && (
                         <li>
-                            <Link to="#"> Slider </Link>
+                            <Link to="#"><i className='fa fa-sliders'></i> Slider </Link>
                         </li>
                     )}
 
@@ -150,14 +150,13 @@ const Sidebar = () => {
                         </ul>
                     </li>
                     <li>
-                        <a href="#salarySubMenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i
-                            className="fa fa-stuff-hunt"></i>Salary</a>
+                        <a href="#salarySubMenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i className='fa fa-money'></i>Salary</a>
                         <ul className="collapse list-unstyled" id="salarySubMenu">
 
 
                             {user && user.role === 'admin' && (
                                 <li>
-                                    <Link to={"/salary/create"}><i className="fa fa-clipboard"></i>Create Salary</Link>
+                                    <Link to={"/salary/create"}><i className='fa fa-money'></i>Create Salary</Link>
                                 </li>
 
                             )}
@@ -187,13 +186,13 @@ const Sidebar = () => {
 
                     {user && user.role === 'admin' && (
                         <li>
-                            <Link to={`/ticket/request`}> Tickets Request </Link>
+                            <Link to={`/ticket/request`}><i className='fa fa-ticket'></i> Tickets Request </Link>
                         </li>
                     )}
 
                     {user && user.role === 'admin' && (
                         <li>
-                            <Link to={`/information/get`}> Information </Link>
+                            <Link to={`/information/get`}><i className='fa fa-info-circle'></i> Information </Link>
                         </li>
                     )}
 

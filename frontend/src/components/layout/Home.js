@@ -11,6 +11,7 @@ import ShopCategory from './shopCategory/ShopCategory'
 import Carousel from './carousel/Carousel'
 
 import {useTranslation} from "react-i18next";
+import Banner from './Banner'
 
 
 const Home = (props) => {
@@ -37,6 +38,7 @@ const Home = (props) => {
 
         {/* <Carousel /> */}
         <CategoryHome t={t}/>
+        <Banner />
         <ShopCategory t={t}/>
         
     </>

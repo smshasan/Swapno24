@@ -11,7 +11,7 @@ import Search from './Search'
 import '../../App.css'
 
 const Header = (props) => {
-    const {t, i18n} = props;
+    const { t, i18n } = props;
     const dispatch = useDispatch();
 
     const { user, loading, isAuthenticated } = useSelector(state => state.auth)
@@ -28,89 +28,93 @@ const Header = (props) => {
 
     return (
         <Fragment>
-            <nav className="navbar row topbar">
-                <div className="col-12 col-lg-3 col-md-3 col-sm-3">
-                    <div className="navbar-brand">
-                        <Link to="/">
-                            <img className="logoSize" src="/images/swapno24.png" alt="logo" />
-                        </Link>
+            <nav className="navbar row">
+                <div className='container'>
+                    <div className="col-12 col-lg-2 col-md-2 col-sm-2" style={{marginLeft: '0 !important'}}>
+                        <div className="navbar-brand" style={{marginLeft: '0 !important'}}>
+                            <Link to="/">
+                                <img className="logoSize" src="/images/swapno24White.png" alt="logo" style={{marginLeft: '0 !important'}}/>
+                            </Link>
+                        </div>
                     </div>
-                </div>
 
-                <div className="col-12 col-lg-5 col-md-5 col-sm-5 mt-2 mt-md-0">
-                    <Search />
-                </div>
-                <div className="col-12 col-lg-2 col-md-2 col-sm-2 mt-2 mt-md-0 sell-products">
-                    <Link to={`/products/create`}>{t('menuBar.sellProducts')}</Link>
-                </div>
+                    <div className="col-12 col-lg-7 col-md-6 col-sm-6 mt-2 mt-md-0">
+                        <Search />
+                    </div>
+                    <div className="col-12 col-lg-2 col-md-2 col-sm-2 mt-2 mt-md-0 sell-products">
+                        <Link to={`/products/create`}>{t('menuBar.sellProducts')}</Link>
+                    </div>
 
-                <div className="col-12 col-md-2 mt-4 mt-md-0 text-center user_profile">
+                    <div className="col-12 col-lg-1 col-md-1 col-sm-1 mt-4 mt-md-0 text-center user_profile">
 
-                    {/* <Link to="/cart" style={{ textDecoration: 'none' }} >
+                        {/* <Link to="/cart" style={{ textDecoration: 'none' }} >
                         <span id="cart" className="ml-3">Cart</span>
                         <span className="ml-1" id="cart_count">{cartItems.length}</span>
                     </Link> */}
 
-                    {user ? (
+                        {user ? (
 
-                        <div className="ml-4 dropdown d-inline">
-                            <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="ml-4 dropdown d-inline">
+                                <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                <figure className="avatar avatar-nav">
-                                    <img
-                                        src={user.avatar && user.avatar.url}
-                                        alt={user && user.name}
-                                        className="rounded-circle"
-                                    />
-                                </figure>
-                                <span style={{ color: '#f99008', fontSize: '20px' }}>{user && user.name}</span>
-                            </Link>
+                                    <figure className="avatar avatar-nav">
+                                        <img
+                                            src={user.avatar && user.avatar.url}
+                                            alt={user && user.name}
+                                            className="rounded-circle"
+                                        />
+                                    </figure>
+                                    <span style={{ color: '#f99008', fontSize: '20px' }}>{user && user.name}</span>
+                                </Link>
 
-                            <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
+                                <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
 
-                                {user && user.role === 'admin' && (
-                                    <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
-                                )}
-
-
-                                {user && user.role === 'vendor' && (
-                                    <Link className="dropdown-item" to="#">Dashboard</Link>
-                                )}
+                                    {user && user.role === 'admin' && (
+                                        <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
+                                    )}
 
 
-                                {/* {user && (user.role === 'admin' || user.role === 'vendor') && (
+                                    {user && user.role === 'vendor' && (
+                                        <Link className="dropdown-item" to="#">Dashboard</Link>
+                                    )}
+
+
+                                    {/* {user && (user.role === 'admin' || user.role === 'vendor') && (
                                     <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 )} */}
 
-                                {/* if(user){
+                                    {/* if(user){
                                     if(user.role === 'admin' || user.role === 'vendor'){
                                         <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                     }
                                 } */}
 
-                                {/* <Link className="dropdown-item" to="#">Orders</Link>
+                                    {/* <Link className="dropdown-item" to="#">Orders</Link>
                                 <Link className="dropdown-item" to="#">Profile</Link>
                                 <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
                                     Logout
                                 </Link> */}
 
-                                <Link className="dropdown-item" to="#">Orders</Link>
-                                {
-                                    user && user.role !== 'admin' && (
-                                        <Link className="dropdown-item" to="/user/dashboard">Profile</Link>
-                                    )
-                                }
+                                    <Link className="dropdown-item" to="#">Orders</Link>
+                                    {
+                                        user && user.role !== 'admin' && (
+                                            <Link className="dropdown-item" to="/user/dashboard">Profile</Link>
+                                        )
+                                    }
 
-                                <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
-                                    Logout
-                                </Link>
+                                    <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
+                                        Logout
+                                    </Link>
+
+                                </div>
 
                             </div>
 
-                        </div>
+                        ) : !loading && <Link to="/login" className="btn login" id="login_btn">{t('menuBar.login')}</Link>
+                        
+                        }
 
-                    ) : !loading && <Link to="/login" className="btn login" style={{fontSize: '19px' }} id="login_btn">{t('menuBar.login')}</Link>}
-
+                    </div>
                 </div>
             </nav>
         </Fragment>

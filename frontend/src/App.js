@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+// import { Routes, Route, Navigate } from "react-router-dom";
 
 import Topbar from './components/layout/Topbar';
 
@@ -79,12 +80,44 @@ import PaymentDetails from './components/products/payment/PaymentDetails';
 
 
 import {useTranslation} from "react-i18next";
+import GoogleLoginButton from './components/user/GoogleLoginButton';
+import axios from 'axios';
+import GoogleAuth from './components/user/GoogleLogin';
 
 
 
 function App() {
 
   const [t, i18n] = useTranslation('common');
+
+  const [user, setUser] = useState(null);
+
+	// const getUser = async () => {
+	// 	try {
+			
+	// 		const { data } = await axios.get(`/api/v1/login/success`);
+  //     console.log('data', data);
+
+	// 		setUser(data.user);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
+
+	// useEffect(() => {
+	// 	const getUser = async () => {
+  //     try {
+        
+  //       const { data } = await axios.get(`http://localhost:4990/api/v1/login/success`);
+  //       console.log('data', data);
+  
+  //       setUser(data.user);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   getUser();
+	// }, []);
 
   return (
 
@@ -100,8 +133,11 @@ function App() {
 
             <Route path="/" element={<Home t={t} i18n={i18n}/>} exact />
 
+            {/* <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login />}/> */}
+
             //User
             <Route path="/login" element={<Login />} exact />
+            <Route path='/google/login' element={<GoogleAuth />} exact />
             <Route path="/dashboard/users" element={<UsersList />} exact />
             <Route path="/register" element={<Register />} exact />
             <Route path="/user/dashboard" element={<UserDashboard />} exact />
@@ -168,6 +204,7 @@ function App() {
 
             //Salary stuff
             <Route path="/salary/withdraw" element={<WithdrawSalary />} exact />
+            <Route path='/googleLogin' element={<GoogleLoginButton />} exact />
 
           </Routes>
           <Footer t={t}/>

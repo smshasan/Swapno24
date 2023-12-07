@@ -6,37 +6,88 @@ const sendToken = require('../utils/jwtToken');
 // const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const cloudinary = require('cloudinary');
+const { OAuth2Client } = require('google-auth-library');
 
+// const twilio = require('twilio');
+
+
+
+// const twilioClient = twilio(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 //Register a user => /api/v1/register
-exports.registerUser = catchAsyncError(async (req, res, next) => {
-
-    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: 'avatars',
-        width: 150,
-        crop: "scale"
-    })
+exports.registerUser = catchAsyncError( async (req, res, next) => {
+    // try {
+        
+        const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: 'avatars',
+            width: 150,
+            crop: "scale"
+        })
     
-    const { name, phone, division, district, thana, municipality, ward, village, password } = req.body;
-    const user = await User.create({
-        name,
-        phone,
-        division,
-        district,
-        thana,
-        municipality,
-        ward,
-        village,
-        password,
-        avatar: {
-            public_id: result.public_id ,
-            url: result.secure_url
-        }
+        // Generate a random 6-digit verification code
+        // const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+        // const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+        
+        const { name, phone, division, district, thana, municipality, ward, village, password } = req.body;
+        const user = await User.create({
+            name,
+            phone,
+            division,
+            district,
+            thana,
+            municipality,
+            ward,
+            village,
+            password,
+            avatar: {
+                public_id: result.public_id ,
+                url: result.secure_url
+            },
+            
+        })
+    
+        // Send the verification code via SMS using Twilio
+        // await twilioClient.messages.create({
+        //     body: `Your verification code is: ${verificationCode}`,
+        //     to: phone,
+        //     from: process.env.TWILIOPHONENUMBER
+        //   });
+          
+        //   res.json({ success: true, message: 'Verification code sent successfully' });
+
+        sendToken(user, 200, res)
+
+    // } catch (error) {
+    //         console.error(error);
+    //         res.status(500).json({ success: false, message: error });
+    //       }
     })
 
-   sendToken(user, 200, res)
+    // Route to verify the verification code /api/v1/verify/user
+// exports.verifyUser= async (req, res) => {
+//     try {
+//       const { phone, verificationCode } = req.body;
+  
+//       // Find the user by phone number and verification code
+//       const user = await User.findOne({ phone, verificationCode });
+  
+//       if (!user) {
+//         return res.status(400).json({ success: false, message: 'Invalid verification code' });
+//       }
+  
+//       // Generate a JWT token for the authenticated user
+//     //   const token = jwt.sign({ phoneNumber }, 'your_secret_key');
+  
+//     //   res.json({ success: true, token });
+//     sendToken(user, 200, res)
 
-})
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ success: false, message: 'Error verifying verification code' });
+//     }
+//   };
+  
+   
 
 //Login User => /api/v1/login
 exports.loginUser = catchAsyncError(async (req, res, next) => {
@@ -48,6 +99,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
     }
     // finding user in database
     const user = await User.findOne({ phone }).select('+password')
+    // console.log('user found:', user)
 
     if (!user) {
         return next(new ErrorHandler('Invalid phone or password', 401));
@@ -61,6 +113,55 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
 
     sendToken(user, 200, res)
 })
+
+
+// Google OAuth route for handling login
+exports.googleLogin=  async (req, res) => {
+    const { tokenId  } = req.body;
+    console.log('tokenId:', req.body)
+
+  try {
+    // Verify the Google token on the server
+    const client = new OAuth2Client('1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com'); // Replace with your Google OAuth client ID
+    const ticket = await client.verifyIdToken({
+      idToken: tokenId,
+      audience: '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com', // Replace with your Google OAuth client ID
+    });
+
+    const payload = ticket.getPayload();
+    console.log('payload: ' + payload)
+    const { sub: googleId, name, email } = payload;
+
+    // Check if the token is valid
+    if (!payload.aud || payload.aud !== '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com') {
+      // The token is not intended for your client
+      return res.status(401).json({ success: false, error: 'Invalid Google token audience' });
+    }
+
+    // The token is valid, you can proceed with the rest of your logic
+
+    // Check if the user with the given googleId already exists in the database
+    const existingUser = await User.findOne({ googleId });
+
+    if (existingUser) {
+      // User already exists, send user data
+      res.json({ success: true, user: existingUser });
+    } else {
+      // User doesn't exist, create a new user
+      const newUser = new User({ googleId, name, email });
+      const savedUser = await newUser.save();
+      res.json({ success: true, user: savedUser });
+    }
+
+  } catch (error) {
+    console.error('Error during Google token verification:', error);
+    console.log('Received Token (Error):', tokenId);
+    res.status(500).json({ success: false, error: 'Server error during token verification', err: error });
+  }
+  }
+
+
+
 
 //Forgot Password => /api/v1/password/forgot
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {

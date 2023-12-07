@@ -1,6 +1,13 @@
 const app = require('./app');
 const connectDatabase = require('./config/database');
 
+
+
+const passport = require('passport');
+const cookieSession= require('cookie-session');
+
+
+
 // const dotenv = require('dotenv');
 const cloudinary = require('cloudinary');
 
@@ -38,6 +45,8 @@ cloudinary.config({
     })
     
 
+
+   
 
 
 // //socket
@@ -90,16 +99,9 @@ cloudinary.config({
 
 
 
+
+
 const PORT = 4990
-app.get('/', (req, res) => {
-        res.send('Alhamdulillah Working')
-});
-
-
-
-// const server = app.listen(PORT, () => {
-//         console.log(`Server started at http://localhost:${PORT}`)
-// })
 
 const server = app.listen(PORT, () => {
         console.log(`Server started at http://localhost:${PORT}`)

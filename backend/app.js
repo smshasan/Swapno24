@@ -1,8 +1,16 @@
 const express = require('express');
+const session = require('express-session');
+
+
+require('./passport')
+
+const passport  = require('passport'); 
+
+
+const cors= require('cors');
+
 const app = express();
 
-const cors = require('cors');
-app.use(cors());
 
 const dotenv = require('dotenv');
 const path = require('path');
@@ -14,6 +22,19 @@ const fileUpload = require('express-fileupload');
 
 //   Setting up config file
 dotenv.config({ path: 'backend/config/config.env' })
+
+
+
+app.use(session({ 
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 //setting up config file
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
@@ -37,7 +58,6 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 }
 
 
-
 //import all routes
 const auth = require('./routes/auth');
 const product = require('./routes/product');
@@ -49,6 +69,7 @@ const conversations = require('./routes/conversations');
 const messages = require('./routes/messages');
 const salary = require('./routes/salary');
 const commission = require('./routes/commission');
+const socialAuth = require('./routes/socialAuth');
 
 
 app.use('/api/v1', auth);
@@ -61,6 +82,7 @@ app.use('/api/v1', conversations);
 app.use('/api/v1', messages);
 app.use('/api/v1', salary);
 app.use('/api/v1', commission);
+app.use('/auth', socialAuth)
 
 
 //Middleware to handle errors

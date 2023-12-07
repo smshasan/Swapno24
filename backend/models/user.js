@@ -7,19 +7,19 @@ const userSchema = new mongoose.Schema({
 
     name: {
         type: String,
-        required: [true, 'Please enter name'],
+        // required: [true, 'Please enter name'],
         maxLength: [30, 'Your name cannot exceed 30 characters']
     },
 
     phone: {
         type: String,
-        required: [true, 'Please enter  valid 11 digit number'],
-       
+        // required: [true, 'Please enter  valid 11 digit number'],
+
     },
-    
+
     password: {
         type: String,
-        required: [true, 'Please enter password'],
+        // required: [true, 'Please enter password'],
         minlength: [5, 'Your password must be equal or longer than 5 characters'],
         select: false
     },
@@ -27,11 +27,11 @@ const userSchema = new mongoose.Schema({
     avatar: {
         public_id: {
             type: String,
-            required: true        // true
+            // required: true        // true
         },
         url: {
             type: String,
-            required: true      // true
+            // required: true      // true
         }
     },
 
@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         maxLength: [15, 'Product name cannot exceed 15 characters']
     },
-    
+
     municipality: {
         type: String,
         maxLength: [15, 'Product name cannot exceed 15 characters']
@@ -65,17 +65,26 @@ const userSchema = new mongoose.Schema({
         maxLength: [15, 'Product name cannot exceed 15 characters']
     },
 
-    
+
     role: {
-            type: String,
-            default: 'user'
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
-        },
-        resetPasswordToken: String,
-        resetPasswordExpire: Date
+        type: String,
+        default: 'user'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    verificationCode:
+    {
+        type: String,
+        maxlength: 7
+    },
+
+    googleId: { type: String },
+    email: { type: String},
+
+    resetPasswordToken: String,
+    resetPasswordExpire: Date
 
 
 })

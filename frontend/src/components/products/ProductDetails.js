@@ -126,7 +126,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <div className='col-lg-3 col-md-3 pro-det-col-3'>
+                    <div className='col-lg-2 col-md-3 col-6 pro-det-col-3'>
                         Contact the Seller: <br></br><br></br>
                         {poster?.name}
                         <hr></hr>

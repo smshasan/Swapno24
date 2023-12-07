@@ -16,12 +16,25 @@ const Topbar = (props) => {
         setClick(!click)
     }
 
+    const value = window.customValue;
+    const topbarButtonfocused =() => {
+        if (value == 'used') {
+            return 'used'
+        }
+        if (value == 'new') {
+            return 'new'
+        }
+    }
+
+    console.log('topbarButton:' + topbarButtonfocused())
+    console.log('customValue:', value)
+
     
     return (
         <Fragment>
-            <div style={{height: '40px', display: 'flex', alignItems: 'center', justifyContent:'center', background: '#f7f7f7'}}>
-                <Link to={`/products/used`} style={{margin:"0 20px", color: '#000'}} className='clicked'>{t('topbar.usedProducts')}</Link>
-                <Link to={`/products/new`} style={{margin:"0 20px", color: '#000'}} className="clicked">{t('topbar.newProducts')}</Link>
+            <div className='topbar'>
+                <Link to={`/products/used`} style={{margin:"0 20px", color: '#fff'}} className={topbarButtonfocused() =='new' ? "clicked": null }>{t('topbar.usedProducts')}</Link>
+                <Link to={`/products/new`} style={{margin:"0 20px", color: '#fff'}} className={topbarButtonfocused() =='used' ? "clicked": null }>{t('topbar.newProducts')}</Link>
 
                 {/* <LanguageDropdown i18n={i18n}/> */}
 

@@ -1,12 +1,20 @@
-html,
-body {
-  font-family: 'Amazon Ember';
+html, body {
+  font-family: 'Poppins';
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
-  background-color: #f7f7f7;
+  background-color: #f2f2f2;
+  letter-spacing: 0.03rem;
+}
+
+body #root {
+  height: inherit;
+}
+
+h3 {
+  color: #000;
 }
 
 a {
@@ -31,6 +39,18 @@ a {
   border-radius: 5px;
 }
 
+.topbar {
+  /* background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%); */
+  font-size: 15px;
+  color: #fff;
+  background-color: #ff5b00;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .logoSize {
   max-width: 180px;
   max-height: fit-content;
@@ -48,7 +68,7 @@ nav {
 
 
 .input-group {
-  width: 95%;
+  width: 100%;
 }
 
 #search_field {
@@ -68,69 +88,39 @@ nav {
   outline: 0;
 } */
 
-/* .sell-products a {
-  text-align: center;
-  display: block;
-  padding: 10px;
-  color: white;
-  background-color: rgb(249, 144, 8);
-  border-radius: 30px;
-} */
 
 .sell-products a {
   width: fit-content;
   text-align: center;
   display: block;
   padding: 7px 10px;
-  color: rgba(33, 37, 41, 0.79);
-  background-color: rgb(255, 255, 255);
-  /* border: 1px solid rgb(249, 144, 8); */
+  color: #fff;
+  background-color: transparent;
   border-radius: 20px;
   transition: 0.7s;
+  font-size: 16px;
 }
 
 .sell-products a:hover {
-  background-color: rgb(249, 144, 8);
-  color: rgb(255, 255, 255)
-}
-
-/* .sell-products a {
-  text-align: center;
-  display: block;
-  padding: 7px;
-  color: rgb(255, 255, 255);
-  background-color: rgb(249, 144, 8);
-  
-  border-radius: 20px;
-  transition: 0.7s;
-} */
-
-/* border: 1px solid rgb(249, 144, 8); */
-/* .sell-products a:hover {
   background-color: rgb(255, 255, 255);
-  color: rgba(33, 37, 41, 0.79);
-} */
+  color: rgb(24, 18, 18);
+}
 
 
 #login_btn,
 #view_btn {
-  background-color: rgb(255, 255, 255);
-  color: rgba(33, 37, 41, 0.79);
+  background-color: transparent;
+  color: #fff;
   padding: 0.3rem 1.8rem;
-  font-family: calibri;
   border-radius: 30px;
   transition: 0.7s;
+  font-size: 16px;
 }
-
-/* #login_btn,
-#view_btn a {
-  color: rgba(33, 37, 41, 0.79);
-} */
 
 
 #login_btn:hover {
-  background-color: rgb(249, 144, 8);
-  color: rgba(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: rgb(24, 18, 18)
 }
 
 #cart {
@@ -153,7 +143,6 @@ nav {
 }
 
 .card {
-
   height: 100%;
   position: relative;
   display: -ms-flexbox;
@@ -162,12 +151,14 @@ nav {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   background-clip: border-box;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, .125);
-  border-radius: 0.25rem;
+  border-radius: 8px;
+}
 
+.category span {
+  color: black;
 }
 
 
@@ -214,17 +205,18 @@ nav {
   margin-top: 4rem;
   color: #fff;
   width: 100%;
-  background: #445268;
+  background: #26292d;
   text-align: left;
   bottom: 0
 }
 
 .footer-head {
+  color: red;
   font-size: 18px;
 }
 
 .footer-body {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .footer btn {
@@ -827,7 +819,7 @@ a:hover {
 }
 
 .pro-det-col-3 .chat:hover {
-  background-color: rgb(249, 144, 8);
+  background-color: #ff5b00;;
   color: #fff;
 }
 
@@ -848,7 +840,7 @@ a:hover {
   color: inherit;
 }
 
-.clicked:active {
+.clicked {
   border-bottom: 5px solid #fc1707;
 }
 
@@ -884,11 +876,12 @@ p:hover {
   margin-top: -9px;
   padding: 6px;
   border-radius: 10px;
-  background-color: rgb(249, 144, 8);
+  background-color: #f60;
 }
 
 .shop-footer a {
-  color: rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
+  font-size: 15px;
 }
 
 
@@ -1079,11 +1072,12 @@ p:hover {
 
 .navbar-brand {
   display: flex;
-  justify-content: right;
+  justify-content: left;
 }
 
 .navbar {
-  background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%);
+  /* background-image: linear-gradient(90deg, #00347D 0%, #0159D3 100%); */
+  background-color: #ff5b00;
 }
 
 
@@ -1113,14 +1107,15 @@ p:hover {
   background-attachment: fixed;
 }
 
-.full-banner{
+.full-banner {
   background-image: url('../public/images/backgroundFixed.jpg');
+  margin-top: 80px;
 }
 
 .full-banner .banner-contain h2 {
   font-size: 100px;
   font-weight: 700;
-  color: #ff4c3b;
+  color: #ff5b00;
   text-transform: uppercase;
   margin-top: -15px;
 }
@@ -1148,26 +1143,6 @@ p:hover {
   Responsive
 **/
 
-/* @media only screen and (max-width: 600px) {
-  .navbar-brand {
-    justify-content: center;
-  }
-  .sell-products {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem!important;
-  }
-
-  .user_profile {
-    margin-top: 1rem!important;
-  }
-
-  #login_btn {
-    margin-left: 0px !important;
-  }
-  
-} */
-
 
 @media only screen and (max-width: 414px) {
 
@@ -1183,6 +1158,7 @@ p:hover {
     display: flex;
     justify-content: center;
     margin-top: 1rem !important;
+
   }
 
   .user_profile {
@@ -1224,10 +1200,9 @@ p:hover {
 }
 
 
-
 @media only screen and (min-width: 415px) {
   .navbar-brand {
-    justify-content: center;
+    justify-content: left;
   }
 
   .sell-products {
@@ -1247,6 +1222,10 @@ p:hover {
     max-width: 150px;
   }
 
+  .navbar-brand {
+    justify-content: left;
+  }
+
   .cardImage img {
     width: 140px;
   }
@@ -1257,19 +1236,30 @@ p:hover {
     max-width: 180px;
   }
 
+  .navbar-brand {
+    justify-content: left;
+  }
+
   .cardImage img {
     width: 160px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
+
+  .navbar-brand a {
+    margin-left: -53px;
+  }
+
   .cardImage img {
     width: 180px;
     height: 140px;
   }
+
+  .navbar-brand {
+    justify-content: left;
+  }
 }
-
-
 
 
 /* Extra small devices (phones, 600px and down) */

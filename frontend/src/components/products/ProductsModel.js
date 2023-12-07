@@ -11,6 +11,20 @@ const ProductsModel = ({ products, condition }) => {
   const [con, setCon] = useState('')
   const [open, setOpen] = useState(false)
 
+  console.log('condition', condition)
+
+
+  useEffect(() => {
+    // Set a custom value on the window object
+    window.customValue = condition;
+
+    // Clean up by removing the custom value when the component unmounts
+    return () => {
+      delete window.customValue;
+    };
+  }, []); // Empty dependency array ensures that this effect runs once on mount
+
+
   const handleSidebarMenu = () => {
     setOpen(!open)
    

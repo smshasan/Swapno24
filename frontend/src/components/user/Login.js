@@ -6,12 +6,14 @@ import { fetchLogin } from '../../features/users/authSlice';
 
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const Login = () => {
 
 
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [googleUser, setGoogleUser] = useState(null)
 
     const userData = {
         phone,
@@ -48,6 +50,39 @@ const Login = () => {
         dispatch(fetchLogin(userData));
 
     }
+
+
+    const google = () => {
+        window.open("http://localhost:4990/auth/google", "_self");
+      };
+    
+      useEffect(() => {
+        const getGoogleUser =  () => {
+            fetch('http://localhost:4990/auth/login/success', {
+                method: 'GET',
+                credentials: "include",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true
+                }
+            }).then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } throw new Error("authentication failed!")
+            }).then(resObject => {
+                setGoogleUser(resObject.user)
+            }).catch(err => {
+                console.error(err)
+            })
+        }
+        getGoogleUser()
+      }, [])
+
+      console.log('googleUser: ' + googleUser)
+      
+
+
 
     return (
         <Fragment>
@@ -105,9 +140,21 @@ const Login = () => {
                                     border: " 1px solid #fa9c23",
                                     borderRadius: '10rem',
                                     width: '55%', padding: '5px 0'
-                                }}><Link to="/register" style={{ display: 'block' }}>Sign Up</Link></span></div>
+                                }}><Link to="/register" style={{ display: 'block' }}>Sign Up</Link></span>
+                                </div>
+
                             </form>
                         </div>
+                       
+                            <div style={{
+                                marginTop: "30px", paddingBottom: '5px', display: "flex", justifyContent: "center",
+                            }}><span style={{
+                                border: " 1px solid #fa9c23",
+                                borderRadius: '10rem',
+                                width: '55%', padding: '5px 0'
+                            }}><button onClick={google}>Google Login</button></span>
+                            </div>
+                        
                     </div>
 
                 </Fragment>)}

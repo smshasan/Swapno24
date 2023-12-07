@@ -35,12 +35,12 @@ const Search = () => {
                     className="btn"
                     id="search_btn"
                     style={{
-                        backgroundColor: '#f99008',
+                        backgroundColor: 'rgb(99 94 92)',
                         borderRadius: 0,
                         borderTopRightRadius: '30px',
                         borderBottomRightRadius: '30px'
                     }} >
-                    <i className="fa fa-search" style={{color: 'white'}} aria-hidden="true"></i>
+                    <i className="fa fa-search" style={{color: '#fff'}} aria-hidden="true"></i>
                 </button>
 
             </div>

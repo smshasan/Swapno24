@@ -24,7 +24,7 @@ const CategoryHome = ({t}) => {
   return (
     <Fragment>
       <div className='container'style={{ marginTop: '80px'}}>
-        <h3 className='text-center text-secondary'>{t('homePage.category.categoryHead')}</h3>
+        <h3 className='text-center'>{t('homePage.category.categoryHead')}</h3>
         <div className='row'>
                   
           {categories.map(category => (

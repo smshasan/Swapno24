@@ -52,7 +52,7 @@ const Footer = ({t}) => {
           </div>
         </div>
       </div>
-      <div style={{background: '#616a77', fontSize: '14px'}}>
+      <div style={{background: 'rgb(62 64 67)', fontSize: '13px'}}>
         <div className='container text-center'>
         <p style={{color: '#fff'}}>Copyright © Swapno24</p>
         </div>

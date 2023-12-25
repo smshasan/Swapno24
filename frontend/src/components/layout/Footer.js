@@ -11,9 +11,9 @@ const Footer = ({t}) => {
             <div className='col-lg-3 col-md-3 col-sm-3 col-6'>
               <p className='footer-head'> Sell Categories</p>
               <div className='footer-body'>
-                <p>{t('footer.sellCategories.retail')}</p>
-                <p>{t('footer.sellCategories.wholeSale')}</p>
-                <p>{t('footer.sellCategories.manufacturer')}</p>
+               <Link to={`/shop/retail/products`}><p>{t('footer.sellCategories.retail')}</p></Link> 
+               <Link to={`/shop/wholesale/products`}><p>{t('footer.sellCategories.wholeSale')}</p></Link>
+               <Link to={`/shop/manufacturer/products`}><p>{t('footer.sellCategories.manufacturer')}</p></Link>
               </div>
 
             </div>

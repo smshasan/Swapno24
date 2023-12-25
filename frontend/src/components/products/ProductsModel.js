@@ -52,8 +52,8 @@ const ProductsModel = ({ products, condition }) => {
 
   return (
     <>
-      <div className='container'>
-        <h4>Products By Category</h4>
+      <div className='container mt-4'>
+        {/* <h4>Products By Category</h4> */}
         <div className='row'>
 
           <div className='col-md-4 col-lg-3 col-sm-3 col-12 pl-0'>
@@ -81,10 +81,10 @@ const ProductsModel = ({ products, condition }) => {
           </div>
 
           <div className='col-md-8 col-lg-9 col-sm-9 col-12 cardGroup' style={{ height: 'min-content', left: '20px' }}>
-            <div style={{ textTransform: 'capitalize' }}>{condition} Shop / Products</div>
+            {/* <div style={{ textTransform: 'capitalize' }}>{condition} Shop / Products</div> */}
 
             {products?.map((product) => (
-              <div key={product._id} className='card'>
+              <div key={product._id} className='card rounded-0'>
                 <Link to={`/product/${product._id}`}>
                   <div className='cardCustom' style={{ marginTop: '20px', display: 'flex', padding: '5px' }}>
                     <div className='col-lg-4 col-md-4 col-sm-4 col-4 cardImage'>

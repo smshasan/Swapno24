@@ -14,6 +14,7 @@
   }
 
   .sidebar-item a {
+    font-size: 15px;
     color: #707070;
     display: block;
     text-decoration: none;
@@ -27,8 +28,12 @@
 
   .sidebar-item:hover,active,visited{
     text-decoration: none!important;
-    background-image: linear-gradient(to bottom right, rgb(216, 108, 36), rgb(230, 169, 119));
+    /* background-image: linear-gradient(to bottom right, rgb(216, 108, 36), rgb(230, 169, 119)); */
+    background-image: linear-gradient(to bottom right, #f60, rgb(218, 142, 91));
   }
+.sidebar-item:hover.sidebar-item>a {
+  color: #fff;
+}
 
   .sidebar-title{
     display: flex;

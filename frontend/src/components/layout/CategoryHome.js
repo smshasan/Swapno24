@@ -27,7 +27,7 @@ const CategoryHome = ({t}) => {
         <h3 className='text-center'>{t('homePage.category.categoryHead')}</h3>
         <div className='row'>
                   
-          {categories.map(category => (
+          {categories?.map(category => (
 
             <div key={category._id} className="col-lg-4 col-md-4 col-sm-6 col-12 p-3">
               <Link to={`/products/category/${category._id}`}>

@@ -50,6 +50,36 @@ a {
   justify-content: center;
 }
 
+#dropdown-basic-button {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#dropdown-basic-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.topbar .dropdown-toggle::after {
+  right: 0 !important;
+}
+
+.topbar .dropdown-menu {
+  inset: 0px auto auto -24px !important;
+  margin-top: 11px !important;
+}
+
+.dropdown-menu.show a label, input {
+  cursor: pointer;
+}
+.dropdown-menu.show a label {
+  margin-bottom: 0 !important;
+}
+
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
 
 .logoSize {
   max-width: 180px;
@@ -122,6 +152,28 @@ nav {
   background-color: rgb(255, 255, 255);
   color: rgb(24, 18, 18)
 }
+
+
+  .loginButton{
+    width: 250px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: #6c757d!important;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .loginButton img {
+    width: 20px;
+    margin-right: 20px;
+  }
+  
+  .google{
+    background-color: #ffffff;
+  }
+
 
 #cart {
   font-size: 1rem;
@@ -210,6 +262,7 @@ nav {
   bottom: 0
 }
 
+
 .footer-head {
   color: red;
   font-size: 18px;
@@ -217,6 +270,10 @@ nav {
 
 .footer-body {
   font-size: 13px;
+}
+
+.footer-body a {
+  color: #fff;
 }
 
 .footer btn {
@@ -654,11 +711,11 @@ nav {
   margin-right: 0.3rem;
 }
 
-#sidebar ul li.active>a,
+/* #sidebar ul li.active>a,
 a[aria-expanded='true'] {
   color: #fff;
   background: #232f3e;
-}
+} */
 
 a[data-toggle='collapse'] {
   position: relative;
@@ -670,6 +727,40 @@ a[data-toggle='collapse'] {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+.header .dropdown-toggle::after {
+  right: 25px !important;
+}
+
+.dropdown-menu {
+  border: none !important;
+  margin-top: 18px !important;
+  padding: 10px 7px !important;
+  border-radius: 17px !important;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.2);
+  z-index: 1030;
+  
+}
+
+.dropdown-menu:before {
+  content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+.dropdown-item.logout {
+  color: #cf3131
+}
+.dropdown-item:hover {
+  background-color: #e3e6e6;
+  border-radius: 7px;
+  color: #f50404;
 }
 
 ul ul a {
@@ -746,6 +837,7 @@ ul.CTAs a {
 
 .cardCustom {
   min-height: 200px;
+  border-bottom: 1px solid #e9e9e9;
 }
 
 .cardCustom ul {
@@ -874,14 +966,25 @@ p:hover {
 
 .shop-footer {
   margin-top: -9px;
-  padding: 6px;
+  padding: 2px 5px;
   border-radius: 10px;
-  background-color: #f60;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(117 120 121 / 79%);
+  transition: 1s;
+
 }
 
 .shop-footer a {
-  color: rgb(255, 255, 255);
-  font-size: 15px;
+  color: rgba(33, 37, 41, 0.79);
+  font-size: 16px;
+}
+.shop-footer:hover {
+  background-color: #f60;
+  border: 1px solid #f60;;
+}
+
+.shop-footer:hover.shop-footer a {
+  color: #fff;
 }
 
 

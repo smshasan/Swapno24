@@ -1,48 +1,99 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
-import LanguageDropdown from '../../translations/LanguageDropdown'
-// import { useTranslation } from 'react-i18next'
+
+
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 
 
-const Topbar = (props) => {
-    // const [t, i18n] = useTranslation('common');
-    const [click, setClick] = useState(false)
-    const {t, i18n} = props;
 
-    console.log('click', click)
-    const clickHandler = () => {
-        setClick(!click)
-    }
 
-    const value = window.customValue;
-    const topbarButtonfocused =() => {
-        if (value == 'used') {
-            return 'used'
-        }
-        if (value == 'new') {
-            return 'new'
-        }
-    }
+const Topbar = ({ t, i18n }) => {
 
-    console.log('topbarButton:' + topbarButtonfocused())
-    console.log('customValue:', value)
+    // const [click, setClick] = useState(false)
+    const [selectedOption, setSelectedOption] = useState('English')
+    // 
 
-    
+
+    // console.log('click', click)
+    // const clickHandler = () => {
+    //     setClick(!click)
+    // }
+
+    // const value = window.customValue;
+    // const topbarButtonfocused =() => {
+    //     if (value == 'used') {
+    //         return 'used'
+    //     }
+    //     if (value == 'new') {
+    //         return 'new'
+    //     }
+    // }
+
+    // console.log('topbarButton:' + topbarButtonfocused())
+    // console.log('customValue:', value)
+
+    const handleLanguageChange = (language, event) => {
+        event.stopPropagation(); // Stop the event propagation
+        setSelectedOption(language);
+        i18n.changeLanguage(language);
+
+        document.getElementById('dropDownLanguageButton').focus();
+    };
+
+    console.log('selectedOption', typeof selectedOption)
+
+    // className={topbarButtonfocused() =='new' ? "clicked": null }
+    // className={topbarButtonfocused() =='used' ? "clicked": null }
+
+
     return (
-        <Fragment>
+        <>
             <div className='topbar'>
-                <Link to={`/products/used`} style={{margin:"0 20px", color: '#fff'}} className={topbarButtonfocused() =='new' ? "clicked": null }>{t('topbar.usedProducts')}</Link>
-                <Link to={`/products/new`} style={{margin:"0 20px", color: '#fff'}} className={topbarButtonfocused() =='used' ? "clicked": null }>{t('topbar.newProducts')}</Link>
+                <Link to={`/products/used`} style={{ margin: "0 20px", color: '#fff' }} >{t('topbar.usedProducts')}</Link>
+                <Link to={`/products/new`} style={{ margin: "0 20px", color: '#fff' }} >{t('topbar.newProducts')}</Link>
 
-                {/* <LanguageDropdown i18n={i18n}/> */}
+                {/* Language */}
 
-                <button onClick={() => i18n.changeLanguage('en')}>en</button>
-                <button onClick={() => i18n.changeLanguage('bd')}>bd</button>
+
+
+                <DropdownButton id="dropdown-basic-button" title="Language">
+                    <Dropdown.Item href="#/action-1">
+                        <label style={{ marginRight: '20px' }}>
+                            <input
+                                type='radio'
+                                name='language'
+                                style={{ marginRight: '5px' }}
+                                value='English'
+                                checked={selectedOption === 'English'}
+                                onChange={(event) => handleLanguageChange('English', event)}
+
+                            />
+                            English
+                        </label>
+
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                        <label >
+                            <input
+                                type='radio'
+                                name='language'
+                                style={{ marginRight: '5px' }}
+                                value='Bangla'
+                                checked={selectedOption === 'Bangla'}
+                                onChange={(event) => handleLanguageChange('Bangla', event)}
+
+                            />
+                            Bangla
+                        </label>
+
+                    </Dropdown.Item>
+                </DropdownButton>
 
             </div>
-        </Fragment>
+        </>
     )
 }
 

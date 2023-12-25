@@ -91,33 +91,8 @@ function App() {
   const [t, i18n] = useTranslation('common');
 
   const [user, setUser] = useState(null);
-
-	// const getUser = async () => {
-	// 	try {
-			
-	// 		const { data } = await axios.get(`/api/v1/login/success`);
-  //     console.log('data', data);
-
-	// 		setUser(data.user);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	const getUser = async () => {
-  //     try {
-        
-  //       const { data } = await axios.get(`http://localhost:4990/api/v1/login/success`);
-  //       console.log('data', data);
+ 
   
-  //       setUser(data.user);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   getUser();
-	// }, []);
 
   return (
 
@@ -127,7 +102,7 @@ function App() {
         <div className="app">
           {/* <Topbar /> */}
           <Topbar t={t} i18n={i18n} />
-          <Header t={t} i18n={i18n}/>
+          <Header t={t} i18n={i18n} />
 
           <Routes>
 

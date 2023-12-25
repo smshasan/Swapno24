@@ -13,7 +13,7 @@ const Login = () => {
 
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const [googleUser, setGoogleUser] = useState(null)
+    // const [googleUser, setGoogleUser] = useState(null)
 
     const userData = {
         phone,
@@ -54,33 +54,33 @@ const Login = () => {
 
     const google = () => {
         window.open("http://localhost:4990/auth/google", "_self");
-      };
-    
-      useEffect(() => {
-        const getGoogleUser =  () => {
-            fetch('http://localhost:4990/auth/login/success', {
-                method: 'GET',
-                credentials: "include",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Credentials": true
-                }
-            }).then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } throw new Error("authentication failed!")
-            }).then(resObject => {
-                setGoogleUser(resObject.user)
-            }).catch(err => {
-                console.error(err)
-            })
-        }
-        getGoogleUser()
-      }, [])
+    };
 
-      console.log('googleUser: ' + googleUser)
-      
+    //   useEffect(() => {
+    //     const getGoogleUser =  () => {
+    //         fetch('http://localhost:4990/auth/login/success', {
+    //             method: 'GET',
+    //             credentials: "include",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //                 "Access-Control-Allow-Credentials": true
+    //             }
+    //         }).then(response => {
+    //             if (response.status === 200) {
+    //                 return response.json();
+    //             } throw new Error("authentication failed!")
+    //         }).then(resObject => {
+    //             setGoogleUser(resObject.user)
+    //         }).catch(err => {
+    //             console.error(err)
+    //         })
+    //     }
+    //     getGoogleUser()
+    //   }, [])
+
+    //   console.log('googleUser: ' + googleUser)
+
 
 
 
@@ -94,8 +94,8 @@ const Login = () => {
                     <MetaData title={'login'} />
 
                     <div className="row wrapper" style={{ marginTop: '10rem', marginBottom: '7rem' }}>
-                        <div className="col-10 col-lg-3">
-                            <form className="shadow-lg text-center" onSubmit={submitHandler} style={{ borderRadius: '20px' }}>
+                        <div className="col-10 col-lg-3 shadow-lg" style={{ borderRadius: '20px' }}>
+                            <form className=" text-center" onSubmit={submitHandler} >
                                 <h1 className="mb-3" style={{ fontSize: '26px' }}>Login</h1>
                                 <div className="form-group" style={{ marginTop: '40px' }}>
 
@@ -124,37 +124,34 @@ const Login = () => {
                                 </div>
 
                                 <button
-                                    style={{ borderRadius: '10rem', padding: '5px 0' }}
-                                    id="login_button"
+                                    style={{ borderRadius: '10rem', padding: '5px 0', width:'90%', backgroundColor: '#f97b27'}}
+                                    // id="login_button"
                                     type="submit"
-                                    className="btn btn-block py-3"
+                                    className="btn"
                                 >
-                                    LOGIN
+                                    Login
                                 </button>
                                 <div className='text-muted mt-5'>
-                                    ___ Don't have a Swapno24 Account? ___
+                                     --- Don't have a Swapno24 Account? ---
                                 </div>
                                 <div style={{
-                                    marginTop: "30px", paddingBottom: '5px', display: "flex", justifyContent: "center",
+                                    marginTop: "16px", paddingBottom: '5px', display: "flex", justifyContent: "center",
                                 }}><span style={{
-                                    border: " 1px solid #fa9c23",
+                                    border: " 1px solid #f97b27",
                                     borderRadius: '10rem',
-                                    width: '55%', padding: '5px 0'
+                                    width: '90%', padding: '5px 0'
                                 }}><Link to="/register" style={{ display: 'block' }}>Sign Up</Link></span>
                                 </div>
 
                             </form>
-                        </div>
-                       
-                            <div style={{
-                                marginTop: "30px", paddingBottom: '5px', display: "flex", justifyContent: "center",
-                            }}><span style={{
-                                border: " 1px solid #fa9c23",
-                                borderRadius: '10rem',
-                                width: '55%', padding: '5px 0'
-                            }}><button onClick={google}>Google Login</button></span>
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <div className="loginButton google" onClick={google}>
+                                    <img src='/images/google.png' alt="" className="icon" />
+                                    Login with Google
+                                </div>
                             </div>
-                        
+
+                        </div>
                     </div>
 
                 </Fragment>)}

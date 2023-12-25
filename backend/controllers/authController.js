@@ -115,50 +115,50 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
 })
 
 
-// Google OAuth route for handling login
-exports.googleLogin=  async (req, res) => {
-    const { tokenId  } = req.body;
-    console.log('tokenId:', req.body)
+// // Google OAuth route for handling login
+// exports.googleLogin=  async (req, res) => {
+//     const { tokenId  } = req.body;
+//     console.log('tokenId:', req.body)
 
-  try {
-    // Verify the Google token on the server
-    const client = new OAuth2Client('1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com'); // Replace with your Google OAuth client ID
-    const ticket = await client.verifyIdToken({
-      idToken: tokenId,
-      audience: '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com', // Replace with your Google OAuth client ID
-    });
+//   try {
+//     // Verify the Google token on the server
+//     const client = new OAuth2Client('1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com'); // Replace with your Google OAuth client ID
+//     const ticket = await client.verifyIdToken({
+//       idToken: tokenId,
+//       audience: '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com', // Replace with your Google OAuth client ID
+//     });
 
-    const payload = ticket.getPayload();
-    console.log('payload: ' + payload)
-    const { sub: googleId, name, email } = payload;
+//     const payload = ticket.getPayload();
+//     console.log('payload: ' + payload)
+//     const { sub: googleId, name, email } = payload;
 
-    // Check if the token is valid
-    if (!payload.aud || payload.aud !== '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com') {
-      // The token is not intended for your client
-      return res.status(401).json({ success: false, error: 'Invalid Google token audience' });
-    }
+//     // Check if the token is valid
+//     if (!payload.aud || payload.aud !== '1014577208458-1sjl2jcaqntovik3c3oknrkvrk62031k.apps.googleusercontent.com') {
+//       // The token is not intended for your client
+//       return res.status(401).json({ success: false, error: 'Invalid Google token audience' });
+//     }
 
-    // The token is valid, you can proceed with the rest of your logic
+//     // The token is valid, you can proceed with the rest of your logic
 
-    // Check if the user with the given googleId already exists in the database
-    const existingUser = await User.findOne({ googleId });
+//     // Check if the user with the given googleId already exists in the database
+//     const existingUser = await User.findOne({ googleId });
 
-    if (existingUser) {
-      // User already exists, send user data
-      res.json({ success: true, user: existingUser });
-    } else {
-      // User doesn't exist, create a new user
-      const newUser = new User({ googleId, name, email });
-      const savedUser = await newUser.save();
-      res.json({ success: true, user: savedUser });
-    }
+//     if (existingUser) {
+//       // User already exists, send user data
+//       res.json({ success: true, user: existingUser });
+//     } else {
+//       // User doesn't exist, create a new user
+//       const newUser = new User({ googleId, name, email });
+//       const savedUser = await newUser.save();
+//       res.json({ success: true, user: savedUser });
+//     }
 
-  } catch (error) {
-    console.error('Error during Google token verification:', error);
-    console.log('Received Token (Error):', tokenId);
-    res.status(500).json({ success: false, error: 'Server error during token verification', err: error });
-  }
-  }
+//   } catch (error) {
+//     console.error('Error during Google token verification:', error);
+//     console.log('Received Token (Error):', tokenId);
+//     res.status(500).json({ success: false, error: 'Server error during token verification', err: error });
+//   }
+//   }
 
 
 

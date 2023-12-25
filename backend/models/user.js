@@ -81,7 +81,8 @@ const userSchema = new mongoose.Schema({
     },
 
     googleId: { type: String },
-    email: { type: String},
+    email: { type: String },
+    image: { type: String },
 
     resetPasswordToken: String,
     resetPasswordExpire: Date

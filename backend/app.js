@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 
 
+
 require('./passport')
 
 const passport  = require('passport'); 
@@ -26,13 +27,28 @@ dotenv.config({ path: 'backend/config/config.env' })
 
 
 app.use(session({ 
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: false
+  secret: 'ec1W1JRpsXP8WqtpY9oW4XNl8T89yQ2Z',
+  resave: true,
+  saveUninitialized: true
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+
+
+// app.use(async (req, res, next) => {
+//   const token = req.headers.authorization?.split(' ')[1];
+
+//   try {
+//     const decoded = jwt.verify(token, 'SDJFRUEWONXCCVBBNLJPESCVBTUGRDNFFDORJEPFKDSFJDNDLSFJRJOWRBDASDMNAHWDCNMZFO');
+//     req.userId = decoded.userId; // Assuming userId is stored in the JWT payload
+//     next();
+//   } catch (error) {
+//     res.status(401).json({ message: 'Invalid token' });
+//   }
+// });
 
 
 
@@ -46,6 +62,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(fileUpload());
+
+
 
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
@@ -87,5 +105,6 @@ app.use('/auth', socialAuth)
 
 //Middleware to handle errors
 app.use(errorMiddleware)
+
 
 module.exports = app;

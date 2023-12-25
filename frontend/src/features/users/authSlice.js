@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
 
 const initialState = {
     loading: false,
@@ -12,7 +13,7 @@ const initialState = {
 export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', async (userData) => {
 
     try {
-        const {data} =  await axios.post('/api/v1/register', userData)
+        const { data } = await axios.post('/api/v1/register', userData)
         console.log('fetchReg', data)
         return data
     } catch (error) {
@@ -21,23 +22,23 @@ export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', asyn
 })
 
 
-export const fetchLogin = createAsyncThunk('auth/fetchLogin', async(userData) => {
+export const fetchLogin = createAsyncThunk('auth/fetchLogin', async (userData) => {
     try {
 
-        const {data} = await axios.post('/api/v1/login', userData)
+        const { data } = await axios.post('/api/v1/login', userData, {withCredentials: true})
         console.log('data', data)
         return data.user
-        
+
     } catch (error) {
 
         return error.response.data.message
-        
+
     }
 })
 
-export const loadUser = createAsyncThunk('auth/loadUser', async() => {
+export const loadUser = createAsyncThunk('auth/loadUser', async () => {
     try {
-        const {data} = await axios.get('/api/v1/me')
+        const { data } = await axios.get('/api/v1/me', {withCredentials: true})
         console.log('loadUser', data)
         return data.user
     } catch (error) {
@@ -45,7 +46,7 @@ export const loadUser = createAsyncThunk('auth/loadUser', async() => {
     }
 })
 
-export const fetchLogout = createAsyncThunk('auth/logout', async() => {
+export const fetchLogout = createAsyncThunk('auth/logout', async () => {
     try {
         await axios.get('/api/v1/logout')
     } catch (error) {
@@ -53,7 +54,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
     }
 })
 
- const authSlice = createSlice({
+const authSlice = createSlice({
     name: 'auth',
     initialState,
     extraReducers: (builder) => {
@@ -66,7 +67,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
             state.loading = false
             state.isAuthenticated = true
             state.user = action.payload
-            state.error =''
+            state.error = ''
         })
 
         builder.addCase(fetchLogin.rejected, (state, action) => {
@@ -78,7 +79,7 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
 
         builder.addCase(fetchRegistration.pending, (state) => {
             state.loading = true
-            
+
         })
 
         builder.addCase(fetchRegistration.fulfilled, (state, action) => {
@@ -116,19 +117,19 @@ export const fetchLogout = createAsyncThunk('auth/logout', async() => {
 
         builder.addCase(fetchLogout.fulfilled, (state, action) => {
             state.loading = false
-            state.isAuthenticated =  false
+            state.isAuthenticated = false
             state.user = null
         })
 
         builder.addCase(fetchLogout.rejected, (state, action) => {
             state.loading = false
             state.user = null
-            state.error  = action.payload
+            state.error = action.payload
         })
 
-        
+
     }
- })
+})
 
 
- export default authSlice.reducer
+export default authSlice.reducer

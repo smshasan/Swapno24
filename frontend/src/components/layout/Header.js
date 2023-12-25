@@ -1,39 +1,90 @@
-import React, { Fragment, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import React, { Fragment, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux'
 //import { useAlert } from 'react-alert'
 import { loadUser, fetchLogout } from '../../features/users/authSlice'
 //import Loader from '../layout/Loader'
 
+
+
 import Search from './Search'
 
 import '../../App.css'
+import axios from 'axios'
 
 const Header = (props) => {
+
+    const [googleUser, setGoogleUser] = useState({})
+    
+    const { user, loading, isAuthenticated } = useSelector(state => state.auth)
     const { t, i18n } = props;
+    
     const dispatch = useDispatch();
 
-    const { user, loading, isAuthenticated } = useSelector(state => state.auth)
-    console.log('LoadUser', user)
+   
     // const { cartItems } = useSelector(state => state.cart)
 
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
+    
+    console.log('LoadUser', user)
+
+
+	useEffect(() => {
+    const getGoogleUser = async () =>  {
+        try {
+          const {data} =  await axios.get('/auth/login/success', { withCredentials: true })
+          console.log('dataOfGoogleUser:', data)
+          setGoogleUser(data.user)
+        } catch (error) {
+          console.log(error)
+        
+    }}
+    getGoogleUser()
+  },[])
+
+  console.log('googleUser: ', googleUser)
 
     const logoutHandler = () => {
         dispatch(fetchLogout());
     }
 
+   
+    const googleLogoutHandler = async () => {
+        try {
+          const response = await fetch('/auth/google/logout', {
+            method: 'GET',
+            credentials: 'include',
+          });
+      
+        //   console.log('Response Status:', response.status);
+        //   console.log('Response Headers:', response.headers);
+      
+          if (response.ok) {
+            // Redirect the user to the desired URL after successful logout
+            window.location.href = 'http://localhost:3000';
+          } else {
+            console.error('Logout failed');
+            const errorData = await response.json(); // Assuming your server sends JSON error details
+            console.error('Error details:', errorData);
+          }
+        } catch (error) {
+          console.error('Error during logout:', error);
+        }
+      };
+
+    console.log('googleUser:', googleUser)
+
     return (
         <Fragment>
-            <nav className="navbar row">
+            <nav className="navbar row header">
                 <div className='container'>
-                    <div className="col-12 col-lg-2 col-md-2 col-sm-2" style={{marginLeft: '0 !important'}}>
-                        <div className="navbar-brand" style={{marginLeft: '0 !important'}}>
+                    <div className="col-12 col-lg-2 col-md-2 col-sm-2" style={{ marginLeft: '0 !important' }}>
+                        <div className="navbar-brand" style={{ marginLeft: '0 !important' }}>
                             <Link to="/">
-                                <img className="logoSize" src="/images/swapno24White.png" alt="logo" style={{marginLeft: '0 !important'}}/>
+                                <img className="logoSize" src="/images/swapno24White.png" alt="logo" style={{ marginLeft: '0 !important' }} />
                             </Link>
                         </div>
                     </div>
@@ -50,7 +101,8 @@ const Header = (props) => {
                         {/* <Link to="/cart" style={{ textDecoration: 'none' }} >
                         <span id="cart" className="ml-3">Cart</span>
                         <span className="ml-1" id="cart_count">{cartItems.length}</span>
-                    </Link> */}
+                        </Link> */
+                        }
 
                         {user ? (
 
@@ -64,7 +116,7 @@ const Header = (props) => {
                                             className="rounded-circle"
                                         />
                                     </figure>
-                                    <span style={{ color: '#f99008', fontSize: '20px' }}>{user && user.name}</span>
+                                    <span style={{ color: '#ffffff', fontSize: '16px' }}>{user && user.name}</span>
                                 </Link>
 
                                 <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
@@ -102,7 +154,7 @@ const Header = (props) => {
                                         )
                                     }
 
-                                    <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
+                                    <Link className="dropdown-item logout" to="/"  onClick={logoutHandler}>
                                         Logout
                                     </Link>
 
@@ -110,8 +162,34 @@ const Header = (props) => {
 
                             </div>
 
-                        ) : !loading && <Link to="/login" className="btn login" id="login_btn">{t('menuBar.login')}</Link>
-                        
+                        )
+                            : googleUser && googleUser.image ? (
+                                <div>
+                                    <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                        <figure className="avatar avatar-nav">
+                                            {
+                                                <img src={googleUser && googleUser.image}
+                                                // alt="..."
+                                                className="rounded-circle"
+                                                /> 
+                                                
+                                            }
+                                        </figure>
+                                        <span style={{ color: '#ffffff', fontSize: '16px' }}>{googleUser && googleUser.name}</span>
+                                    </Link>
+
+                                    <div className="dropdown-menu" aria-labelledby="dropDownMenu">
+
+                                        <Link className="dropdown-item text-danger" to="/" onClick={googleLogoutHandler}>
+                                            Logout
+                                        </Link>
+                                    </div>
+                                </div>
+
+                            )
+                                : !loading && <Link to="/login" className="btn login" id="login_btn">{t('menuBar.login')}</Link>
+
                         }
 
                     </div>

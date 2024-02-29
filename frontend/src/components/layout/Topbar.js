@@ -59,7 +59,7 @@ const Topbar = ({ t, i18n }) => {
 
 
 
-                <DropdownButton id="dropdown-basic-button" title="Language">
+                <DropdownButton id="dropdown-basic-button" title={t('topbar.language')}>
                     <Dropdown.Item href="#/action-1">
                         <label style={{ marginRight: '20px' }}>
                             <input

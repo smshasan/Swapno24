@@ -1,7 +1,8 @@
 {
     "topbar": {
         "usedProducts": "ব্যবহৃত পণ্য",
-        "newProducts": "নতুন পণ্য"
+        "newProducts": "নতুন পণ্য",
+        "language": "Language"
     },
     "menuBar": {
         "searchProducts": "পণ্য অনুসন্ধান করুন ...",

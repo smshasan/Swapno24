@@ -1,7 +1,8 @@
 {
     "topbar": {
         "usedProducts": "Used Products",
-        "newProducts": "New Products"
+        "newProducts": "New Products",
+        "language": "ভাষা"
     },
     "menuBar": {
         "searchProducts": "Search Products ...",
@@ -9,7 +10,7 @@
         "login": "Login"
     },
     "homePage": {
-        "category":{
+        "category": {
             "categoryHead": "Product Category",
             "home&living": "Home & Living",
             "vehicles": "Vehicles",
@@ -30,7 +31,6 @@
             "movies": "Movies   ",
             "movies": "Movies   "
         },
-
         "productShop": {
             "shopTitle": "Product Shop",
             "retail": "Retail Products",
@@ -46,16 +46,16 @@
             "manufacturer": "Manufacturers"
         },
         "aboutSwapno24": {
-            "as":"About Us",
-            "tc":"Terms & Conditions",
-            "ca":"Careers",
-            "miss":"Missions"
+            "as": "About Us",
+            "tc": "Terms & Conditions",
+            "ca": "Careers",
+            "miss": "Missions"
         },
         "customerSupports": {
-            "f":"FAQ",
-            "h":"Help Center",
-            "r":"Report illegalism",
-            "c":"Send Information to Thana"
+            "f": "FAQ",
+            "h": "Help Center",
+            "r": "Report illegalism",
+            "c": "Send Information to Thana"
         },
         "socialContacts": {
             "f": "Facebook",
@@ -65,5 +65,4 @@
             "l": "LinkedIn"
         }
     }
-    
 }

@@ -83,6 +83,11 @@ import {useTranslation} from "react-i18next";
 import GoogleLoginButton from './components/user/GoogleLoginButton';
 import axios from 'axios';
 import GoogleAuth from './components/user/GoogleLogin';
+import AboutUs from './components/footer/AboutUs';
+import Career from './components/footer/Career';
+import Missions from './components/footer/Missions';
+import Faq from './components/footer/Faq';
+import HelpCenter from './components/footer/HelpCenter';
 
 
 
@@ -180,6 +185,13 @@ function App() {
             //Salary stuff
             <Route path="/salary/withdraw" element={<WithdrawSalary />} exact />
             <Route path='/googleLogin' element={<GoogleLoginButton />} exact />
+
+            //Footer
+            <Route path="/about" element={<AboutUs />} exact />
+            <Route path='/career' element={<Career />} exact />
+            <Route path='/missions' element={<Missions />} exact />
+            <Route path='/faq' element={<Faq />} exact />
+            <Route path='/help-center' element={<HelpCenter />} exact />
 
           </Routes>
           <Footer t={t}/>

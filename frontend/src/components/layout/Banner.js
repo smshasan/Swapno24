@@ -8,7 +8,7 @@ const Banner = () => {
                     <div class="col">
                         <div class="banner-contain">
                             <h2>2024</h2>
-                            <h3>food market</h3>
+                            <h3>Swapno24</h3>
                             <h4>special offer</h4>
                         </div>
                     </div>

@@ -53,6 +53,8 @@ a {
 #dropdown-basic-button {
   background-color: transparent !important;
   border: none !important;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 #dropdown-basic-button:focus {

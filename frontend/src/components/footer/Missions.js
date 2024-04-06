@@ -5,7 +5,11 @@ const Missions = () => {
     return (
         <>
             <div className='mt-4'>
-                <h3 className='text-center'>Our Missions</h3>
+                
+                <div style={{textAlign:'center', margin:'50px 0'}}>
+                    <img style={{objectFit:'cover', borderRadius: '10px'}} src='/images/miss.jpg'/>
+                </div>
+                <h3 className='text-center'> Our Missions </h3>
                 <ul>
                     <li>
                         <strong>Empower Sustainable Consumption:</strong><br></br>

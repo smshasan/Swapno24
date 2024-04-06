@@ -3,6 +3,10 @@ import React from 'react'
 const Faq = () => {
     return (
         <>
+
+            <div className='text-center'>
+                <img src='/images/sFaq.jpg'/>
+            </div>
             <div style={{margin: '50px'}}>
                 <h4 className='text-left'>Frequently Asked Questions (FAQ) - Swapno24.com
                 </h4>

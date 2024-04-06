@@ -7,10 +7,26 @@ class APIFeatures {
 
     search() {
         const keyword = this.queryStr.keyword ? {
+
+            
+
+            
             name: {
                 $regex: this.queryStr.keyword,
                 $options: 'i'
             }
+
+
+            // $or: [
+                // { name: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { division: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { district: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { thana: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { municipality: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { ward: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { village: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+                // { condition: { $regex: new RegExp(this.queryStr.keyword, 'i') } },
+            //   ]
 
             
         } : {}

@@ -239,8 +239,8 @@ nav {
 }
 
 .card-img-top {
-  width: 200px;
-  height: 150px;
+  width: 123px;
+  height: 110px;
 }
 
 .ratings {
@@ -285,6 +285,65 @@ nav {
 .footer #login_button:hover {
   color: rgb(255, 255, 255);
 }
+
+.footer-body.social {
+  display: flex;
+  /* justify-content: center; */
+}
+.footer-social {
+  padding: 20px;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+
+}
+.social:first-child {
+  margin-left: 0;
+}
+
+.footer-social:hover {
+  opacity: 0.7;
+}
+
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
 
 /* Ratings */
 
@@ -870,15 +929,54 @@ a:hover {
 }
 
 .pro_det_col_1 {
-  height: 300px;
+  height: 330px;
 }
 
-.pro_det_col_1 img {
-  width: 90%;
-  height: 90%;
+.image-gallery-slides {
+  /* overflow: visible !important; */
+}
+
+.image-gallery-left-nav .image-gallery-svg {
+  width: 30px !important;
+  height: 90px !important;
+}
+
+.image-gallery-right-nav .image-gallery-svg {
+  width: 30px !important;
+  height: 90px !important;
+}
+
+.image-gallery-slide .image-gallery-image {
+  object-fit: inherit !important;
+}
+
+.image-gallery-slide {
+  width: 330px !important;
+  height: 330px !important;
+}
+
+.image-gallery-slide div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.image-gallery-slide img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* .pro_det_col_1 img {
+  width: 100% !important;
+  height: 100% !important;
+} */
+
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  height: 85px;
 }
 
 .Pro_Det_col_2 {
+
   display: flex;
   height: 50px;
   color: #0F1111;
@@ -918,12 +1016,47 @@ a:hover {
 }
 
 
+
+/* product-detail.css */
+
+/* .product-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* .featured-image {
+  margin-bottom: 20px;
+} */
+
+/* .additional-images {
+  width: 80%; 
+} */
+
+/* .additional-images img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 10px;
+} */
+
+/* .thumbnail-gallery {
+  margin-top: 20px;
+} */
+
+/* You may need to override default styles from the packages */
+/* .react-image-gallery-thumbnail {
+  width: 100px; 
+  height: auto;
+} */
+
+
+
 /* 
   Related Products
   */
 
 .related_products {
-  margin-top: 50px;
+  margin-top: 200px;
 }
 
 .related_products p {
@@ -1247,6 +1380,28 @@ p:hover {
 /**
   Responsive
 **/
+
+/* helpCenter */
+
+.help-center {
+  letter-spacing: 0!important;
+  background-color: #ffffff;
+}
+
+.help-input {
+  border: none;
+  border-bottom: 1px solid rgb(191 198 198)
+}
+.help-input:focus {
+  border-bottom: 1px solid rgb(1, 184, 176)
+}
+
+.help-center input:focus 
+{ 
+  /* border: none !important; */
+  outline: none !important;
+  border-bottom: 1px solid rgb(1, 184, 176);
+}
 
 
 @media only screen and (max-width: 414px) {

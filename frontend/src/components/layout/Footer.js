@@ -22,8 +22,8 @@ const Footer = ({ t }) => {
               <div className='footer-body'>
                 <Link to='/about'><p>{t('footer.aboutSwapno24.as')}</p></Link>
                 <p>{t('footer.aboutSwapno24.tc')}</p>
-                <Link to='/career'><p>{t('footer.aboutSwapno24.ca')}</p></Link>
                 <Link to='/missions'><p>{t('footer.aboutSwapno24.miss')}</p></Link>
+                <Link to='/career'><p>{t('footer.aboutSwapno24.ca')}</p></Link>
               </div>
             </div>
 
@@ -39,12 +39,20 @@ const Footer = ({ t }) => {
 
             <div className='col-lg-3 col-md-3 col-sm-3 col-6'>
               <p className='footer-head'>Social Contacts</p>
-              <div className='footer-body'>
-                <p>{t('footer.socialContacts.f')}</p>
+              <div className='footer-body social'>
+                {/* <p>{t('footer.socialContacts.f')}</p>
                 <p>{t('footer.socialContacts.t')}</p>
                 <p>{t('footer.socialContacts.y')}</p>
                 <p>{t('footer.socialContacts.i')}</p>
-                <p>{t('footer.socialContacts.l')}</p>
+                <p>{t('footer.socialContacts.l')}</p> */}
+
+                <a href="#" class="footer-social fa fa-facebook "></a>
+                <a href="#" class="footer-social fa fa-youtube "></a>
+                <a href="#" class="footer-social fa fa-instagram "></a>
+                <a href="#" class="footer-social fa fa-linkedin "></a>
+
+                {/* <a href="#" class="footer-social fa fa-twitter "></a> */}
+
                 <Link to="/stuff/login" className="btn" id="login_btn" style={{ color: 'rgba(33, 37, 41, 0.79)' }}>Login</Link>
               </div>
             </div>

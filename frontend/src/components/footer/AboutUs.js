@@ -16,7 +16,7 @@ const AboutUs = () => {
                             </p>
                         </div>
                         <div>
-                            <img src='/images/2024.jpg' alt='image' />
+                            <img src='/images/about.avif' alt='image' />
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ const AboutUs = () => {
 
 
                         <div style={{marginRight: '30px'}}>
-                            <img src='/images/2024.jpg' alt='image' />
+                            <img src='/images/mission.avif' alt='image' />
                         </div>
                         <div style={{marginLeft: '30px'}}>
                             <h2> Our Mission</h2>
@@ -41,14 +41,14 @@ const AboutUs = () => {
                 <div style={{ backgroundColor: '#fafafa' }}>
                     <div className="container" style={{ display: 'flex', alignItems: 'center', minHeight: '300px' }}>
 
-                        <div>
+                        <div style={{paddingRight: '100px'}}>
                             <h2>About Swapno24.com</h2>
                             <p>
                                 Launched in 2024, swapno24.com is the leading platform for national Multi trade. We serve thousands of buyers and suppliers throughout the world.
                             </p>
                         </div>
                         <div>
-                            <img src='/images/2024.jpg' alt='image' />
+                            <img src='/images/web.avif' alt='image' />
                         </div>
                     </div>
                 </div>

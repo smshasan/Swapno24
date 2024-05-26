@@ -88,6 +88,7 @@ import Career from './components/footer/Career';
 import Missions from './components/footer/Missions';
 import Faq from './components/footer/Faq';
 import HelpCenter from './components/footer/HelpCenter';
+import ProductsByLocation from './components/products/ProductsByLocation';
 
 
 
@@ -114,6 +115,12 @@ function App() {
             <Route path="/" element={<Home t={t} i18n={i18n}/>} exact />
 
             {/* <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login />}/> */}
+
+            //Header
+            {/* <Route path="/location" element={<ProuductsByLocation />} exact /> */}
+            <Route path="/products/:address/:location" element={<ProductsByLocation />} exact />
+            <Route path='/products/category/:address/:location/:id' element={<NewProductsByCategory />} exact />
+            <Route path='/products/sub_category/:address/:location/:id' element={<NewProductsBySubCategory />} exact />
 
             //User
             <Route path="/login" element={<Login />} exact />

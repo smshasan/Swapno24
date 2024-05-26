@@ -6,7 +6,7 @@ import TimeAgo from 'react-timeago'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ProductsModel = ({ products, condition }) => {
+const ProductsModel = ({ products, condition, address, location }) => {
 
   const [con, setCon] = useState('')
   const [open, setOpen] = useState(false)
@@ -66,7 +66,7 @@ const ProductsModel = ({ products, condition }) => {
 
             {isMobile && open &&
               <div className="mobile-sidebar">
-                <SidebarMenu con={condition} close={false} mobileButton={handleMobileButton}/>
+                <SidebarMenu con={condition} close={false} mobileButton={handleMobileButton} address={address} location={location} />
               </div>}
             {/* {isMobile && open &&
               <div className="mobile-sidebar">
@@ -75,7 +75,7 @@ const ProductsModel = ({ products, condition }) => {
 
             {isDesktop &&
               <div>
-                <SidebarMenu con={condition} close={true} />
+                <SidebarMenu con={condition} close={true}  address={address} location={location}/>
               </div>}
 
           </div>

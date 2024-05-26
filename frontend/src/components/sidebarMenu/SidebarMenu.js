@@ -6,7 +6,7 @@ import { getCategory } from '../../features/category/categorySlice'
 import './sidebarMenu.css'
 import { useDispatch, useSelector } from 'react-redux'
 
-const SidebarMenu = ({ con, close, mobileButton }) => {
+const SidebarMenu = ({ con, close, mobileButton, address, location }) => {
   const [status, setStatus] = useState(con)
 
   console.log('con', con)
@@ -35,7 +35,7 @@ const SidebarMenu = ({ con, close, mobileButton }) => {
   return (
     <div className="sidebar" style={{ display: 'flex' }}>
       <div>
-        {categories.map((category, index) => <SidebarMenuItem key={index} category={category} condi={status} />)}
+        {categories.map((category, index) => <SidebarMenuItem key={index} category={category} condi={status} address= {address} location= {location}/>)}
       </div>
       {!close && 
         <div>

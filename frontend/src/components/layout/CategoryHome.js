@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
-const CategoryHome = ({t}) => {
+const CategoryHome = ({ t }) => {
 
   const dispatch = useDispatch()
 
@@ -23,10 +23,10 @@ const CategoryHome = ({t}) => {
 
   return (
     <Fragment>
-      <div className='container'style={{ marginTop: '80px'}}>
+      <div className='container' style={{ marginTop: '80px' }}>
         <h3 className='text-center'>{t('homePage.category.categoryHead')}</h3>
         <div className='row'>
-                  
+
           {categories?.map(category => (
 
             <div key={category._id} className="col-lg-4 col-md-4 col-sm-6 col-12 p-3">
@@ -37,9 +37,14 @@ const CategoryHome = ({t}) => {
                       <img width="50px" height='50px' src={category.images[0].url} />
                     </div>
 
-                    <div className='col-9' style={{ color: '#212529c9', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+                    {/* display: 'flex', justifyContent: 'center', */}
+                    <div className='col-9' style={{ color: '#212529c9',  textAlign: 'center' }}>
                       <span>{category.name}</span>
+                      <div className='text-center'>
+                        3 ads
+                      </div>
                     </div>
+
                   </div>
 
                 </Card>

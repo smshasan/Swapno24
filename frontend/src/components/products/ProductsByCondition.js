@@ -5,7 +5,7 @@ import {useParams } from 'react-router-dom'
 
 import { fetchProducts } from '../../features/products/getProductSlice'
 
-import ProuductsModel from "./ProductsModel";
+import ProductsModel from "./ProductsModel";
 
 const ProductsByCondition = () => {
 
@@ -31,7 +31,7 @@ const ProductsByCondition = () => {
     return (
 
         <>
-            <ProuductsModel products={filteredProducts} condition={params.status}/>
+            <ProductsModel products={filteredProducts} condition={params.status}/>
         </>
     )
 }

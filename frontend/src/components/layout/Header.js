@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadUser, fetchLogout } from '../../features/users/authSlice'
 //import Loader from '../layout/Loader'
 
+import {useNavigate} from 'react-router-dom'
+
 
 
 import Search from './Search'
@@ -16,66 +18,77 @@ import axios from 'axios'
 const Header = (props) => {
 
     const [googleUser, setGoogleUser] = useState({})
-    
+
     const { user, loading, isAuthenticated } = useSelector(state => state.auth)
     const { t, i18n } = props;
-    
-    const dispatch = useDispatch();
 
-   
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
     // const { cartItems } = useSelector(state => state.cart)
 
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
-    
+
     console.log('LoadUser', user)
 
 
-	useEffect(() => {
-    const getGoogleUser = async () =>  {
-        try {
-          const {data} =  await axios.get('/auth/login/success', { withCredentials: true })
-          console.log('dataOfGoogleUser:', data)
-          setGoogleUser(data.user)
-        } catch (error) {
-          console.log(error)
-        
-    }}
-    getGoogleUser()
-  },[])
+    useEffect(() => {
+        const getGoogleUser = async () => {
+            try {
+                const { data } = await axios.get('/auth/login/success', { withCredentials: true })
+                console.log('dataOfGoogleUser:', data)
+                setGoogleUser(data.user)
+            } catch (error) {
+                console.log(error)
 
-  console.log('googleUser: ', googleUser)
+            }
+        }
+        getGoogleUser()
+    }, [])
+
+    console.log('googleUser: ', googleUser)
 
     const logoutHandler = () => {
         dispatch(fetchLogout());
     }
 
-   
+
     const googleLogoutHandler = async () => {
         try {
-          const response = await fetch('/auth/google/logout', {
-            method: 'GET',
-            credentials: 'include',
-          });
-      
-        //   console.log('Response Status:', response.status);
-        //   console.log('Response Headers:', response.headers);
-      
-          if (response.ok) {
-            // Redirect the user to the desired URL after successful logout
-            window.location.href = 'http://localhost:3000';
-          } else {
-            console.error('Logout failed');
-            const errorData = await response.json(); // Assuming your server sends JSON error details
-            console.error('Error details:', errorData);
-          }
+            const response = await fetch('/auth/google/logout', {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            //   console.log('Response Status:', response.status);
+            //   console.log('Response Headers:', response.headers);
+
+            if (response.ok) {
+                // Redirect the user to the desired URL after successful logout
+                window.location.href = 'http://localhost:3000';
+            } else {
+                console.error('Logout failed');
+                const errorData = await response.json(); // Assuming your server sends JSON error details
+                console.error('Error details:', errorData);
+            }
         } catch (error) {
-          console.error('Error during logout:', error);
+            console.error('Error during logout:', error);
         }
-      };
+    };
 
     console.log('googleUser:', googleUser)
+
+    const address = 'thana'
+    const location = 'Dhanmondi'
+
+    const handleLocation = () => {
+
+        navigate(`/products/${address}/${location}`);
+
+    }
 
     return (
         <Fragment>
@@ -154,7 +167,7 @@ const Header = (props) => {
                                         )
                                     }
 
-                                    <Link className="dropdown-item logout" to="/"  onClick={logoutHandler}>
+                                    <Link className="dropdown-item logout" to="/" onClick={logoutHandler}>
                                         Logout
                                     </Link>
 
@@ -170,10 +183,10 @@ const Header = (props) => {
                                         <figure className="avatar avatar-nav">
                                             {
                                                 <img src={googleUser && googleUser.image}
-                                                // alt="..."
-                                                className="rounded-circle"
-                                                /> 
-                                                
+                                                    // alt="..."
+                                                    className="rounded-circle"
+                                                />
+
                                             }
                                         </figure>
                                         <span style={{ color: '#ffffff', fontSize: '16px' }}>{googleUser && googleUser.name}</span>
@@ -194,7 +207,17 @@ const Header = (props) => {
 
                     </div>
                 </div>
+                <div className='row'>
+
+                <div className='container'>
+                    <button onClick={handleLocation}>
+                        Location
+                    </button>
+                </div>
+
+            </div>
             </nav>
+            
         </Fragment>
     )
 }

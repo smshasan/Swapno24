@@ -86,7 +86,8 @@ const Header = (props) => {
 
     const handleLocation = () => {
 
-        navigate(`/products/${address}/${location}`);
+        // navigate(`/products/${address}/${location}`);
+        navigate('/location/select')
 
     }
 

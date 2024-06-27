@@ -89,6 +89,7 @@ import Missions from './components/footer/Missions';
 import Faq from './components/footer/Faq';
 import HelpCenter from './components/footer/HelpCenter';
 import ProductsByLocation from './components/products/ProductsByLocation';
+import LocationSelect from './components/layout/LocationSelect';
 
 
 
@@ -121,6 +122,7 @@ function App() {
             <Route path="/products/:address/:location" element={<ProductsByLocation />} exact />
             <Route path='/products/category/:address/:location/:id' element={<NewProductsByCategory />} exact />
             <Route path='/products/sub_category/:address/:location/:id' element={<NewProductsBySubCategory />} exact />
+            <Route path='/location/select' element={<LocationSelect />} exact />
 
             //User
             <Route path="/login" element={<Login />} exact />

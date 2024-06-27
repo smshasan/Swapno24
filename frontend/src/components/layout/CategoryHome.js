@@ -40,9 +40,9 @@ const CategoryHome = ({ t }) => {
                     {/* display: 'flex', justifyContent: 'center', */}
                     <div className='col-9' style={{ color: '#212529c9',  textAlign: 'center' }}>
                       <span>{category.name}</span>
-                      <div className='text-center'>
+                      {/* <div className='text-center'>
                         3 ads
-                      </div>
+                      </div> */}
                     </div>
 
                   </div>

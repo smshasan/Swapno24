@@ -53,7 +53,7 @@ const ProductsModel = ({ products, condition, address, location }) => {
   return (
     <>
       <div className='container mt-4'>
-        {/* <h4>Products By Category</h4> */}
+        <h4 className='text-center'>Products showing at {location}</h4>
         <div className='row'>
 
           <div className='col-md-4 col-lg-3 col-sm-3 col-12 pl-0'>

@@ -191,6 +191,24 @@ nav {
   font-size: 0.9rem;
 }
 
+
+.header-location-row {
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.header-location {
+  background-color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.header-location:focus {
+  outline: none;
+}
+
 /* Home page */
 #products_heading {
   margin-top: 1.8rem;
@@ -199,10 +217,15 @@ nav {
 
 /* location select */
 
-.location-selec-ul li{
+.location-select-ul {
+  padding-inline-start: 0;
+}
+
+.location-select-ul li{
   list-style: none;
+  width: 100%;
   border-bottom: 1px solid #ccc;
-  padding: 5px 10px;
+  padding: 10px 0;
 }
 
 

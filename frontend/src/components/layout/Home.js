@@ -1,5 +1,5 @@
 
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -13,8 +13,12 @@ import Carousel from './carousel/Carousel'
 import {useTranslation} from "react-i18next";
 import Banner from './Banner'
 
+import { HeaderLocationTextContext } from '../context.js/LocationContext'
+
 
 const Home = (props) => {
+
+    const {buttonText, setButtonText} = useContext(HeaderLocationTextContext)
 
     const [t, i18n] = useTranslation('common');
    
@@ -29,6 +33,11 @@ const Home = (props) => {
     useEffect(() => {
        dispatch(fetchProducts())
     }, [dispatch])
+
+
+    // useEffect(() => {
+    //   setButtonText('Location')
+    // }, [])
     
     console.log('props', props)
 

@@ -449,6 +449,8 @@ export const thanas = [
       "Nikli",
       "Pakundia",
       "Tarail",
+      "Katiadi",
+      "Bhairab"
     ]
   },
   {
@@ -982,6 +984,174 @@ export const thanas = [
       "Khalishpur"
     ]
   },
+
+]
+
+export const unions = [
+  //Barguna District
+  {
+    id: 1,
+    name: "Barguna Sadar",
+    union: [
+    "Aylapatakata",
+    "Badarkhali",
+    "Barguna",
+    "Burirchar",
+    "Dhalua",
+    "Fuljhuri",
+    "Gaurichanna",
+    "Keorabunia",
+    "M. Baliatali",
+    "Naltona"
+]
+  },
+  {
+    id: 2,
+    name: "Amtali",
+    union: [
+    "Amtali",
+    "Arpangachhia",
+    "Atharogachhia",
+    "Chaura",
+    "Gulishakhali",
+    "Haldia",
+    "Kukua"
+]
+  },
+  {
+    id: 3,
+    name: "Bamna",
+    union: [
+    "Bamna",
+    "Bukabunia",
+    "Dauatala",
+    "Ramna"
+]
+  },
+  {
+    id: 4,
+    name: "Betagi",
+    union: [
+    "Betagi",
+  "Bibichini",
+  "Buramazumdar",
+  "Hosnabad",
+  "Kazirabad",
+  "Mokamia",
+  "Sarishamuri"
+]
+  },
+  {
+    id: 5,
+    name: "Patharghata",
+    union: [
+    "Charduani",
+    "Kakchira",
+    "Kalmegha",
+    "Kanthaltali",
+    "Nachna Para",
+    "Patharghata",
+    "Raihanpur"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  //Barishal District
+  {
+    id: 7,
+    name: "Barishal Sadar",
+    union: [
+    "Roypasha Karapur",
+  "Kashipur",
+  "Char Baria",
+  "Shayestabad",
+  "Charmonai",
+  "Zagua",          
+  "Charkowa",       
+  "Chandpura",
+  "Tungibaria",
+  "Chandramohon"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  {
+    id: 6,
+    name: "Taltali",
+    union: [
+    "Barabagi",
+    "Chhotabagi",
+    "Karaibaria",
+    "Nishanbaria",
+    "Panchakoralia",
+    "Sarikkhali",
+    "Sonakata"
+]
+  },
+  
+
+
 
 ]
 
